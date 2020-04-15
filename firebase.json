@@ -1,0 +1,26 @@
+{
+  "functions": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "firebase-debug.log",
+      "**/.*",
+      "**/node_modules/**",
+      "**/public/**",
+      "**/*.(ts|tsx|scss)",
+      "(tslint|tsconfig).json"
+    ]
+  },
+  "hosting": {
+    "public": "dist",
+    "rewrites": [
+      {
+        "source": "**/**",
+        "function": "nextjs-server"
+      }
+    ],
+    "ignore": [
+      "!dist/_next/static/**"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "pata-pila-web": {
+      "schemaPath": "schema/schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "dev": {
+            "url": "http://localhost:3000",
+            "headers": {
+              "Prismic-ref": "XpNg4RAAAO7F2xam"
+            }
+          }
+        }
+      }
+    }
+  }
+}

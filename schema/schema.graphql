@@ -1,0 +1,269 @@
+# source: http://localhost:3000
+# timestamp: Wed Apr 15 2020 01:22:30 GMT-0300 (Argentina Standard Time)
+
+"""A prismic document"""
+interface _Document {
+  _meta: Meta!
+}
+
+"""A connection to a list of items."""
+type _DocumentConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [_DocumentEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type _DocumentEdge {
+  """The item at the end of the edge."""
+  node: _Document!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+"""An external link"""
+type _ExternalLink implements _Linkable {
+  url: String!
+  _linkType: String
+}
+
+"""A linked file"""
+type _FileLink implements _Linkable {
+  name: String!
+  url: String!
+  size: Long!
+  _linkType: String
+}
+
+"""A linked image"""
+type _ImageLink implements _Linkable {
+  name: String!
+  url: String!
+  size: Long!
+  height: Int!
+  width: Int!
+  _linkType: String
+}
+
+"""A prismic link"""
+interface _Linkable {
+  _linkType: String
+}
+
+"""DateTime"""
+scalar DateTime
+
+type Home_banner implements _Document & _Linkable {
+  banner_image: Json
+  banner_text: Json
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type Home_bannerConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [Home_bannerConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type Home_bannerConnectionEdge {
+  """The item at the end of the edge."""
+  node: Home_banner!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+"""Raw JSON value"""
+scalar Json
+
+type Landing implements _Document & _Linkable {
+  title: Json
+  route: String
+  sections: [LandingSections!]
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type LandingConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [LandingConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type LandingConnectionEdge {
+  """The item at the end of the edge."""
+  node: Landing!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type LandingSections {
+  section: _Linkable
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Meta {
+  """The id of the document."""
+  id: String!
+
+  """The uid of the document."""
+  uid: String
+
+  """The type of the document."""
+  type: String!
+
+  """The tags of the document."""
+  tags: [String!]!
+
+  """The language of the document."""
+  lang: String!
+
+  """Alternate languages the document."""
+  alternateLanguages: [RelatedDocument!]!
+
+  """The first publication date of the document."""
+  firstPublicationDate: DateTime
+
+  """The last publication date of the document."""
+  lastPublicationDate: DateTime
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Presentation implements _Document & _Linkable {
+  content: Json
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type PresentationConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [PresentationConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type PresentationConnectionEdge {
+  """The item at the end of the edge."""
+  node: Presentation!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type Query {
+  _allDocuments(sortBy: SortDocumentsBy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): _DocumentConnection!
+  allHome_banners(sortBy: SortHome_bannery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereHome_banner, before: String, after: String, first: Int, last: Int): Home_bannerConnectionConnection!
+  allLandings(sortBy: SortLandingy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereLanding, before: String, after: String, first: Int, last: Int): LandingConnectionConnection!
+  allPresentations(sortBy: SortPresentationy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WherePresentation, before: String, after: String, first: Int, last: Int): PresentationConnectionConnection!
+}
+
+type RelatedDocument {
+  """The id of the document."""
+  id: String!
+
+  """The uid of the document."""
+  uid: String
+
+  """The type of the document."""
+  type: String!
+
+  """The language of the document."""
+  lang: String!
+}
+
+input similar {
+  documentId: String!
+  max: Int!
+}
+
+enum SortDocumentsBy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+}
+
+enum SortHome_bannery {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  banner_text_ASC
+  banner_text_DESC
+}
+
+enum SortLandingy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  title_ASC
+  title_DESC
+  route_ASC
+  route_DESC
+}
+
+enum SortPresentationy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  content_ASC
+  content_DESC
+}
+
+input WhereHome_banner {
+  """banner_text"""
+  banner_text_fulltext: String
+}
+
+input WhereLanding {
+  """title"""
+  title_fulltext: String
+  route: String
+  route_fulltext: String
+}
+
+input WherePresentation {
+  """content"""
+  content_fulltext: String
+}

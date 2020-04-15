@@ -1,0 +1,13 @@
+.home-banner {
+  background-size: cover;
+  height: 1000px;
+  position: relative;
+  padding: 50px;
+  
+  article {
+    position: absolute;
+    top: 300px;
+    color: white;
+    width: 500px;
+  }
+}

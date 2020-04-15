@@ -1,0 +1,60 @@
+{
+  "name": "with-relay-modern",
+  "version": "3.0.3",
+  "description": "Example of Next.js with Relay Modern SSR",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "relay": "relay-compiler --src ./ --artifactDirectory ./__types__ --exclude '**/dist/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' '**/schema/**' --schema ./schema/schema.graphql --language typescript",
+    "schema": "node graphql-proxy.js & graphql get-schema dev",
+    "serve": "cross-env NODE_ENV=production firebase serve",
+    "upload-gcr": "docker build . -t gcr.io/pata-pila-web/web && docker push gcr.io/pata-pila-web/web",
+    "deploy-gcloud": "gcloud run deploy web --image gcr.io/pata-pila-web/web --region us-central1 --allow-unauthenticated --platform managed",
+    "deploy-gcrun": "npm run build && npm run upload-gcr && npm run deploy-gcloud && firebase deploy --only hosting",
+    "deploy": "npm run build && firebase deploy"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^16.9.34",
+    "@zeit/next-sass": "^1.0.1",
+    "classnames": "^2.2.6",
+    "deep-diff": "^1.0.2",
+    "deep-equal": "^2.0.2",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^1.5.4",
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.0",
+    "graphql": "^14.6.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.3.4",
+    "node-sass": "^4.13.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1",
+    "react-relay": "^9.0.0",
+    "react-relay-network-modern": "^4.6.1",
+    "react-relay-network-modern-ssr": "^1.4.0",
+    "stylelint": "^13.3.2",
+    "tslint": "^6.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.1",
+    "babel-plugin-relay": "^9.0.0",
+    "firebase-tools": "^8.0.2",
+    "graphcool": "^1.2.1",
+    "graphql-cli": "^3.0.14",
+    "prettier": "2.0.4",
+    "relay-compiler": "^9.0.0",
+    "relay-compiler-language-typescript": "^12.0.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-prettier": "^1.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "^3.8.3"
+  }
+}

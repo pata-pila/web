@@ -1,0 +1,11 @@
+# IntelliJ
+.idea/
+
+# Output
+dist/
+
+# Node
+node_modules/
+
+# MacOS
+.DS_Store
