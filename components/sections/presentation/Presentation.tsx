@@ -8,11 +8,11 @@ import { Props } from "./Presentation.types";
 import css from "./Presentation.scss";
 
 // External
-import Text, { RichTextElement } from "../../text";
+import Text from "../../text";
 
 export const Presentation: FC<Props> = (props) => (
   <section className={css.presentation}>
-    <Text elements={props.content as [RichTextElement]} />
+    <Text elements={props.content} />
   </section>
 );
 

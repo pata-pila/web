@@ -8,7 +8,7 @@ import { Props } from "./HomeBanner.types";
 import css from "./HomeBanner.scss";
 
 // External
-import Text, { RichTextElement } from "../../text";
+import Text from "../../text";
 
 export const HomeBanner: FC<Props> = (props) => (
   <section
@@ -17,7 +17,9 @@ export const HomeBanner: FC<Props> = (props) => (
       backgroundImage: `url(${(props.banner_image as any).url})`,
     }}
   >
-    <Text elements={props.banner_text as [RichTextElement]} />
+    <article>
+      <Text elements={props.banner_text} />
+    </article>
   </section>
 );
 
