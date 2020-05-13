@@ -3,8 +3,9 @@ require("dotenv").config();
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 const withSass = require("@zeit/next-sass");
+const withFonts = require("next-fonts")
 
-module.exports = withSass({
+module.exports = withSass(withFonts({
   distDir: "dist/_next",
   webpack: config => {
     config.plugins = config.plugins || [];
@@ -32,4 +33,4 @@ module.exports = withSass({
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]"
   }
-});
+}));

@@ -1,18 +1,39 @@
-:global {
-  body {
-    background-color: rgb(163, 50, 2);
-    margin: 0;
-    font-family: 'Nixie One', serif;
-    font-size: 30px;
-  }
-    
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+@import "colors";
+@import "fonts";
 
-  li ul {
-    display: none;
-  }  
+body {
+  margin: 0;
+}
+  
+h1 {
+  font-family: $poppins-semibold, serif;
+  font-size: 40px;
+  margin: 10px 0;
+}
+
+h6 {
+  font-family: $poppins-regular, serif;
+  font-size: 15px;
+  margin: 10px 0;
+}
+    
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+strong > a, a > strong {
+  font-family: $poppins-medium, serif;
+  font-size: 12px;
+  min-width: 120px;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px 10px;
+  background-color: $gold-drop;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: normal;
 }

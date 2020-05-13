@@ -1,13 +1,32 @@
+@import "styles/utils";
+
 .home-banner {
   background-size: cover;
-  height: 1000px;
+  background-position: left;
+  height: 600px;
   position: relative;
   padding: 50px;
   
   article {
     position: absolute;
-    top: 300px;
+    bottom: 20%;
     color: white;
-    width: 500px;
+    width: 35%;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-banner {
+    $padding: 20px;
+    
+    background-position: center;
+    text-align: center;
+    padding: $padding;
+    
+    article {
+      width: calc(100% - #{$padding * 2});
+    }
+
+    @include background-opaque;
   }
 }
