@@ -28,6 +28,9 @@ class Site extends Component<Props> {
                 ... on Home_banner {
                   ...HomeBanner_data
                 }
+                ... on Icon_list {
+                  ...ImpactBanner_data
+                }
                 ... on Presentation {
                   ...Presentation_data
                 }

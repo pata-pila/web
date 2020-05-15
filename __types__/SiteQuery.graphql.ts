@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 90ff7b370c949d84d9e114f1c99f1b6f */
+/* @relayHash 47fb98a57a7d37246cb846bafd9a8177 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -20,6 +20,9 @@ export type SiteQueryResponse = {
                     readonly section: ({
                         readonly __typename: "Home_banner";
                         readonly " $fragmentRefs": FragmentRefs<"HomeBanner_data">;
+                    } | {
+                        readonly __typename: "Icon_list";
+                        readonly " $fragmentRefs": FragmentRefs<"ImpactBanner_data">;
                     } | {
                         readonly __typename: "Presentation";
                         readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
@@ -53,6 +56,9 @@ query SiteQuery(
             ... on Home_banner {
               ...HomeBanner_data
             }
+            ... on Icon_list {
+              ...ImpactBanner_data
+            }
             ... on Presentation {
               ...Presentation_data
             }
@@ -66,6 +72,20 @@ query SiteQuery(
 fragment HomeBanner_data on Home_banner {
   banner_text
   banner_image
+}
+
+fragment ImpactBanner_data on Icon_list {
+  section_title
+  icon_list_elements {
+    ...ImpactItem_data
+  }
+  background_image
+}
+
+fragment ImpactItem_data on Icon_listIcon_list_elements {
+  title
+  subtitle
+  icon
 }
 
 fragment Presentation_data on Presentation {
@@ -158,6 +178,17 @@ return {
                               {
                                 "kind": "FragmentSpread",
                                 "name": "HomeBanner_data",
+                                "args": null
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Icon_list",
+                            "selections": [
+                              {
+                                "kind": "FragmentSpread",
+                                "name": "ImpactBanner_data",
                                 "args": null
                               }
                             ]
@@ -258,6 +289,58 @@ return {
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Icon_list",
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "section_title",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "icon_list_elements",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "Icon_listIcon_list_elements",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "title",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "subtitle",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "icon",
+                                    "args": null,
+                                    "storageKey": null
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "background_image",
+                                "args": null,
+                                "storageKey": null
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "InlineFragment",
                             "type": "Presentation",
                             "selections": [
                               {
@@ -285,10 +368,10 @@ return {
     "operationKind": "query",
     "name": "SiteQuery",
     "id": null,
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '159a06ee83443d2c9704527e420e01a4';
+(node as any).hash = 'f183b744df357c309384120a5d7be99d';
 export default node;

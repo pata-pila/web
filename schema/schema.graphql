@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Wed Apr 15 2020 01:22:30 GMT-0300 (Argentina Standard Time)
+# timestamp: Fri May 15 2020 19:12:14 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -83,6 +83,39 @@ type Home_bannerConnectionEdge {
   cursor: String!
 }
 
+type Icon_list implements _Document & _Linkable {
+  section_title: Json
+  background_image: Json
+  icon_list_elements: [Icon_listIcon_list_elements!]
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type Icon_listConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [Icon_listConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type Icon_listConnectionEdge {
+  """The item at the end of the edge."""
+  node: Icon_list!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type Icon_listIcon_list_elements {
+  icon: Json
+  title: Json
+  subtitle: Json
+}
+
 """Raw JSON value"""
 scalar Json
 
@@ -122,6 +155,38 @@ The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
 """
 scalar Long
+
+type Malnutrition implements _Document & _Linkable {
+  malnutritionTitle: Json
+  malnutritionMenu: [MalnutritionMalnutritionMenu!]
+  malnutritionImage1: _Linkable
+  malnutritionImage1rst: Json
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type MalnutritionConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [MalnutritionConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type MalnutritionConnectionEdge {
+  """The item at the end of the edge."""
+  node: Malnutrition!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type MalnutritionMalnutritionMenu {
+  malnutritionMenuElement: _Linkable
+}
 
 type Meta {
   """The id of the document."""
@@ -192,8 +257,11 @@ type PresentationConnectionEdge {
 type Query {
   _allDocuments(sortBy: SortDocumentsBy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): _DocumentConnection!
   allHome_banners(sortBy: SortHome_bannery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereHome_banner, before: String, after: String, first: Int, last: Int): Home_bannerConnectionConnection!
+  allUijhius(sortBy: SortUijhiuy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): UijhiuConnectionConnection!
   allLandings(sortBy: SortLandingy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereLanding, before: String, after: String, first: Int, last: Int): LandingConnectionConnection!
+  allIcon_lists(sortBy: SortIcon_listy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereIcon_list, before: String, after: String, first: Int, last: Int): Icon_listConnectionConnection!
   allPresentations(sortBy: SortPresentationy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WherePresentation, before: String, after: String, first: Int, last: Int): PresentationConnectionConnection!
+  allMalnutritions(sortBy: SortMalnutritiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereMalnutrition, before: String, after: String, first: Int, last: Int): MalnutritionConnectionConnection!
 }
 
 type RelatedDocument {
@@ -231,6 +299,15 @@ enum SortHome_bannery {
   banner_text_DESC
 }
 
+enum SortIcon_listy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  section_title_ASC
+  section_title_DESC
+}
+
 enum SortLandingy {
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
@@ -242,6 +319,15 @@ enum SortLandingy {
   route_DESC
 }
 
+enum SortMalnutritiony {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  malnutritionTitle_ASC
+  malnutritionTitle_DESC
+}
+
 enum SortPresentationy {
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
@@ -251,9 +337,51 @@ enum SortPresentationy {
   content_DESC
 }
 
+enum SortUijhiuy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+}
+
+type Uijhiu implements _Document & _Linkable {
+  jni: [UijhiuJni!]
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type UijhiuConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UijhiuConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type UijhiuConnectionEdge {
+  """The item at the end of the edge."""
+  node: Uijhiu!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type UijhiuJni {
+  text_align: String
+  djkjiwjdwiowd: Json
+}
+
 input WhereHome_banner {
   """banner_text"""
   banner_text_fulltext: String
+}
+
+input WhereIcon_list {
+  """section_title"""
+  section_title_fulltext: String
 }
 
 input WhereLanding {
@@ -261,6 +389,14 @@ input WhereLanding {
   title_fulltext: String
   route: String
   route_fulltext: String
+}
+
+input WhereMalnutrition {
+  """malnutrition-title"""
+  malnutritionTitle_fulltext: String
+
+  """malnutrition-image-1"""
+  malnutritionImage1: String
 }
 
 input WherePresentation {

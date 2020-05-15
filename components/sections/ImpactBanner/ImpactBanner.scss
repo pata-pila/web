@@ -1,0 +1,15 @@
+@import "../../../styles/fonts.scss";
+
+.container {
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: white;
+  font-family: $poppins-semibold;
+  transform: rotate(-90deg);
+}
