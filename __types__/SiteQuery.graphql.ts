@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+/* @relayHash 207a466a43954e670ff0e32fbc191f58 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -152,7 +153,7 @@ fragment NewsBanner_data on News_banner {
 }
 
 fragment Presentation_data on Presentation {
-  content
+  title
 }
 
 fragment Tabs_data on Tabs {
@@ -170,10 +171,10 @@ fragment Tabs_data on Tabs {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "where",
-    "type": "WhereLanding"
+    "type": "WhereLanding",
+    "defaultValue": null
   }
 ],
 v1 = [
@@ -184,31 +185,31 @@ v1 = [
   }
 ],
 v2 = {
-  "alias": null,
-  "args": null,
   "kind": "ScalarField",
+  "alias": null,
   "name": "__typename",
+  "args": null,
   "storageKey": null
 },
 v3 = {
-  "alias": null,
-  "args": null,
   "kind": "ScalarField",
+  "alias": null,
   "name": "section_title",
+  "args": null,
   "storageKey": null
 },
 v4 = {
-  "alias": null,
-  "args": null,
   "kind": "ScalarField",
-  "name": "content",
+  "alias": null,
+  "name": "title",
+  "args": null,
   "storageKey": null
 },
 v5 = {
-  "alias": null,
-  "args": null,
   "kind": "ScalarField",
+  "alias": null,
   "name": "_linkType",
+  "args": null,
   "storageKey": null
 },
 v6 = [
@@ -216,496 +217,496 @@ v6 = [
   (v5/*: any*/),
   {
     "kind": "InlineFragment",
+    "type": "_ExternalLink",
     "selections": [
       {
-        "alias": null,
-        "args": null,
         "kind": "ScalarField",
+        "alias": null,
         "name": "url",
+        "args": null,
         "storageKey": null
       }
-    ],
-    "type": "_ExternalLink"
+    ]
   }
 ];
 return {
+  "kind": "Request",
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
-    "metadata": null,
     "name": "SiteQuery",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
+        "kind": "LinkedField",
         "alias": null,
+        "name": "allLandings",
+        "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "LandingConnectionConnection",
-        "kind": "LinkedField",
-        "name": "allLandings",
         "plural": false,
         "selections": [
           {
+            "kind": "LinkedField",
             "alias": null,
+            "name": "edges",
+            "storageKey": null,
             "args": null,
             "concreteType": "LandingConnectionEdge",
-            "kind": "LinkedField",
-            "name": "edges",
             "plural": true,
             "selections": [
               {
+                "kind": "LinkedField",
                 "alias": null,
+                "name": "node",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Landing",
-                "kind": "LinkedField",
-                "name": "node",
                 "plural": false,
                 "selections": [
                   {
+                    "kind": "LinkedField",
                     "alias": null,
+                    "name": "sections",
+                    "storageKey": null,
                     "args": null,
                     "concreteType": "LandingSections",
-                    "kind": "LinkedField",
-                    "name": "sections",
                     "plural": true,
                     "selections": [
                       {
+                        "kind": "LinkedField",
                         "alias": null,
+                        "name": "section",
+                        "storageKey": null,
                         "args": null,
                         "concreteType": null,
-                        "kind": "LinkedField",
-                        "name": "section",
                         "plural": false,
                         "selections": [
                           (v2/*: any*/),
                           {
                             "kind": "InlineFragment",
+                            "type": "Home_banner",
                             "selections": [
                               {
-                                "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "HomeBanner_data"
+                                "name": "HomeBanner_data",
+                                "args": null
                               }
-                            ],
-                            "type": "Home_banner"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Icon_list",
                             "selections": [
                               {
-                                "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "ImpactBanner_data"
+                                "name": "ImpactBanner_data",
+                                "args": null
                               }
-                            ],
-                            "type": "Icon_list"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Presentation",
                             "selections": [
                               {
-                                "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "Presentation_data"
+                                "name": "Presentation_data",
+                                "args": null
                               }
-                            ],
-                            "type": "Presentation"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "News_banner",
                             "selections": [
                               {
-                                "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "NewsBanner_data"
+                                "name": "NewsBanner_data",
+                                "args": null
                               }
-                            ],
-                            "type": "News_banner"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Founder",
                             "selections": [
                               {
-                                "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "Founder_data"
+                                "name": "Founder_data",
+                                "args": null
                               }
-                            ],
-                            "type": "Founder"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Tabs",
                             "selections": [
                               {
-                                "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "Tabs_data"
+                                "name": "Tabs_data",
+                                "args": null
                               }
-                            ],
-                            "type": "Tabs"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Icon_tabs_section",
                             "selections": [
                               {
-                                "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "IconTabs_data"
+                                "name": "IconTabs_data",
+                                "args": null
                               }
-                            ],
-                            "type": "Icon_tabs_section"
+                            ]
                           }
-                        ],
-                        "storageKey": null
+                        ]
                       }
-                    ],
-                    "storageKey": null
+                    ]
                   }
-                ],
-                "storageKey": null
+                ]
               }
-            ],
-            "storageKey": null
+            ]
           }
-        ],
-        "storageKey": null
+        ]
       }
-    ],
-    "type": "Query"
+    ]
   },
-  "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "SiteQuery",
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
+        "kind": "LinkedField",
         "alias": null,
+        "name": "allLandings",
+        "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "LandingConnectionConnection",
-        "kind": "LinkedField",
-        "name": "allLandings",
         "plural": false,
         "selections": [
           {
+            "kind": "LinkedField",
             "alias": null,
+            "name": "edges",
+            "storageKey": null,
             "args": null,
             "concreteType": "LandingConnectionEdge",
-            "kind": "LinkedField",
-            "name": "edges",
             "plural": true,
             "selections": [
               {
+                "kind": "LinkedField",
                 "alias": null,
+                "name": "node",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Landing",
-                "kind": "LinkedField",
-                "name": "node",
                 "plural": false,
                 "selections": [
                   {
+                    "kind": "LinkedField",
                     "alias": null,
+                    "name": "sections",
+                    "storageKey": null,
                     "args": null,
                     "concreteType": "LandingSections",
-                    "kind": "LinkedField",
-                    "name": "sections",
                     "plural": true,
                     "selections": [
                       {
+                        "kind": "LinkedField",
                         "alias": null,
+                        "name": "section",
+                        "storageKey": null,
                         "args": null,
                         "concreteType": null,
-                        "kind": "LinkedField",
-                        "name": "section",
                         "plural": false,
                         "selections": [
                           (v2/*: any*/),
                           {
                             "kind": "InlineFragment",
+                            "type": "Home_banner",
                             "selections": [
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "banner_text",
+                                "args": null,
                                 "storageKey": null
                               },
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "banner_image",
+                                "args": null,
                                 "storageKey": null
                               }
-                            ],
-                            "type": "Home_banner"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Icon_list",
                             "selections": [
                               (v3/*: any*/),
                               {
+                                "kind": "LinkedField",
                                 "alias": null,
+                                "name": "icon_list_elements",
+                                "storageKey": null,
                                 "args": null,
                                 "concreteType": "Icon_listIcon_list_elements",
-                                "kind": "LinkedField",
-                                "name": "icon_list_elements",
                                 "plural": true,
                                 "selections": [
+                                  (v4/*: any*/),
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
-                                    "name": "title",
-                                    "storageKey": null
-                                  },
-                                  {
                                     "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
                                     "name": "subtitle",
+                                    "args": null,
                                     "storageKey": null
                                   },
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
+                                    "alias": null,
                                     "name": "icon",
+                                    "args": null,
                                     "storageKey": null
                                   }
-                                ],
-                                "storageKey": null
+                                ]
                               },
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "background_image",
+                                "args": null,
                                 "storageKey": null
                               }
-                            ],
-                            "type": "Icon_list"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Presentation",
                             "selections": [
                               (v4/*: any*/)
-                            ],
-                            "type": "Presentation"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "News_banner",
                             "selections": [
                               (v5/*: any*/),
                               {
+                                "kind": "LinkedField",
                                 "alias": null,
+                                "name": "articles_list",
+                                "storageKey": null,
                                 "args": null,
                                 "concreteType": "News_bannerArticles_list",
-                                "kind": "LinkedField",
-                                "name": "articles_list",
                                 "plural": true,
                                 "selections": [
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
+                                    "alias": null,
                                     "name": "article_image",
+                                    "args": null,
                                     "storageKey": null
                                   },
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
+                                    "alias": null,
                                     "name": "newspaper_icon",
-                                    "storageKey": null
-                                  },
-                                  {
-                                    "alias": null,
                                     "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "article_title",
                                     "storageKey": null
                                   },
                                   {
+                                    "kind": "ScalarField",
                                     "alias": null,
+                                    "name": "article_title",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "name": "article_url",
+                                    "storageKey": null,
                                     "args": null,
                                     "concreteType": null,
-                                    "kind": "LinkedField",
-                                    "name": "article_url",
                                     "plural": false,
-                                    "selections": (v6/*: any*/),
-                                    "storageKey": null
+                                    "selections": (v6/*: any*/)
                                   }
-                                ],
-                                "storageKey": null
+                                ]
                               }
-                            ],
-                            "type": "News_banner"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Founder",
                             "selections": [
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "section_name",
+                                "args": null,
                                 "storageKey": null
                               },
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "founder_information",
+                                "args": null,
                                 "storageKey": null
                               },
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "founder_picture",
+                                "args": null,
                                 "storageKey": null
                               }
-                            ],
-                            "type": "Founder"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Tabs",
                             "selections": [
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "background_color",
+                                "args": null,
                                 "storageKey": null
                               },
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "tabs_name_color",
+                                "args": null,
                                 "storageKey": null
                               },
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "tabs_name_selected_color",
-                                "storageKey": null
-                              },
-                              {
-                                "alias": null,
                                 "args": null,
-                                "kind": "ScalarField",
-                                "name": "tabs_content_color",
                                 "storageKey": null
                               },
                               {
+                                "kind": "ScalarField",
                                 "alias": null,
+                                "name": "tabs_content_color",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "tabs_list",
+                                "storageKey": null,
                                 "args": null,
                                 "concreteType": "TabsTabs_list",
-                                "kind": "LinkedField",
-                                "name": "tabs_list",
                                 "plural": true,
                                 "selections": [
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
+                                    "alias": null,
                                     "name": "name",
+                                    "args": null,
                                     "storageKey": null
                                   },
-                                  (v4/*: any*/)
-                                ],
-                                "storageKey": null
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "content",
+                                    "args": null,
+                                    "storageKey": null
+                                  }
+                                ]
                               }
-                            ],
-                            "type": "Tabs"
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
+                            "type": "Icon_tabs_section",
                             "selections": [
                               (v3/*: any*/),
                               {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
+                                "alias": null,
                                 "name": "section_background_color",
+                                "args": null,
                                 "storageKey": null
                               },
                               {
+                                "kind": "LinkedField",
                                 "alias": null,
+                                "name": "icon_tabs",
+                                "storageKey": null,
                                 "args": null,
                                 "concreteType": "Icon_tabs_sectionIcon_tabs",
-                                "kind": "LinkedField",
-                                "name": "icon_tabs",
                                 "plural": true,
                                 "selections": [
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
+                                    "alias": null,
                                     "name": "tab_icon",
-                                    "storageKey": null
-                                  },
-                                  {
-                                    "alias": null,
                                     "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "tab_image",
                                     "storageKey": null
                                   },
                                   {
+                                    "kind": "ScalarField",
                                     "alias": null,
+                                    "name": "tab_image",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "name": "tab_link",
+                                    "storageKey": null,
                                     "args": null,
                                     "concreteType": null,
-                                    "kind": "LinkedField",
-                                    "name": "tab_link",
                                     "plural": false,
-                                    "selections": (v6/*: any*/),
-                                    "storageKey": null
+                                    "selections": (v6/*: any*/)
                                   },
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
+                                    "alias": null,
                                     "name": "tab_title",
+                                    "args": null,
                                     "storageKey": null
                                   },
                                   {
-                                    "alias": null,
-                                    "args": null,
                                     "kind": "ScalarField",
+                                    "alias": null,
                                     "name": "tab_description",
+                                    "args": null,
                                     "storageKey": null
                                   }
-                                ],
-                                "storageKey": null
+                                ]
                               }
-                            ],
-                            "type": "Icon_tabs_section"
+                            ]
                           }
-                        ],
-                        "storageKey": null
+                        ]
                       }
-                    ],
-                    "storageKey": null
+                    ]
                   }
-                ],
-                "storageKey": null
+                ]
               }
-            ],
-            "storageKey": null
+            ]
           }
-        ],
-        "storageKey": null
+        ]
       }
     ]
   },
   "params": {
-    "id": null,
-    "metadata": {},
-    "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_content_color\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "name": "SiteQuery",
+    "id": null,
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_content_color\n  tabs_list {\n    name\n    content\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

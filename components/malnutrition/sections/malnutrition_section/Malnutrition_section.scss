@@ -1,0 +1,32 @@
+@import "styles/utils";
+
+.malnutrition-section {
+  background-size: cover;
+  background-position: left;
+  height: 600px;
+  position: relative;
+  padding: 50px;
+  
+  article {
+    position: absolute;
+    bottom: 20%;
+    color: white;
+    width: 35%;
+  }
+}
+
+@media (max-width: 500px) {
+  .malnutrition-section {
+    $padding: 20px;
+    
+    background-position: center;
+    text-align: center;
+    padding: $padding;
+    
+    article {
+      width: calc(100% - #{$padding * 2});
+    }
+
+    @include background-opaque;
+  }
+}

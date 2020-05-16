@@ -27,97 +27,97 @@ export type IconTabs_data$key = {
 
 
 const node: ReaderFragment = {
-  "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
   "name": "IconTabs_data",
+  "type": "Icon_tabs_section",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "section_title",
-      "storageKey": null
-    },
-    {
-      "alias": null,
       "args": null,
-      "kind": "ScalarField",
-      "name": "section_background_color",
       "storageKey": null
     },
     {
+      "kind": "ScalarField",
       "alias": null,
+      "name": "section_background_color",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "icon_tabs",
+      "storageKey": null,
       "args": null,
       "concreteType": "Icon_tabs_sectionIcon_tabs",
-      "kind": "LinkedField",
-      "name": "icon_tabs",
       "plural": true,
       "selections": [
         {
-          "alias": null,
-          "args": null,
           "kind": "ScalarField",
+          "alias": null,
           "name": "tab_icon",
-          "storageKey": null
-        },
-        {
-          "alias": null,
           "args": null,
-          "kind": "ScalarField",
-          "name": "tab_image",
           "storageKey": null
         },
         {
+          "kind": "ScalarField",
           "alias": null,
+          "name": "tab_image",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "tab_link",
+          "storageKey": null,
           "args": null,
           "concreteType": null,
-          "kind": "LinkedField",
-          "name": "tab_link",
           "plural": false,
           "selections": [
             {
-              "alias": null,
-              "args": null,
               "kind": "ScalarField",
+              "alias": null,
               "name": "_linkType",
+              "args": null,
               "storageKey": null
             },
             {
               "kind": "InlineFragment",
+              "type": "_ExternalLink",
               "selections": [
                 {
-                  "alias": null,
-                  "args": null,
                   "kind": "ScalarField",
+                  "alias": null,
                   "name": "url",
+                  "args": null,
                   "storageKey": null
                 }
-              ],
-              "type": "_ExternalLink"
+              ]
             }
-          ],
-          "storageKey": null
+          ]
         },
         {
-          "alias": null,
-          "args": null,
           "kind": "ScalarField",
+          "alias": null,
           "name": "tab_title",
+          "args": null,
           "storageKey": null
         },
         {
-          "alias": null,
-          "args": null,
           "kind": "ScalarField",
+          "alias": null,
           "name": "tab_description",
+          "args": null,
           "storageKey": null
         }
-      ],
-      "storageKey": null
+      ]
     }
-  ],
-  "type": "Icon_tabs_section"
+  ]
 };
 (node as any).hash = 'f1184a17449e9d3b0ffd3084cee33368';
 export default node;

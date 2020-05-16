@@ -18,34 +18,34 @@ export type ImpactItem_data$key = {
 
 
 const node: ReaderFragment = {
-  "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
   "name": "ImpactItem_data",
+  "type": "Icon_listIcon_list_elements",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "title",
+      "args": null,
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "subtitle",
+      "args": null,
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "icon",
+      "args": null,
       "storageKey": null
     }
-  ],
-  "type": "Icon_listIcon_list_elements"
+  ]
 };
 (node as any).hash = '0fd32a7c7280998119e46bf7e496812e';
 export default node;

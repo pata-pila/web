@@ -17,27 +17,27 @@ export type HomeBanner_data$key = {
 
 
 const node: ReaderFragment = {
-  "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
   "name": "HomeBanner_data",
+  "type": "Home_banner",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "banner_text",
+      "args": null,
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "banner_image",
+      "args": null,
       "storageKey": null
     }
-  ],
-  "type": "Home_banner"
+  ]
 };
 (node as any).hash = '0befb1276fdf360fb48125a923d06937';
 export default node;

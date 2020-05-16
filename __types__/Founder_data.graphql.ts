@@ -18,34 +18,34 @@ export type Founder_data$key = {
 
 
 const node: ReaderFragment = {
-  "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
   "name": "Founder_data",
+  "type": "Founder",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "section_name",
+      "args": null,
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "founder_information",
+      "args": null,
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "founder_picture",
+      "args": null,
       "storageKey": null
     }
-  ],
-  "type": "Founder"
+  ]
 };
 (node as any).hash = '969a95ce629e385d758499152ad08929';
 export default node;

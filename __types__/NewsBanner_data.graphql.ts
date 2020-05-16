@@ -26,78 +26,78 @@ export type NewsBanner_data$key = {
 
 const node: ReaderFragment = (function(){
 var v0 = {
-  "alias": null,
-  "args": null,
   "kind": "ScalarField",
+  "alias": null,
   "name": "_linkType",
+  "args": null,
   "storageKey": null
 };
 return {
-  "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
   "name": "NewsBanner_data",
+  "type": "News_banner",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     (v0/*: any*/),
     {
+      "kind": "LinkedField",
       "alias": null,
+      "name": "articles_list",
+      "storageKey": null,
       "args": null,
       "concreteType": "News_bannerArticles_list",
-      "kind": "LinkedField",
-      "name": "articles_list",
       "plural": true,
       "selections": [
         {
-          "alias": null,
-          "args": null,
           "kind": "ScalarField",
+          "alias": null,
           "name": "article_image",
+          "args": null,
           "storageKey": null
         },
         {
-          "alias": null,
-          "args": null,
           "kind": "ScalarField",
+          "alias": null,
           "name": "newspaper_icon",
-          "storageKey": null
-        },
-        {
-          "alias": null,
           "args": null,
-          "kind": "ScalarField",
-          "name": "article_title",
           "storageKey": null
         },
         {
+          "kind": "ScalarField",
           "alias": null,
+          "name": "article_title",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "article_url",
+          "storageKey": null,
           "args": null,
           "concreteType": null,
-          "kind": "LinkedField",
-          "name": "article_url",
           "plural": false,
           "selections": [
             (v0/*: any*/),
             {
               "kind": "InlineFragment",
+              "type": "_ExternalLink",
               "selections": [
                 {
-                  "alias": null,
-                  "args": null,
                   "kind": "ScalarField",
+                  "alias": null,
                   "name": "url",
+                  "args": null,
                   "storageKey": null
                 }
-              ],
-              "type": "_ExternalLink"
+              ]
             }
-          ],
-          "storageKey": null
+          ]
         }
-      ],
-      "storageKey": null
+      ]
     }
-  ],
-  "type": "News_banner"
+  ]
 };
 })();
 (node as any).hash = '369afb94c69c3b460561b89c80d81bff';

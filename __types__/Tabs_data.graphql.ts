@@ -23,66 +23,66 @@ export type Tabs_data$key = {
 
 
 const node: ReaderFragment = {
-  "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
   "name": "Tabs_data",
+  "type": "Tabs",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "background_color",
+      "args": null,
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "tabs_name_color",
+      "args": null,
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
       "kind": "ScalarField",
+      "alias": null,
       "name": "tabs_name_selected_color",
-      "storageKey": null
-    },
-    {
-      "alias": null,
       "args": null,
-      "kind": "ScalarField",
-      "name": "tabs_content_color",
       "storageKey": null
     },
     {
+      "kind": "ScalarField",
       "alias": null,
+      "name": "tabs_content_color",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "tabs_list",
+      "storageKey": null,
       "args": null,
       "concreteType": "TabsTabs_list",
-      "kind": "LinkedField",
-      "name": "tabs_list",
       "plural": true,
       "selections": [
         {
-          "alias": null,
-          "args": null,
           "kind": "ScalarField",
+          "alias": null,
           "name": "name",
+          "args": null,
           "storageKey": null
         },
         {
-          "alias": null,
-          "args": null,
           "kind": "ScalarField",
+          "alias": null,
           "name": "content",
+          "args": null,
           "storageKey": null
         }
-      ],
-      "storageKey": null
+      ]
     }
-  ],
-  "type": "Tabs"
+  ]
 };
 (node as any).hash = 'd04567d4eda607bc5289042b319035c2';
 export default node;
