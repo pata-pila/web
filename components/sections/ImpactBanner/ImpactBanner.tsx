@@ -19,8 +19,8 @@ export const ImpactBanner: FC<Props> = (props) => {
     >
       <span className={styles.title}>{section_title[0].text}</span>
       <div>
-        {icon_list_elements.map((item) => (
-          <ImpactItem data={item} />
+        {icon_list_elements.map((item, index) => (
+          <ImpactItem data={item} key={index} />
         ))}
       </div>
     </section>

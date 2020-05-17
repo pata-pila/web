@@ -59,9 +59,11 @@ class Site extends Component<Props> {
           />
         </Head>
         <main>
-          {props.allLandings.edges[0].node.sections.map(({ section }) => {
+          {props.allLandings.edges[0].node.sections
+            .filter(({ section }) => section.__typename in sections)
+            .map(({ section }, index) => {
             const Container = sections[section.__typename];
-            return <Container data={section} />;
+            return <Container data={section} key={index} />;
           })}
         </main>
       </div>
