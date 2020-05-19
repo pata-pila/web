@@ -12,7 +12,7 @@
     "upload-gcr": "docker build . -t gcr.io/pata-pila-web/web && docker push gcr.io/pata-pila-web/web",
     "deploy-gcloud": "gcloud run deploy web --image gcr.io/pata-pila-web/web --region us-central1 --allow-unauthenticated --platform managed",
     "deploy-gcrun": "npm run build && npm run upload-gcr && npm run deploy-gcloud && firebase deploy --only hosting",
-    "deploy": "firebase deploy"
+    "deploy": "ncp public dist && firebase deploy"
   },
   "engines": {
     "node": "10"
@@ -31,6 +31,7 @@
     "firebase-functions": "^3.6.0",
     "graphql": "^14.6.0",
     "isomorphic-unfetch": "^3.0.0",
+    "ncp": "^2.0.0",
     "next": "^9.3.4",
     "next-fonts": "^1.1.0",
     "node-sass": "^4.13.1",
