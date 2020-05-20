@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 47fb98a57a7d37246cb846bafd9a8177 */
+/* @relayHash 3750faa09ceca0680866f1408ea9516b */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -26,6 +26,9 @@ export type SiteQueryResponse = {
                     } | {
                         readonly __typename: "Presentation";
                         readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
+                    } | {
+                        readonly __typename: "News_banner";
+                        readonly " $fragmentRefs": FragmentRefs<"NewsBanner_data">;
                     } | {
                         /*This will never be '%other', but we need some
                         value in case none of the concrete values match.*/
@@ -62,6 +65,9 @@ query SiteQuery(
             ... on Presentation {
               ...Presentation_data
             }
+            ... on News_banner {
+              ...NewsBanner_data
+            }
           }
         }
       }
@@ -86,6 +92,22 @@ fragment ImpactItem_data on Icon_listIcon_list_elements {
   title
   subtitle
   icon
+}
+
+fragment NewsBanner_data on News_banner {
+  _linkType
+  articles_list {
+    article_image
+    newspaper_icon
+    article_title
+    article_url {
+      __typename
+      _linkType
+      ... on _ExternalLink {
+        url
+      }
+    }
+  }
 }
 
 fragment Presentation_data on Presentation {
@@ -113,6 +135,13 @@ v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "_linkType",
   "args": null,
   "storageKey": null
 };
@@ -200,6 +229,17 @@ return {
                               {
                                 "kind": "FragmentSpread",
                                 "name": "Presentation_data",
+                                "args": null
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "News_banner",
+                            "selections": [
+                              {
+                                "kind": "FragmentSpread",
+                                "name": "NewsBanner_data",
                                 "args": null
                               }
                             ]
@@ -351,6 +391,71 @@ return {
                                 "storageKey": null
                               }
                             ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "News_banner",
+                            "selections": [
+                              (v3/*: any*/),
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "articles_list",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "News_bannerArticles_list",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "article_image",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "newspaper_icon",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "article_title",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "name": "article_url",
+                                    "storageKey": null,
+                                    "args": null,
+                                    "concreteType": null,
+                                    "plural": false,
+                                    "selections": [
+                                      (v2/*: any*/),
+                                      (v3/*: any*/),
+                                      {
+                                        "kind": "InlineFragment",
+                                        "type": "_ExternalLink",
+                                        "selections": [
+                                          {
+                                            "kind": "ScalarField",
+                                            "alias": null,
+                                            "name": "url",
+                                            "args": null,
+                                            "storageKey": null
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
                           }
                         ]
                       }
@@ -368,10 +473,10 @@ return {
     "operationKind": "query",
     "name": "SiteQuery",
     "id": null,
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'f183b744df357c309384120a5d7be99d';
+(node as any).hash = 'b0fa33c2015590a1ef734e4919b8033e';
 export default node;
