@@ -1,0 +1,34 @@
+@import "../../../styles/fonts.scss";
+
+.tabs {
+  min-height: 300px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: $poppins-semibold;
+}
+
+.tabsName {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 30px;
+  justify-content: center;
+  align-content: center;
+}
+
+.tabName {
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 30px;
+  margin-left: 30px;
+  padding-bottom: 5px;
+}
+
+.tabsContent {
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
+.selectedTabName {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
