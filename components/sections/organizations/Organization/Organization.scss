@@ -1,0 +1,14 @@
+@import "../../../../styles/fonts.scss";
+
+.organization {
+  display: flex;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  justify-content: space-between
+}
+
+.organizationName {
+  font-family: $poppins-regular;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}

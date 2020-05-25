@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 90ff7b370c949d84d9e114f1c99f1b6f */
+/* @relayHash 1e87f49671ce47e6072b924fc49a5026 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -23,6 +23,9 @@ export type SiteQueryResponse = {
                     } | {
                         readonly __typename: "Presentation";
                         readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
+                    } | {
+                        readonly __typename: "Organizations";
+                        readonly " $fragmentRefs": FragmentRefs<"Organizations_data">;
                     } | {
                         /*This will never be '%other', but we need some
                         value in case none of the concrete values match.*/
@@ -56,6 +59,9 @@ query SiteQuery(
             ... on Presentation {
               ...Presentation_data
             }
+            ... on Organizations {
+              ...Organizations_data
+            }
           }
         }
       }
@@ -66,6 +72,26 @@ query SiteQuery(
 fragment HomeBanner_data on Home_banner {
   banner_text
   banner_image
+}
+
+fragment Organization_data on Organization {
+  organization_name
+  members {
+    name
+    position
+  }
+}
+
+fragment Organizations_data on Organizations {
+  section_name
+  organizations {
+    organization {
+      __typename
+      ... on Organization {
+        ...Organization_data
+      }
+    }
+  }
 }
 
 fragment Presentation_data on Presentation {
@@ -172,6 +198,17 @@ return {
                                 "args": null
                               }
                             ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Organizations",
+                            "selections": [
+                              {
+                                "kind": "FragmentSpread",
+                                "name": "Organizations_data",
+                                "args": null
+                              }
+                            ]
                           }
                         ]
                       }
@@ -268,6 +305,80 @@ return {
                                 "storageKey": null
                               }
                             ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Organizations",
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "section_name",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "organizations",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "OrganizationsOrganizations",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "name": "organization",
+                                    "storageKey": null,
+                                    "args": null,
+                                    "concreteType": null,
+                                    "plural": false,
+                                    "selections": [
+                                      (v2/*: any*/),
+                                      {
+                                        "kind": "InlineFragment",
+                                        "type": "Organization",
+                                        "selections": [
+                                          {
+                                            "kind": "ScalarField",
+                                            "alias": null,
+                                            "name": "organization_name",
+                                            "args": null,
+                                            "storageKey": null
+                                          },
+                                          {
+                                            "kind": "LinkedField",
+                                            "alias": null,
+                                            "name": "members",
+                                            "storageKey": null,
+                                            "args": null,
+                                            "concreteType": "OrganizationMembers",
+                                            "plural": true,
+                                            "selections": [
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": null,
+                                                "name": "name",
+                                                "args": null,
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": null,
+                                                "name": "position",
+                                                "args": null,
+                                                "storageKey": null
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
                           }
                         ]
                       }
@@ -285,10 +396,10 @@ return {
     "operationKind": "query",
     "name": "SiteQuery",
     "id": null,
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '159a06ee83443d2c9704527e420e01a4';
+(node as any).hash = '224b69307159dfe3fec22544b0b54dcd';
 export default node;

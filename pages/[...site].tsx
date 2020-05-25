@@ -31,6 +31,9 @@ class Site extends Component<Props> {
                 ... on Presentation {
                   ...Presentation_data
                 }
+                ... on Organizations {
+                  ...Organizations_data
+                }
               }
             }
           }
@@ -56,7 +59,7 @@ class Site extends Component<Props> {
           />
         </Head>
         <main>
-          {props.allLandings.edges[0].node.sections.map(({ section }) => {
+          {props.allLandings.edges[0].node.sections.filter(({ section }) => section.__typename in sections).map(({ section }) => {
             const Container = sections[section.__typename];
             return <Container data={section} />;
           })}

@@ -3,35 +3,43 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type TeamMembersList_data = {
-    readonly member: ReadonlyArray<{
+export type Organization_data = {
+    readonly organization_name: unknown | null;
+    readonly members: ReadonlyArray<{
         readonly name: string | null;
         readonly position: string | null;
     }> | null;
-    readonly " $refType": "TeamMembersList_data";
+    readonly " $refType": "Organization_data";
 };
-export type TeamMembersList_data$data = TeamMembersList_data;
-export type TeamMembersList_data$key = {
-    readonly " $data"?: TeamMembersList_data$data;
-    readonly " $fragmentRefs": FragmentRefs<"TeamMembersList_data">;
+export type Organization_data$data = Organization_data;
+export type Organization_data$key = {
+    readonly " $data"?: Organization_data$data;
+    readonly " $fragmentRefs": FragmentRefs<"Organization_data">;
 };
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "TeamMembersList_data",
-  "type": "Team_members_list",
+  "name": "Organization_data",
+  "type": "Organization",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "organization_name",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
-      "name": "member",
+      "name": "members",
       "storageKey": null,
       "args": null,
-      "concreteType": "Team_members_listMember",
+      "concreteType": "OrganizationMembers",
       "plural": true,
       "selections": [
         {
@@ -52,5 +60,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'f6314d882568cf148229b7beb975ec37';
+(node as any).hash = '809b37efe6de7dcc71f0b0683b18d3ca';
 export default node;
