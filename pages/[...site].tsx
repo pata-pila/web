@@ -28,11 +28,17 @@ class Site extends Component<Props> {
                 ... on Home_banner {
                   ...HomeBanner_data
                 }
+                ... on Icon_list {
+                  ...ImpactBanner_data
+                }
                 ... on Presentation {
                   ...Presentation_data
                 }
                 ... on Organizations {
                   ...Organizations_data
+                }
+                ... on News_banner {
+                  ...NewsBanner_data
                 }
               }
             }
@@ -59,10 +65,13 @@ class Site extends Component<Props> {
           />
         </Head>
         <main>
-          {props.allLandings.edges[0].node.sections.filter(({ section }) => section.__typename in sections).map(({ section }) => {
-            const Container = sections[section.__typename];
-            return <Container data={section} />;
-          })}
+          {props.allLandings.edges[0].node.sections
+            .filter(({ section }) => section.__typename in sections)
+            .map(({ section }, index) => {
+              console.log(section);
+              const Container = sections[section.__typename];
+              return <Container data={section} key={index} />;
+            })}
         </main>
       </div>
     );
