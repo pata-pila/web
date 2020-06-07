@@ -21,36 +21,45 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
     this.setState({ selectedTab: index });
   }
 
-  private tabNameColor(index: number) {
-    const { tabs_name_color, tabs_name_selected_color } = this.props;
+  private tabNameColor(index: number): string {
+    const { tabs_name_selected_color } = this.props;
     const { selectedTab } = this.state;
 
     if (selectedTab === index) {
       return tabs_name_selected_color ?? "#df8832";
     }
+  }
 
-    return tabs_name_color ?? "#81a88f";
+  private isSelectedTab(index: number): boolean {
+    const { selectedTab } = this.state;
+    return selectedTab === index;
   }
 
   public render() {
-    const { background_color, tabs_content_color, tabs_list } = this.props;
-    const { selectedTab } = this.state;
+    const {
+      background_color,
+      tabs_content_color,
+      tabs_name_selected_color,
+      tabs_name_color,
+      tabs_list,
+    } = this.props;
 
     return (
       <section
         className={styles.tabs}
-        style={{ backgroundColor: background_color ?? "#31683D" }}
+        style={{ backgroundColor: background_color }}
       >
         <div className={styles.tabsName}>
           {tabs_list.map((tab, index) =>
             <div
               className={classnames(styles.tabName, {
-                [styles.selectedTabName]: selectedTab === index
+                [styles.selectedTabName]: this.isSelectedTab(index),
               })}
               style={{
-                color: this.tabNameColor(index),
-                borderBottomColor:
-                  selectedTab === index ? this.tabNameColor(index) : undefined,
+                color: this.isSelectedTab(index)
+                  ? tabs_name_selected_color
+                  : undefined,
+                borderBottomColor: tabs_name_selected_color,
               }}
               onClick={() => this.selectTab(index)}
             >
@@ -63,8 +72,8 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
             <div
               className={styles.tabTitle}
               style={{
-                color: tabs_content_color ?? "#ffffff",
-                display: selectedTab === index ? "block" : "none",
+                color: tabs_content_color,
+                display: this.isSelectedTab(index) ? "block" : "none",
               }}
             >
               <Text elements={tab.content} />

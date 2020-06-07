@@ -5,6 +5,7 @@
   padding-top: 50px;
   padding-bottom: 50px;
   font-family: $poppins-semibold;
+  background-color: #31683d;
 }
 
 .tabsName {
@@ -13,12 +14,20 @@
   padding-bottom: 30px;
   justify-content: center;
   align-content: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+}
+
+.tabTitle {
+  color: #ffffff;
 }
 
 .tabName {
   font-size: 20px;
   cursor: pointer;
   margin-right: 30px;
+  color: #81a88f;
   margin-left: 30px;
   padding-bottom: 5px;
 }
@@ -26,9 +35,15 @@
 .tabsContent {
   padding-left: 15vw;
   padding-right: 15vw;
+  @media (max-width: 500px) {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
 }
 
 .selectedTabName {
   border-bottom-style: solid;
   border-bottom-width: 3px;
+  border-bottom-color: #df8832;
+  color: #df8832;
 }
