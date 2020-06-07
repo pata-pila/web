@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-.organization-name {
+.organizationName {
   font-family: $poppins-regular;
   padding-bottom: 20px;
   font-size: 18px;
@@ -18,11 +18,11 @@
   padding-right: 5vw;
 }
 
-.left-members {
+.leftMembers {
   flex: 1 1 0px;
 }
 
-.right-members {
+.rightMembers {
   flex: 1 1 0px;
   display: flex;
   justify-content: flex-end;
