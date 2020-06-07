@@ -6,7 +6,7 @@
 }
 
 .organizationWrapper {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .title {
@@ -14,6 +14,9 @@
   transform-origin: 0 0;
   transform: rotate(-90deg);
   font-size: 14px;
+  @media (max-width: 500px) {
+    font-size: 10px;
+  }
   letter-spacing: 0;
   position: absolute;
   color: #d4831f;

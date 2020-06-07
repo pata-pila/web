@@ -13,7 +13,7 @@ import Organization from "./Organization";
 export const Organizations: FC<Props> = (props) => (
   <section className={styles.section}>
     <div className={styles.titleWrapper}>
-      <h3 className={styles.title}>{props.section_name}</h3>
+      <h1 className={styles.title}>{props.section_name}</h1>
     </div>
     <div className={styles.organizations}>
       {props.organizations.map((item, index) => (

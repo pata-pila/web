@@ -4,11 +4,26 @@
   display: flex;
   padding-left: 5vw;
   padding-right: 5vw;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
-.organizationName {
+.organization-name {
   font-family: $poppins-regular;
+  padding-bottom: 20px;
+  font-size: 18px;
+  @media (max-width: 500px) {
+    font-size: 10px;
+  }
   padding-left: 5vw;
   padding-right: 5vw;
+}
+
+.left-members {
+  flex: 1 1 0px;
+}
+
+.right-members {
+  flex: 1 1 0px;
+  display: flex;
+  justify-content: flex-end;
 }

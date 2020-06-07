@@ -4,7 +4,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Organization_data = {
-    readonly organization_name: unknown | null;
+    readonly organization_name: string | null;
     readonly members: ReadonlyArray<{
         readonly name: string | null;
         readonly position: string | null;

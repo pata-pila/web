@@ -9,28 +9,30 @@ import styles from "./Organization.scss";
 
 // External
 import TeamMember from "../TeamMember";
-import Header from "../../../header";
 
 export const Organization: FC<Props> = (props) => (
   <div>
-    <Header
-      className={styles.organizationName}
-      data={props.organization_name[0]}
-    />
+    <h2 className={styles.organizationName}>{props.organization_name}</h2>
     <div className={styles.organization}>
-      <div>
+      <div className={styles.leftMembers}>
         {props.members
           .slice(0, Math.ceil(props.members.length / 2))
           .map((item, index) => (
             <TeamMember name={item.name} position={item.position} key={index} />
           ))}
       </div>
-      <div>
-        {props.members
-          .slice(Math.ceil(props.members.length / 2), props.members.length)
-          .map((item, index) => (
-            <TeamMember name={item.name} position={item.position} key={index} />
-          ))}
+      <div className={styles.rightMembers}>
+        <div> 
+          {props.members
+            .slice(Math.ceil(props.members.length / 2), props.members.length)
+            .map((item, index) => (
+              <TeamMember
+                name={item.name}
+                position={item.position}
+                key={index}
+              />
+            ))}
+        </div>
       </div>
     </div>
   </div>

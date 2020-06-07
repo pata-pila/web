@@ -14,3 +14,16 @@
   font-size: 15px;
   margin-bottom: 10px;
 }
+
+@media (max-width: 500px) {
+  .name {
+    color: #3e693d;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .position {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+}

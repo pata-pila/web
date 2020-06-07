@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Sun May 24 2020 22:49:04 GMT-0300 (Argentina Standard Time)
+# timestamp: Sun Jun 07 2020 17:03:49 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -272,7 +272,7 @@ type News_bannerConnectionEdge {
 }
 
 type Organization implements _Document & _Linkable {
-  organization_name: Json
+  organization_name: String
   members: [OrganizationMembers!]
   _meta: Meta!
   _linkType: String
@@ -402,6 +402,7 @@ type Query {
   allOrganizations(sortBy: SortOrganizationy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereOrganization, before: String, after: String, first: Int, last: Int): OrganizationConnectionConnection!
   allHome_banners(sortBy: SortHome_bannery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereHome_banner, before: String, after: String, first: Int, last: Int): Home_bannerConnectionConnection!
   allMalnutrition_sections(sortBy: SortMalnutrition_sectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereMalnutrition_section, before: String, after: String, first: Int, last: Int): Malnutrition_sectionConnectionConnection!
+  allTabss(sortBy: SortTabsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereTabs, before: String, after: String, first: Int, last: Int): TabsConnectionConnection!
   allUijhius(sortBy: SortUijhiuy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): UijhiuConnectionConnection!
   allLandings(sortBy: SortLandingy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereLanding, before: String, after: String, first: Int, last: Int): LandingConnectionConnection!
   allIcon_lists(sortBy: SortIcon_listy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereIcon_list, before: String, after: String, first: Int, last: Int): Icon_listConnectionConnection!
@@ -409,7 +410,6 @@ type Query {
   allOrganizationss(sortBy: SortOrganizationsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereOrganizations, before: String, after: String, first: Int, last: Int): OrganizationsConnectionConnection!
   allTeam_members(sortBy: SortTeam_membery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): Team_memberConnectionConnection!
   allPresentations(sortBy: SortPresentationy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WherePresentation, before: String, after: String, first: Int, last: Int): PresentationConnectionConnection!
-  allTeam_members_lists(sortBy: SortTeam_members_listy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereTeam_members_list, before: String, after: String, first: Int, last: Int): Team_members_listConnectionConnection!
   allMalnutritions(sortBy: SortMalnutritiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereMalnutrition, before: String, after: String, first: Int, last: Int): MalnutritionConnectionConnection!
 }
 
@@ -531,13 +531,13 @@ enum SortPresentationy {
   content_DESC
 }
 
-enum SortTeam_members_listy {
+enum SortTabsy {
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
-  organization_name_ASC
-  organization_name_DESC
+  section_title_ASC
+  section_title_DESC
 }
 
 enum SortTeam_membery {
@@ -552,6 +552,41 @@ enum SortUijhiuy {
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
+}
+
+type Tabs implements _Document & _Linkable {
+  section_title: String
+  background_color: String
+  tabs_name_color: String
+  tabs_name_selected_color: String
+  tabs_content_color: String
+  tabs_list: [TabsTabs_list!]
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type TabsConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TabsConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type TabsConnectionEdge {
+  """The item at the end of the edge."""
+  node: Tabs!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type TabsTabs_list {
+  name: String
+  content: Json
 }
 
 type Team_member implements _Document & _Linkable {
@@ -577,37 +612,6 @@ type Team_memberConnectionEdge {
 
   """A cursor for use in pagination."""
   cursor: String!
-}
-
-type Team_members_list implements _Document & _Linkable {
-  organization_name: Json
-  member: [Team_members_listMember!]
-  _meta: Meta!
-  _linkType: String
-}
-
-"""A connection to a list of items."""
-type Team_members_listConnectionConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [Team_members_listConnectionEdge]
-  totalCount: Long!
-}
-
-"""An edge in a connection."""
-type Team_members_listConnectionEdge {
-  """The item at the end of the edge."""
-  node: Team_members_list!
-
-  """A cursor for use in pagination."""
-  cursor: String!
-}
-
-type Team_members_listMember {
-  name: String
-  position: String
 }
 
 type Team_memberTeam {
@@ -681,7 +685,7 @@ input WhereNews_banner {
 }
 
 input WhereOrganization {
-  """organization_name"""
+  organization_name: String
   organization_name_fulltext: String
 }
 
@@ -695,7 +699,7 @@ input WherePresentation {
   content_fulltext: String
 }
 
-input WhereTeam_members_list {
-  """organization_name"""
-  organization_name_fulltext: String
+input WhereTabs {
+  section_title: String
+  section_title_fulltext: String
 }
