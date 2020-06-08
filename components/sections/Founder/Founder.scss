@@ -1,3 +1,18 @@
-.founderPicture {
-  border-radius: 50%;
+.founder {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    padding: 5px;
+    padding: 5px;
+    border: 2px solid #643633;
+  }
+}
+
+.section {
+  padding-bottom: 50px;
+  padding-top: 50px;
 }
