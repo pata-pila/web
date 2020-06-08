@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 3750faa09ceca0680866f1408ea9516b */
+/* @relayHash 18e3dca2fd0633eb11a50639284ac982 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -29,6 +29,9 @@ export type SiteQueryResponse = {
                     } | {
                         readonly __typename: "News_banner";
                         readonly " $fragmentRefs": FragmentRefs<"NewsBanner_data">;
+                    } | {
+                        readonly __typename: "Founder";
+                        readonly " $fragmentRefs": FragmentRefs<"Founder_data">;
                     } | {
                         /*This will never be '%other', but we need some
                         value in case none of the concrete values match.*/
@@ -68,11 +71,19 @@ query SiteQuery(
             ... on News_banner {
               ...NewsBanner_data
             }
+            ... on Founder {
+              ...Founder_data
+            }
           }
         }
       }
     }
   }
+}
+
+fragment Founder_data on Founder {
+  __typename
+  section_title
 }
 
 fragment HomeBanner_data on Home_banner {
@@ -139,6 +150,13 @@ v2 = {
   "storageKey": null
 },
 v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "section_title",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "_linkType",
@@ -243,6 +261,17 @@ return {
                                 "args": null
                               }
                             ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Founder",
+                            "selections": [
+                              {
+                                "kind": "FragmentSpread",
+                                "name": "Founder_data",
+                                "args": null
+                              }
+                            ]
                           }
                         ]
                       }
@@ -331,13 +360,7 @@ return {
                             "kind": "InlineFragment",
                             "type": "Icon_list",
                             "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "section_title",
-                                "args": null,
-                                "storageKey": null
-                              },
+                              (v3/*: any*/),
                               {
                                 "kind": "LinkedField",
                                 "alias": null,
@@ -396,7 +419,7 @@ return {
                             "kind": "InlineFragment",
                             "type": "News_banner",
                             "selections": [
-                              (v3/*: any*/),
+                              (v4/*: any*/),
                               {
                                 "kind": "LinkedField",
                                 "alias": null,
@@ -437,7 +460,7 @@ return {
                                     "plural": false,
                                     "selections": [
                                       (v2/*: any*/),
-                                      (v3/*: any*/),
+                                      (v4/*: any*/),
                                       {
                                         "kind": "InlineFragment",
                                         "type": "_ExternalLink",
@@ -456,6 +479,13 @@ return {
                                 ]
                               }
                             ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Founder",
+                            "selections": [
+                              (v3/*: any*/)
+                            ]
                           }
                         ]
                       }
@@ -473,10 +503,10 @@ return {
     "operationKind": "query",
     "name": "SiteQuery",
     "id": null,
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  __typename\n  section_title\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'b0fa33c2015590a1ef734e4919b8033e';
+(node as any).hash = 'c651115a4aa862d37f2749086e8730ff';
 export default node;
