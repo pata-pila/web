@@ -33,17 +33,13 @@
 }
 
 .tabsContent {
-  padding-left: 15vw;
-  padding-right: 15vw;
+  padding: 0 15vw;
   @media (max-width: 500px) {
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding: 0 10vw;
   }
 }
 
 .selectedTabName {
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: #df8832;
+  border: 3px solid #df8832;
   color: #df8832;
 }
