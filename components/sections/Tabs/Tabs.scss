@@ -8,7 +8,7 @@
   background-color: #31683d;
 }
 
-.tabsName {
+.tabs-name {
   display: flex;
   flex-direction: row;
   padding-bottom: 30px;
@@ -23,7 +23,7 @@
   color: #ffffff;
 }
 
-.tabName {
+.tab-name {
   font-size: 20px;
   cursor: pointer;
   margin-right: 30px;
@@ -32,14 +32,14 @@
   padding-bottom: 5px;
 }
 
-.tabsContent {
+.tabs-content {
   padding: 0 15vw;
   @media (max-width: 500px) {
     padding: 0 10vw;
   }
 }
 
-.selectedTabName {
+.selected-tab-name {
   border-bottom: 3px solid #df8832;
   color: #df8832;
 }
