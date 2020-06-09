@@ -1,0 +1,45 @@
+@import "../../../styles/fonts.scss";
+
+.tabs {
+  min-height: 300px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: $poppins-semibold;
+  background-color: #31683d;
+}
+
+.tabs-name {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 30px;
+  justify-content: center;
+  align-content: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+}
+
+.tab-title {
+  color: #ffffff;
+}
+
+.tab-name {
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 30px;
+  color: #81a88f;
+  margin-left: 30px;
+  padding-bottom: 5px;
+}
+
+.tabs-content {
+  padding: 0 15vw;
+  @media (max-width: 500px) {
+    padding: 0 10vw;
+  }
+}
+
+.selected-tab-name {
+  border-bottom: 3px solid #df8832;
+  color: #df8832;
+}
