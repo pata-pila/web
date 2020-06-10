@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 9eb6fafd33b61ce16b13528cf233f889 */
+/* @relayHash e80c694af17d5f09d1f150377de364a9 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -32,6 +32,9 @@ export type SiteQueryResponse = {
                     } | {
                         readonly __typename: "Founder";
                         readonly " $fragmentRefs": FragmentRefs<"Founder_data">;
+                    } | {
+                        readonly __typename: "Tabs";
+                        readonly " $fragmentRefs": FragmentRefs<"Tabs_data">;
                     } | {
                         /*This will never be '%other', but we need some
                         value in case none of the concrete values match.*/
@@ -73,6 +76,9 @@ query SiteQuery(
             }
             ... on Founder {
               ...Founder_data
+            }
+            ... on Tabs {
+              ...Tabs_data
             }
           }
         }
@@ -124,6 +130,17 @@ fragment NewsBanner_data on News_banner {
 fragment Presentation_data on Presentation {
   content
 }
+
+fragment Tabs_data on Tabs {
+  background_color
+  tabs_name_color
+  tabs_name_selected_color
+  tabs_content_color
+  tabs_list {
+    name
+    content
+  }
+}
 */
 
 const node: ConcreteRequest = (function(){
@@ -150,6 +167,13 @@ v2 = {
   "storageKey": null
 },
 v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "content",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "_linkType",
@@ -262,6 +286,17 @@ return {
                               {
                                 "kind": "FragmentSpread",
                                 "name": "Founder_data",
+                                "args": null
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Tabs",
+                            "selections": [
+                              {
+                                "kind": "FragmentSpread",
+                                "name": "Tabs_data",
                                 "args": null
                               }
                             ]
@@ -405,20 +440,14 @@ return {
                             "kind": "InlineFragment",
                             "type": "Presentation",
                             "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "content",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              (v3/*: any*/)
                             ]
                           },
                           {
                             "kind": "InlineFragment",
                             "type": "News_banner",
                             "selections": [
-                              (v3/*: any*/),
+                              (v4/*: any*/),
                               {
                                 "kind": "LinkedField",
                                 "alias": null,
@@ -459,7 +488,7 @@ return {
                                     "plural": false,
                                     "selections": [
                                       (v2/*: any*/),
-                                      (v3/*: any*/),
+                                      (v4/*: any*/),
                                       {
                                         "kind": "InlineFragment",
                                         "type": "_ExternalLink",
@@ -498,6 +527,59 @@ return {
                                 "storageKey": null
                               }
                             ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Tabs",
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "background_color",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "tabs_name_color",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "tabs_name_selected_color",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "tabs_content_color",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "tabs_list",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "TabsTabs_list",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "name",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  (v3/*: any*/)
+                                ]
+                              }
+                            ]
                           }
                         ]
                       }
@@ -515,10 +597,10 @@ return {
     "operationKind": "query",
     "name": "SiteQuery",
     "id": null,
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_content_color\n  tabs_list {\n    name\n    content\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'c651115a4aa862d37f2749086e8730ff';
+(node as any).hash = '97ba1d7c2c5b6107663447d493310417';
 export default node;

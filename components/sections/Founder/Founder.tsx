@@ -14,11 +14,8 @@ const Founder: FC<Props> = (props) => (
   <section className={styles.section}>
     <article className={styles.founder}>
       {/* <h1>{props.section_title}</h1> */}
-      <div>
-        <img
-          className={styles.founderPicture}
-          src={(props.founder_picture as any).url}
-        />
+      <div className={styles.founderPicture}>
+        <img src={(props.founder_picture as any).url} />
       </div>
       <div className={styles.founderInformation}>
         <Text elements={props.founder_information} />
