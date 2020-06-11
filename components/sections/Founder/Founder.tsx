@@ -13,7 +13,9 @@ import Text from "../../text";
 const Founder: FC<Props> = (props) => (
   <section className={styles.section}>
     <article className={styles.founder}>
-      {/* <h1>{props.section_title}</h1> */}
+      <div className={styles.sectionName}>
+        <p>{props.section_name}</p>
+      </div>
       <div className={styles.founderPicture}>
         <img src={(props.founder_picture as any).url} />
       </div>
@@ -29,6 +31,7 @@ Founder.displayName = "Founder";
 export default createFragmentContainer(singleFragmentComponent(Founder), {
   data: graphql`
     fragment Founder_data on Founder {
+      section_name
       founder_information
       founder_picture
     }

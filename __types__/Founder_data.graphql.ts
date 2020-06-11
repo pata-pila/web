@@ -4,6 +4,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Founder_data = {
+    readonly section_name: string | null;
     readonly founder_information: unknown | null;
     readonly founder_picture: unknown | null;
     readonly " $refType": "Founder_data";
@@ -26,6 +27,13 @@ const node: ReaderFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "section_name",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "founder_information",
       "args": null,
       "storageKey": null
@@ -39,5 +47,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '82910276b851675099c4bd96de1e66da';
+(node as any).hash = '969a95ce629e385d758499152ad08929';
 export default node;

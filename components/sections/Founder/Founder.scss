@@ -1,27 +1,64 @@
+@import "../../../styles/fonts.scss";
+
 .founder {
   display: flex;
   flex-direction: row;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.founderPicture {
+.founder-picture {
   img {
     border-radius: 50%;
     width: 250px;
     height: 250px;
-    padding: 5px;
+    @media (max-width: 500px) {
+      width: 180px;
+      height: 180px;
+    }
     padding: 5px;
     border: 2px solid #643633;
   }
-  padding-right: 30px;
-  padding-left: 50px;
+  padding-right: 40px;
+  @media (max-width: 500px) {
+    padding: 0;
+  }
 }
 
-.founderInformation {
+.founder-information {
   display: flex;
   align-items: center;
+  font-family: $poppins-semibold;
+  @media (max-width: 500px) {
+    padding: 30px;
+  }
+  padding-right: 5vw;
 }
 
 .section {
-  padding-bottom: 50px;
-  padding-top: 50px;
+  padding: 50px 0;
+}
+
+.sectionName {
+  font-family: $poppins-semibold;
+  font-size: 15px;
+  color: #df8832;
+  white-space: nowrap;
+  width: 3em;
+  padding: 0 5vw;
+  @media (max-width: 500px) {
+    padding: 0 0 30px 0;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionName p {
+  transform: rotate(-90deg);
+  @media (max-width: 500px) {
+    transform: rotate(0deg);
+  }
 }
