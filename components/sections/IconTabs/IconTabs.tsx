@@ -64,10 +64,7 @@ export const IconTabs: FC<Props> = (props) => {
         </div>
         <div className={classnames(styles.tabs, styles.mobileContent)}>
           {icon_tabs.map((tab, index) => (
-            <div
-              key={`${tab.tab_title[0].text} ${index}`}
-              className={styles.tabContainer}
-            >
+            <div key={index} className={styles.tabContainer}>
               <span className={styles.tabTitle}>{tab.tab_title[0].text}</span>
               <Content
                 image={(tab.tab_image as any).url}
