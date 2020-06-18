@@ -8,12 +8,11 @@ import { Props } from "./NewsBanner.types";
 import styles from "./NewsBanner.scss";
 
 export const NewsBanner: FC<Props> = (props) => {
-  console.log(props.articles_list);
   const { articles_list } = props;
   return (
     <section className={styles.container}>
       {articles_list.map((item, index) => (
-        <div className={styles.articleContainer}>
+        <div key={index} className={styles.articleContainer}>
           <div
             className={styles.articleImage}
             style={{

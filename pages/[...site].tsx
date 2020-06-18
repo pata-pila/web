@@ -37,8 +37,11 @@ class Site extends Component<Props> {
                 ... on News_banner {
                   ...NewsBanner_data
                 }
-                ...on Tabs {
+                ... on Tabs {
                   ...Tabs_data
+                }
+                ... on Icon_tabs_section {
+                  ...IconTabs_data
                 }
               }
             }
@@ -68,7 +71,6 @@ class Site extends Component<Props> {
           {props.allLandings.edges[0].node.sections
             .filter(({ section }) => section.__typename in sections)
             .map(({ section }, index) => {
-              console.log(section);
               const Container = sections[section.__typename];
               return <Container data={section} key={index} />;
             })}

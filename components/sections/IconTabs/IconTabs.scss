@@ -1,0 +1,167 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+
+.container {
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.section-content {
+  display: flex;
+  width: 100%;
+}
+
+.title {
+  color: $gold-drop;
+  font-family: $poppins-semibold;
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  align-self: flex-start;
+  margin-right: 30px;
+  font-size: 12px;
+}
+
+.tabs {
+  flex: 1;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  justify-content: space-between;
+  width: 100%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tab-title {
+  text-transform: uppercase;
+  font-family: $poppins-semibold;
+  font-size: 20px;
+  letter-spacing: 2px;
+  max-width: 200px;
+
+  .selected & {
+    color: $buccaneer;
+  }
+}
+
+.tabSelectedIcon {
+  font-size: 35px;
+  color: $buccaneer;
+  font-family: $poppins-regular;
+
+  .tab:not(.selected) & {
+    display: none;
+  }
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.tab-image {
+  max-width: 400px;
+}
+
+.tab-icon {
+  max-width: 40px;
+  background-color: $gold-drop;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.tab-description {
+  font-size: 12px;
+  font-family: $poppins-regular;
+  color: gray;
+  text-align: center;
+  max-width: 400px;
+}
+
+.tab-info {
+  display: flex;
+  align-items: center;
+}
+
+.read-more-button {
+  color: white;
+  width: 150px;
+  background-color: $gold-drop;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: $poppins-semibold;
+  text-align: center;
+}
+
+.mobile-content {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .container {
+    height: auto;
+    padding: 20px;
+  }
+
+  .section-content {
+    flex-direction: column;
+  }
+
+  .mobile-content {
+    display: inherit;
+  }
+
+  .web-content {
+    display: none !important;
+  }
+
+  .tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  .tab-title {
+    max-width: none;
+    margin-bottom: 10px;
+  }
+
+  .tab-description {
+    margin: 10px 0;
+  }
+
+  .title {
+    transform: unset;
+    writing-mode: horizontal-tb;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
