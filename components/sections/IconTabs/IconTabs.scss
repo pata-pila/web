@@ -165,3 +165,9 @@
     margin-bottom: 20px;
   }
 }
+
+@media (max-width: 500px) {
+  .tab-image {
+    max-width: 300px;
+  }
+}
