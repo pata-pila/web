@@ -37,6 +37,9 @@ class Site extends Component<Props> {
                 ... on News_banner {
                   ...NewsBanner_data
                 }
+                ... on Founder {
+                  ...Founder_data
+                }
                 ... on Tabs {
                   ...Tabs_data
                 }

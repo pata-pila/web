@@ -1,5 +1,9 @@
 # source: http://localhost:3000
+<<<<<<< HEAD
 # timestamp: Thu Jun 18 2020 15:28:28 GMT-0300 (Argentina Standard Time)
+=======
+# timestamp: Wed Jun 10 2020 22:29:46 GMT-0300 (Argentina Standard Time)
+>>>>>>> master
 
 """A prismic document"""
 interface _Document {
@@ -143,34 +147,59 @@ type Icon_listIcon_list_elements {
   subtitle: Json
 }
 
+<<<<<<< HEAD
 type Icon_tabs_section implements _Document & _Linkable {
   section_title: Json
   section_background_color: String
   icon_tabs: [Icon_tabs_sectionIcon_tabs!]
+=======
+type Icon_tabs implements _Document & _Linkable {
+  section_title: Json
+  section_background_color: String
+  icon_tabs: [Icon_tabsIcon_tabs!]
+>>>>>>> master
   _meta: Meta!
   _linkType: String
 }
 
 """A connection to a list of items."""
+<<<<<<< HEAD
 type Icon_tabs_sectionConnectionConnection {
+=======
+type Icon_tabsConnectionConnection {
+>>>>>>> master
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
+<<<<<<< HEAD
   edges: [Icon_tabs_sectionConnectionEdge]
+=======
+  edges: [Icon_tabsConnectionEdge]
+>>>>>>> master
   totalCount: Long!
 }
 
 """An edge in a connection."""
+<<<<<<< HEAD
 type Icon_tabs_sectionConnectionEdge {
   """The item at the end of the edge."""
   node: Icon_tabs_section!
+=======
+type Icon_tabsConnectionEdge {
+  """The item at the end of the edge."""
+  node: Icon_tabs!
+>>>>>>> master
 
   """A cursor for use in pagination."""
   cursor: String!
 }
 
+<<<<<<< HEAD
 type Icon_tabs_sectionIcon_tabs {
+=======
+type Icon_tabsIcon_tabs {
+>>>>>>> master
   tab_icon: Json
   tab_image: Json
   tab_title: Json
@@ -469,6 +498,7 @@ type Query {
   allMalnutrition_sections(sortBy: SortMalnutrition_sectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereMalnutrition_section, before: String, after: String, first: Int, last: Int): Malnutrition_sectionConnectionConnection!
   allTabss(sortBy: SortTabsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereTabs, before: String, after: String, first: Int, last: Int): TabsConnectionConnection!
   allUijhius(sortBy: SortUijhiuy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): UijhiuConnectionConnection!
+  allIcon_tabss(sortBy: SortIcon_tabsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereIcon_tabs, before: String, after: String, first: Int, last: Int): Icon_tabsConnectionConnection!
   allLandings(sortBy: SortLandingy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereLanding, before: String, after: String, first: Int, last: Int): LandingConnectionConnection!
   allIcon_lists(sortBy: SortIcon_listy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereIcon_list, before: String, after: String, first: Int, last: Int): Icon_listConnectionConnection!
   allOther_types(sortBy: SortOther_typey, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): Other_typeConnectionConnection!
@@ -533,7 +563,11 @@ enum SortIcon_listy {
   section_title_DESC
 }
 
+<<<<<<< HEAD
 enum SortIcon_tabs_sectiony {
+=======
+enum SortIcon_tabsy {
+>>>>>>> master
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
@@ -743,6 +777,7 @@ type UijhiuJni {
   djkjiwjdwiowd: Json
 }
 
+<<<<<<< HEAD
 type Vertical_tabs implements _Document & _Linkable {
   section_name: String
   section_header: Json
@@ -775,6 +810,8 @@ type Vertical_tabsTabs_list {
   content: Json
 }
 
+=======
+>>>>>>> master
 input WhereFounder {
   section_name: String
   section_name_fulltext: String
@@ -793,7 +830,11 @@ input WhereIcon_list {
   section_title_fulltext: String
 }
 
+<<<<<<< HEAD
 input WhereIcon_tabs_section {
+=======
+input WhereIcon_tabs {
+>>>>>>> master
   """section_title"""
   section_title_fulltext: String
 }
