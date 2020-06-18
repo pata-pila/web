@@ -50,8 +50,9 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
         style={{ backgroundColor: background_color }}
       >
         <div className={styles.tabsName}>
-          {tabs_list.map((tab, index) =>
+          {tabs_list.map((tab, index) => (
             <div
+              key={`tab-title-${index}`}
               className={classnames(styles.tabName, {
                 [styles.selectedTabName]: this.isSelectedTab(index),
               })}
@@ -65,11 +66,12 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
             >
               {tab.name}
             </div>
-          )}
+          ))}
         </div>
         <div className={styles.tabsContent}>
-          {tabs_list.map((tab, index) =>
+          {tabs_list.map((tab, index) => (
             <div
+              key={`tab-contant-${index}`}
               className={styles.tabTitle}
               style={{
                 color: tabs_content_color,
@@ -78,7 +80,7 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
             >
               <Text elements={tab.content} />
             </div>
-          )}
+          ))}
         </div>
       </section>
     );
