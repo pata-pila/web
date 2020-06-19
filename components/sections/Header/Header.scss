@@ -16,7 +16,7 @@
   align-self: flex-end;
 }
 
-.links-container {
+.header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,5 +63,15 @@
 
   svg path {
     color: white;
+  }
+}
+
+@media (max-width: 600px) {
+  .links-container {
+    display: none;
+  }
+
+  .social-media {
+    display: none;
   }
 }
