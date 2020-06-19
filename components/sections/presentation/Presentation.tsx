@@ -12,7 +12,7 @@ import Text from "../../text";
 
 export const Presentation: FC<Props> = (props) => (
   <section className={css.presentation}>
-    <Text elements={props.content} />
+    <Text elements={props.name} />
   </section>
 );
 
@@ -23,7 +23,7 @@ export const PresentationContainer = createFragmentContainer(
   {
     data: graphql`
       fragment Presentation_data on Presentation {
-        content
+        name
       }
     `,
   }

@@ -46,6 +46,9 @@ class Site extends Component<Props> {
                 ... on Icon_tabs_section {
                   ...IconTabs_data
                 }
+                ... on Header {
+                  ...Header_data
+                }
               }
             }
           }
