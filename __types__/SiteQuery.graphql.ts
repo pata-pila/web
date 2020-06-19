@@ -26,6 +26,9 @@ export type SiteQueryResponse = {
                         readonly __typename: "Presentation";
                         readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
                     } | {
+                        readonly __typename: "Organizations";
+                        readonly " $fragmentRefs": FragmentRefs<"Organizations_data">;
+                    } | {
                         readonly __typename: "News_banner";
                         readonly " $fragmentRefs": FragmentRefs<"NewsBanner_data">;
                     } | {
@@ -75,6 +78,9 @@ query SiteQuery(
             }
             ... on Presentation {
               ...Presentation_data
+            }
+            ... on Organizations {
+              ...Organizations_data
             }
             ... on News_banner {
               ...NewsBanner_data
@@ -190,6 +196,26 @@ fragment NewsBanner_data on News_banner {
       _linkType
       ... on _ExternalLink {
         url
+      }
+    }
+  }
+}
+
+fragment Organization_data on Organization {
+  organization_name
+  members {
+    name
+    position
+  }
+}
+
+fragment Organizations_data on Organizations {
+  section_name
+  organizations {
+    organization {
+      __typename
+      ... on Organization {
+        ...Organization_data
       }
     }
   }
@@ -362,6 +388,21 @@ return {
                           },
                           {
                             "kind": "InlineFragment",
+<<<<<<< HEAD
+=======
+                            "type": "Organizations",
+                            "selections": [
+                              {
+                                "kind": "FragmentSpread",
+                                "name": "Organizations_data",
+                                "args": null
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "News_banner",
+>>>>>>> origin/section/team-members
                             "selections": [
                               {
                                 "args": null,
@@ -678,6 +719,84 @@ return {
                           },
                           {
                             "kind": "InlineFragment",
+<<<<<<< HEAD
+=======
+                            "type": "Organizations",
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "section_name",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "organizations",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "OrganizationsOrganizations",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "name": "organization",
+                                    "storageKey": null,
+                                    "args": null,
+                                    "concreteType": null,
+                                    "plural": false,
+                                    "selections": [
+                                      (v2/*: any*/),
+                                      {
+                                        "kind": "InlineFragment",
+                                        "type": "Organization",
+                                        "selections": [
+                                          {
+                                            "kind": "ScalarField",
+                                            "alias": null,
+                                            "name": "organization_name",
+                                            "args": null,
+                                            "storageKey": null
+                                          },
+                                          {
+                                            "kind": "LinkedField",
+                                            "alias": null,
+                                            "name": "members",
+                                            "storageKey": null,
+                                            "args": null,
+                                            "concreteType": "OrganizationMembers",
+                                            "plural": true,
+                                            "selections": [
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": null,
+                                                "name": "name",
+                                                "args": null,
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": null,
+                                                "name": "position",
+                                                "args": null,
+                                                "storageKey": null
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "News_banner",
+>>>>>>> origin/section/team-members
                             "selections": [
                               (v3/*: any*/),
                               {
@@ -877,6 +996,7 @@ return {
   },
   "params": {
     "id": null,
+<<<<<<< HEAD
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
@@ -885,4 +1005,12 @@ return {
 };
 })();
 (node as any).hash = 'c98ed0d09165dc8c0198a79f4c14552d';
+=======
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  content\n}\n",
+    "metadata": {}
+  }
+};
+})();
+(node as any).hash = '6712889374ae4c68309fdf07318ded39';
+>>>>>>> origin/section/team-members
 export default node;
