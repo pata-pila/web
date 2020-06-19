@@ -26,60 +26,60 @@ export type Organizations_data$key = {
 
 
 const node: ReaderFragment = {
-  "kind": "Fragment",
-  "name": "Organizations_data",
-  "type": "Organizations",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "Organizations_data",
   "selections": [
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "section_name",
       "args": null,
+      "kind": "ScalarField",
+      "name": "section_name",
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
       "alias": null,
-      "name": "organizations",
-      "storageKey": null,
       "args": null,
       "concreteType": "OrganizationsOrganizations",
+      "kind": "LinkedField",
+      "name": "organizations",
       "plural": true,
       "selections": [
         {
-          "kind": "LinkedField",
           "alias": null,
-          "name": "organization",
-          "storageKey": null,
           "args": null,
           "concreteType": null,
+          "kind": "LinkedField",
+          "name": "organization",
           "plural": false,
           "selections": [
             {
-              "kind": "ScalarField",
               "alias": null,
-              "name": "__typename",
               "args": null,
+              "kind": "ScalarField",
+              "name": "__typename",
               "storageKey": null
             },
             {
               "kind": "InlineFragment",
-              "type": "Organization",
               "selections": [
                 {
+                  "args": null,
                   "kind": "FragmentSpread",
-                  "name": "Organization_data",
-                  "args": null
+                  "name": "Organization_data"
                 }
-              ]
+              ],
+              "type": "Organization"
             }
-          ]
+          ],
+          "storageKey": null
         }
-      ]
+      ],
+      "storageKey": null
     }
-  ]
+  ],
+  "type": "Organizations"
 };
 (node as any).hash = '6cd4291b0b10f1bb585258e185fac13d';
 export default node;

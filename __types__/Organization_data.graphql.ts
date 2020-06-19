@@ -20,45 +20,45 @@ export type Organization_data$key = {
 
 
 const node: ReaderFragment = {
-  "kind": "Fragment",
-  "name": "Organization_data",
-  "type": "Organization",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "Organization_data",
   "selections": [
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "organization_name",
       "args": null,
+      "kind": "ScalarField",
+      "name": "organization_name",
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
       "alias": null,
-      "name": "members",
-      "storageKey": null,
       "args": null,
       "concreteType": "OrganizationMembers",
+      "kind": "LinkedField",
+      "name": "members",
       "plural": true,
       "selections": [
         {
-          "kind": "ScalarField",
           "alias": null,
-          "name": "name",
           "args": null,
+          "kind": "ScalarField",
+          "name": "name",
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
           "alias": null,
-          "name": "position",
           "args": null,
+          "kind": "ScalarField",
+          "name": "position",
           "storageKey": null
         }
-      ]
+      ],
+      "storageKey": null
     }
-  ]
+  ],
+  "type": "Organization"
 };
 (node as any).hash = '809b37efe6de7dcc71f0b0683b18d3ca';
 export default node;

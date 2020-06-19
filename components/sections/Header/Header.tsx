@@ -30,13 +30,13 @@ export const Header: FC<Props> = (props) => {
           );
         })}
       </div>
-      <div className={styles.linksContainer}>
+      <div className={styles.headerContainer}>
         <img
           className={styles.icon}
           src={(props.pata_pila_icon as any).url}
           alt="Pata Pila"
         />
-        <div>
+        <div className={styles.linksContainer}>
           {props.header_links.map((link, index) => {
             return (
               <a
