@@ -1,5 +1,6 @@
 @import "colors";
 @import "fonts";
+@import "themes";
 
 body {
   margin: 0;
@@ -11,12 +12,24 @@ h1 {
   margin: 10px 0;
 }
 
+h2 {
+  font-family: $poppins-semibold, serif;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
 h6 {
   font-family: $poppins-regular, serif;
   font-size: 15px;
   margin: 10px 0;
 }
-    
+
+p {
+  font-family: $poppins-light, serif;
+  font-size: 15px;
+  margin: 10px 0;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -24,6 +37,7 @@ ul {
 }
 
 strong > a, a > strong {
+  margin: 10px 0;
   font-family: $poppins-medium, serif;
   font-size: 12px;
   min-width: 120px;

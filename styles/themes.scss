@@ -1,0 +1,28 @@
+@import "colors";
+
+:global {
+  .cream {
+    background: $sidecar;
+    
+    strong > a, a > strong {
+      background: transparent;
+      border: 1px solid $dune;
+      color: $dune;
+      transition: all 0.3s;
+      
+      &:hover {
+        border-color: $gold-drop;
+        background-color: $gold-drop;
+        color: white;
+      }
+    }
+    
+    h3 {
+      color: $gold-drop;
+    }
+  }
+
+  .basic {
+
+  }
+}

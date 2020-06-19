@@ -4,7 +4,12 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Presentation_data = {
-    readonly content: unknown | null;
+    readonly title: unknown | null;
+    readonly theme: string | null;
+    readonly slides: ReadonlyArray<{
+        readonly text_alignment: string | null;
+        readonly content: unknown | null;
+    }> | null;
     readonly " $refType": "Presentation_data";
 };
 export type Presentation_data$data = Presentation_data;
@@ -25,11 +30,43 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "content",
+      "name": "title",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "theme",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "PresentationSlides",
+      "kind": "LinkedField",
+      "name": "slides",
+      "plural": true,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "text_alignment",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "content",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     }
   ],
   "type": "Presentation"
 };
-(node as any).hash = '876884c339cabd156f23e89ed01e4fed';
+(node as any).hash = '79e908b2436d5281ff8470245df865cc';
 export default node;
