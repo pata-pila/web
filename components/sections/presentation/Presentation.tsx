@@ -23,7 +23,7 @@ export const PresentationContainer = createFragmentContainer(
   {
     data: graphql`
       fragment Presentation_data on Presentation {
-        name
+        title
       }
     `,
   }

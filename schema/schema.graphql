@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Thu Jun 18 2020 22:41:30 GMT-0300 (Argentina Standard Time)
+# timestamp: Fri Jun 19 2020 10:16:00 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -481,7 +481,7 @@ type PageInfo {
 }
 
 type Presentation implements _Document & _Linkable {
-  name: Json
+  title: Json
   theme: String
   slides: [PresentationSlides!]
   _meta: Meta!
@@ -674,8 +674,8 @@ enum SortPresentationy {
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
-  name_ASC
-  name_DESC
+  title_ASC
+  title_DESC
   theme_ASC
   theme_DESC
 }
@@ -898,8 +898,8 @@ input WhereOrganizations {
 }
 
 input WherePresentation {
-  """name"""
-  name_fulltext: String
+  """title"""
+  title_fulltext: String
   theme: String
   theme_fulltext: String
 }

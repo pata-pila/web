@@ -2,7 +2,7 @@
 import React, { FC } from "react";
 import { createFragmentContainer, graphql } from "react-relay";
 import singleFragmentComponent from "../../../lib/singleFragmentComponent";
-import Text from "../../text";
+
 // Component
 import { Props } from "./Header.types";
 import styles from "./Header.scss";
