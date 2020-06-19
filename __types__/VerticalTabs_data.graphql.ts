@@ -3,21 +3,19 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type Tabs_data = {
-    readonly background_color: string | null;
-    readonly tabs_name_color: string | null;
-    readonly tabs_name_selected_color: string | null;
-    readonly tabs_content_color: string | null;
+export type VerticalTabs_data = {
+    readonly section_name: string | null;
+    readonly section_header: unknown | null;
     readonly tabs_list: ReadonlyArray<{
         readonly name: string | null;
         readonly content: unknown | null;
     }> | null;
-    readonly " $refType": "Tabs_data";
+    readonly " $refType": "VerticalTabs_data";
 };
-export type Tabs_data$data = Tabs_data;
-export type Tabs_data$key = {
-    readonly " $data"?: Tabs_data$data;
-    readonly " $fragmentRefs": FragmentRefs<"Tabs_data">;
+export type VerticalTabs_data$data = VerticalTabs_data;
+export type VerticalTabs_data$key = {
+    readonly " $data"?: VerticalTabs_data$data;
+    readonly " $fragmentRefs": FragmentRefs<"VerticalTabs_data">;
 };
 
 
@@ -26,40 +24,26 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "Tabs_data",
+  "name": "VerticalTabs_data",
   "selections": [
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "background_color",
+      "name": "section_name",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "tabs_name_color",
+      "name": "section_header",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
-      "kind": "ScalarField",
-      "name": "tabs_name_selected_color",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "tabs_content_color",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "TabsTabs_list",
+      "concreteType": "Vertical_tabsTabs_list",
       "kind": "LinkedField",
       "name": "tabs_list",
       "plural": true,
@@ -82,7 +66,7 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Tabs"
+  "type": "Vertical_tabs"
 };
-(node as any).hash = 'd04567d4eda607bc5289042b319035c2';
+(node as any).hash = '8cb35a0a8972d1876c277719c84e424e';
 export default node;

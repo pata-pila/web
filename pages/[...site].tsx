@@ -43,6 +43,9 @@ class Site extends Component<Props> {
                 ...on Tabs {
                   ...Tabs_data
                 }
+                ...on Vertical_tabs {
+                  ...VerticalTabs_data
+                }
               }
             }
           }
@@ -59,7 +62,7 @@ class Site extends Component<Props> {
     }
 
     return (
-      <div>
+      <>
         <Head>
           <title>Pata Pila</title>
           <link
@@ -71,12 +74,12 @@ class Site extends Component<Props> {
           {props.allLandings.edges[0].node.sections
             .filter(({ section }) => section.__typename in sections)
             .map(({ section }, index) => {
-              // console.log(section);
+              console.log(section.__typename);
               const Container = sections[section.__typename];
               return <Container data={section} key={index} />;
             })}
         </main>
-      </div>
+      </>
     );
   }
 }

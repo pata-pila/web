@@ -20,43 +20,43 @@ export type ImpactBanner_data$key = {
 
 
 const node: ReaderFragment = {
-  "kind": "Fragment",
-  "name": "ImpactBanner_data",
-  "type": "Icon_list",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "ImpactBanner_data",
   "selections": [
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "section_title",
       "args": null,
+      "kind": "ScalarField",
+      "name": "section_title",
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
       "alias": null,
-      "name": "icon_list_elements",
-      "storageKey": null,
       "args": null,
       "concreteType": "Icon_listIcon_list_elements",
+      "kind": "LinkedField",
+      "name": "icon_list_elements",
       "plural": true,
       "selections": [
         {
+          "args": null,
           "kind": "FragmentSpread",
-          "name": "ImpactItem_data",
-          "args": null
+          "name": "ImpactItem_data"
         }
-      ]
+      ],
+      "storageKey": null
     },
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "background_image",
       "args": null,
+      "kind": "ScalarField",
+      "name": "background_image",
       "storageKey": null
     }
-  ]
+  ],
+  "type": "Icon_list"
 };
 (node as any).hash = 'd051855387d7dc62d0e6ff5a787b7b99';
 export default node;

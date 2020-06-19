@@ -8,7 +8,6 @@ import { Props } from "./NewsBanner.types";
 import styles from "./NewsBanner.scss";
 
 export const NewsBanner: FC<Props> = (props) => {
-  console.log(props.articles_list);
   const { articles_list } = props;
   return (
     <section className={styles.container}>

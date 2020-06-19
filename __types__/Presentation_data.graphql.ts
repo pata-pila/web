@@ -16,20 +16,20 @@ export type Presentation_data$key = {
 
 
 const node: ReaderFragment = {
-  "kind": "Fragment",
-  "name": "Presentation_data",
-  "type": "Presentation",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "Presentation_data",
   "selections": [
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "content",
       "args": null,
+      "kind": "ScalarField",
+      "name": "content",
       "storageKey": null
     }
-  ]
+  ],
+  "type": "Presentation"
 };
 (node as any).hash = '876884c339cabd156f23e89ed01e4fed';
 export default node;
