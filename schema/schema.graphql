@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Fri Jun 19 2020 17:33:55 GMT-0300 (Brasilia Standard Time)
+# timestamp: Sun Jun 28 2020 14:54:56 GMT-0300 (Brasilia Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -275,6 +275,7 @@ type Malnutrition implements _Document & _Linkable {
 
 type Malnutrition_section implements _Document & _Linkable {
   malnutrition_title: Json
+  malnutritionImage1: Json
   _meta: Meta!
   _linkType: String
 }

@@ -46,6 +46,9 @@ class Site extends Component<Props> {
                 ... on Icon_tabs_section {
                   ...IconTabs_data
                 }
+                ... on Malnutrition_section {
+                  ...MalnutritionSection_data
+                }
               }
             }
           }

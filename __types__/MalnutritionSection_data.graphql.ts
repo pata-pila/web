@@ -16,20 +16,20 @@ export type MalnutritionSection_data$key = {
 
 
 const node: ReaderFragment = {
-  "kind": "Fragment",
-  "name": "MalnutritionSection_data",
-  "type": "Malnutrition_section",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "MalnutritionSection_data",
   "selections": [
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "malnutrition_title",
       "args": null,
+      "kind": "ScalarField",
+      "name": "malnutrition_title",
       "storageKey": null
     }
-  ]
+  ],
+  "type": "Malnutrition_section"
 };
 (node as any).hash = '3d3cbc0cda1092e70693c0dcc43909c7';
 export default node;

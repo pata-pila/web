@@ -1,14 +1,14 @@
 // React/Relay
 import React, { FC } from "react";
 import { createFragmentContainer, graphql } from "react-relay";
-import singleFragmentComponent from "../../../../lib/singleFragmentComponent";
+import singleFragmentComponent from "../../../lib/singleFragmentComponent";
 
 // Component
 import { Props } from "./Malnutrition_section.types";
 import css from "./Malnutrition_section.scss";
 
 // External
-import Text from "../../../text";
+import Text from "../../text";
 
 export const Malnutrition_section: FC<Props> = (props) => (
   <section
