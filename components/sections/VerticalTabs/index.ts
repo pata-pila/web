@@ -1,2 +1,2 @@
-import { VerticalTabsContainer } from "./VerticalTabs";
+import VerticalTabsContainer from "./VerticalTabs.container";
 export default VerticalTabsContainer;

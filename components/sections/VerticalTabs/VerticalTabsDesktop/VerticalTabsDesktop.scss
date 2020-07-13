@@ -1,5 +1,5 @@
-@import "../../../styles/fonts.scss";
-@import "../../../styles/colors.scss";
+@import "../../../../styles/fonts.scss";
+@import "../../../../styles/colors.scss";
 
 .section {
   padding-bottom: 5vw;
@@ -34,10 +34,10 @@
 }
 
 .tabs-name {
-  flex: 1 1 0px;
+  flex: 1 1 auto;
 }
 
-.tab-name .icon {
+.tabs-name .icon {
   margin-left: auto;
 }
 
@@ -53,9 +53,6 @@
   white-space: nowrap;
   width: 3em;
   padding: 0 5vw;
-  @media (max-width: 500px) {
-    padding: 0 0 30px 0;
-  }
   display: flex;
   justify-content: center;
   align-items: center;

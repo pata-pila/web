@@ -1,17 +1,15 @@
 // React/Relay
 import React, { PureComponent } from "react";
-import { createFragmentContainer, graphql } from "react-relay";
-import singleFragmentComponent from "../../../lib/singleFragmentComponent";
 import classnames from "classnames";
 
 // Component
-import { Props } from "./VerticalTabs.types";
-import styles from "./VerticalTabs.scss";
+import { Props } from "../VerticalTabs.types";
+import styles from "./VerticalTabsDesktop.scss";
 
 // External
-import Text from "../../text";
+import Text from "../../../text";
 
-export class VerticalTabs extends PureComponent<
+export class VerticalTabsDesktop extends PureComponent<
   Props,
   { selectedTab: number }
 > {
@@ -57,6 +55,13 @@ export class VerticalTabs extends PureComponent<
                 </div>
               ))}
             </div>
+            {/* <div className={styles.iconColumn}>
+            {tabs_list.map((tab, index) => (
+              <div>
+                {this.isSelectedTab(index) ? (<div className={styles.icon}>❯</div>) : (<div className={styles.icon}> </div>)}
+              </div>
+            ))}
+            </div> */}
             <div className={styles.tabsContent}>
               {tabs_list.map((tab, index) => (
                 <div
@@ -76,19 +81,3 @@ export class VerticalTabs extends PureComponent<
     );
   }
 }
-
-export const VerticalTabsContainer = createFragmentContainer(
-  singleFragmentComponent(VerticalTabs),
-  {
-    data: graphql`
-      fragment VerticalTabs_data on Vertical_tabs {
-        section_name
-        section_header
-        tabs_list {
-          name
-          content
-        }
-      }
-    `,
-  }
-);
