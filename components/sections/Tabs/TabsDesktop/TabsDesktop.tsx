@@ -1,17 +1,15 @@
 // React/Relay
 import React, { PureComponent } from "react";
-import { createFragmentContainer, graphql } from "react-relay";
-import singleFragmentComponent from "../../../lib/singleFragmentComponent";
 import classnames from "classnames";
 
 // Component
-import { Props } from "./Tabs.types";
-import styles from "./Tabs.scss";
+import { Props } from "../Tabs.types";
+import styles from "./TabsDesktop.scss";
 
 // External
-import Text from "../../text";
+import Text from "../../../text";
 
-export class Tabs extends PureComponent<Props, { selectedTab: number }> {
+export class TabsDesktop extends PureComponent<Props, { selectedTab: number }> {
   constructor(props) {
     super(props);
     this.state = { selectedTab: 0 };
@@ -38,7 +36,6 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
   public render() {
     const {
       background_color,
-      tabs_content_color,
       tabs_name_selected_color,
       tabs_name_color,
       tabs_list,
@@ -59,7 +56,7 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
               style={{
                 color: this.isSelectedTab(index)
                   ? tabs_name_selected_color
-                  : undefined,
+                  : tabs_name_color,
                 borderBottomColor: tabs_name_selected_color,
               }}
               onClick={() => this.selectTab(index)}
@@ -74,7 +71,7 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
               key={`tab-contant-${index}`}
               className={styles.tabTitle}
               style={{
-                color: tabs_content_color,
+                color: tab.content_color,
                 display: this.isSelectedTab(index) ? "block" : "none",
               }}
             >
@@ -86,21 +83,3 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
     );
   }
 }
-
-export const TabsContainer = createFragmentContainer(
-  singleFragmentComponent(Tabs),
-  {
-    data: graphql`
-      fragment Tabs_data on Tabs {
-        background_color
-        tabs_name_color
-        tabs_name_selected_color
-        tabs_content_color
-        tabs_list {
-          name
-          content
-        }
-      }
-    `,
-  }
-);
