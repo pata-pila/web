@@ -17,7 +17,7 @@
 .content {
   display: flex;
   flex-direction: row;
-  padding: 0 8vw;
+  padding-right: 5vw;
 }
 
 .tab-name {
@@ -34,11 +34,13 @@
 }
 
 .tabs-name {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
 }
 
 .tabs-name .icon {
   margin-left: auto;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .tabs-content {
@@ -51,7 +53,6 @@
   font-size: 15px;
   color: #df8832;
   white-space: nowrap;
-  width: 3em;
   padding: 0 5vw;
   display: flex;
   justify-content: center;

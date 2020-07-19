@@ -49,19 +49,19 @@ export class VerticalTabsDesktop extends PureComponent<
                   onClick={() => this.selectTab(index)}
                 >
                   <div>{tab.name}</div>
-                  {this.isSelectedTab(index) && (
-                    <div className={styles.icon}>❯</div>
-                  )}
+                  <div
+                    className={styles.icon}
+                    style={{
+                      visibility: this.isSelectedTab(index)
+                        ? "visible"
+                        : "hidden",
+                    }}
+                  >
+                    ❯
+                  </div>
                 </div>
               ))}
             </div>
-            {/* <div className={styles.iconColumn}>
-            {tabs_list.map((tab, index) => (
-              <div>
-                {this.isSelectedTab(index) ? (<div className={styles.icon}>❯</div>) : (<div className={styles.icon}> </div>)}
-              </div>
-            ))}
-            </div> */}
             <div className={styles.tabsContent}>
               {tabs_list.map((tab, index) => (
                 <div
