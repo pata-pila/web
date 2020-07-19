@@ -7,7 +7,7 @@ import Error from "next/error";
 import * as sections from "components/sections";
 
 import { RelayProp } from "react-relay";
-// import { SiteQueryResponse } from "types/SiteQuery.graphql";
+import { SiteQueryResponse } from "types/SiteQuery.graphql";
 
 export interface Props extends SiteQueryResponse {
   relay: RelayProp;
