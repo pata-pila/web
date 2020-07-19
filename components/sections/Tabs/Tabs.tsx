@@ -63,7 +63,6 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
                 borderBottomColor: tabs_name_selected_color,
               }}
               onClick={() => this.selectTab(index)}
-              key={index}
             >
               {tab.name}
             </div>
@@ -78,7 +77,6 @@ export class Tabs extends PureComponent<Props, { selectedTab: number }> {
                 color: tabs_content_color,
                 display: this.isSelectedTab(index) ? "block" : "none",
               }}
-              key={index}
             >
               <Text elements={tab.content} />
             </div>
