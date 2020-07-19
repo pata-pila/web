@@ -5,6 +5,7 @@
   padding: 40px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .article-container {
@@ -14,6 +15,7 @@
   text-align: center;
   align-items: center;
   margin-right: 25px;
+  margin-bottom: 25px;
 
   &:last-child {
     margin-right: 0;

@@ -12,7 +12,7 @@ export const NewsBanner: FC<Props> = (props) => {
   return (
     <section className={styles.container}>
       {articles_list.map((item, index) => (
-        <div className={styles.articleContainer}>
+        <div key={index} className={styles.articleContainer}>
           <div
             className={styles.articleImage}
             style={{

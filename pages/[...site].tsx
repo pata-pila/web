@@ -7,7 +7,7 @@ import Error from "next/error";
 import * as sections from "components/sections";
 
 import { RelayProp } from "react-relay";
-import { SiteQueryResponse } from "types/SiteQuery.graphql";
+// import { SiteQueryResponse } from "types/SiteQuery.graphql";
 
 export interface Props extends SiteQueryResponse {
   relay: RelayProp;
@@ -40,11 +40,14 @@ class Site extends Component<Props> {
                 ... on Founder {
                   ...Founder_data
                 }
-                ...on Tabs {
+                ... on Tabs {
                   ...Tabs_data
                 }
                 ...on Vertical_tabs {
                   ...VerticalTabs_data
+                }
+                ... on Icon_tabs_section {
+                  ...IconTabs_data
                 }
               }
             }
@@ -74,7 +77,6 @@ class Site extends Component<Props> {
           {props.allLandings.edges[0].node.sections
             .filter(({ section }) => section.__typename in sections)
             .map(({ section }, index) => {
-              console.log(section.__typename);
               const Container = sections[section.__typename];
               return <Container data={section} key={index} />;
             })}

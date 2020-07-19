@@ -38,6 +38,9 @@ export type SiteQueryResponse = {
                         readonly __typename: "Vertical_tabs";
                         readonly " $fragmentRefs": FragmentRefs<"VerticalTabs_data">;
                     } | {
+                        readonly __typename: "Icon_tabs_section";
+                        readonly " $fragmentRefs": FragmentRefs<"IconTabs_data">;
+                    } | {
                         /*This will never be '%other', but we need some
                         value in case none of the concrete values match.*/
                         readonly __typename: "%other";
@@ -85,6 +88,9 @@ query SiteQuery(
             ... on Vertical_tabs {
               ...VerticalTabs_data
             }
+            ... on Icon_tabs_section {
+              ...IconTabs_data
+            }
           }
         }
       }
@@ -101,6 +107,24 @@ fragment Founder_data on Founder {
 fragment HomeBanner_data on Home_banner {
   banner_text
   banner_image
+}
+
+fragment IconTabs_data on Icon_tabs_section {
+  section_title
+  section_background_color
+  icon_tabs {
+    tab_icon
+    tab_image
+    tab_link {
+      __typename
+      _linkType
+      ... on _ExternalLink {
+        url
+      }
+    }
+    tab_title
+    tab_description
+  }
 }
 
 fragment ImpactBanner_data on Icon_list {
@@ -185,24 +209,48 @@ v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "title",
+  "name": "section_title",
   "storageKey": null
 },
 v4 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "_linkType",
+  "name": "title",
   "storageKey": null
 },
 v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "section_name",
+  "name": "_linkType",
   "storageKey": null
 },
 v6 = [
+  (v2/*: any*/),
+  (v5/*: any*/),
+  {
+    "kind": "InlineFragment",
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "url",
+        "storageKey": null
+      }
+    ],
+    "type": "_ExternalLink"
+  }
+],
+v7 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "section_name",
+  "storageKey": null
+},
+v8 = [
   {
     "alias": null,
     "args": null,
@@ -342,6 +390,17 @@ return {
                               }
                             ],
                             "type": "Vertical_tabs"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              {
+                                "args": null,
+                                "kind": "FragmentSpread",
+                                "name": "IconTabs_data"
+                              }
+                            ],
+                            "type": "Icon_tabs_section"
                           }
                         ],
                         "storageKey": null
@@ -431,13 +490,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "section_title",
-                                "storageKey": null
-                              },
+                              (v3/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -446,7 +499,7 @@ return {
                                 "name": "icon_list_elements",
                                 "plural": true,
                                 "selections": [
-                                  (v3/*: any*/),
+                                  (v4/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -477,14 +530,14 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v3/*: any*/)
+                              (v4/*: any*/)
                             ],
                             "type": "Presentation"
                           },
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v4/*: any*/),
+                              (v5/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -521,23 +574,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "article_url",
                                     "plural": false,
-                                    "selections": [
-                                      (v2/*: any*/),
-                                      (v4/*: any*/),
-                                      {
-                                        "kind": "InlineFragment",
-                                        "selections": [
-                                          {
-                                            "alias": null,
-                                            "args": null,
-                                            "kind": "ScalarField",
-                                            "name": "url",
-                                            "storageKey": null
-                                          }
-                                        ],
-                                        "type": "_ExternalLink"
-                                      }
-                                    ],
+                                    "selections": (v6/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -549,7 +586,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v5/*: any*/),
+                              (v7/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -605,7 +642,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "tabs_list",
                                 "plural": true,
-                                "selections": (v6/*: any*/),
+                                "selections": (v8/*: any*/),
                                 "storageKey": null
                               }
                             ],
@@ -614,7 +651,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v5/*: any*/),
+                              (v7/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -629,11 +666,74 @@ return {
                                 "kind": "LinkedField",
                                 "name": "tabs_list",
                                 "plural": true,
-                                "selections": (v6/*: any*/),
+                                "selections": (v8/*: any*/),
                                 "storageKey": null
                               }
                             ],
                             "type": "Vertical_tabs"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              (v3/*: any*/),
+                              {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
+                                "name": "section_background_color",
+                                "storageKey": null
+                              },
+                              {
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "Icon_tabs_sectionIcon_tabs",
+                                "kind": "LinkedField",
+                                "name": "icon_tabs",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "tab_icon",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "tab_image",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "concreteType": null,
+                                    "kind": "LinkedField",
+                                    "name": "tab_link",
+                                    "plural": false,
+                                    "selections": (v6/*: any*/),
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "tab_title",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "tab_description",
+                                    "storageKey": null
+                                  }
+                                ],
+                                "storageKey": null
+                              }
+                            ],
+                            "type": "Icon_tabs_section"
                           }
                         ],
                         "storageKey": null
@@ -657,9 +757,9 @@ return {
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_content_color\n  tabs_list {\n    name\n    content\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_content_color\n  tabs_list {\n    name\n    content\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'a65ff79cb4377f82f1163e3849aa143c';
+(node as any).hash = 'ed2be83a6b6309efc833e45da70d7076';
 export default node;

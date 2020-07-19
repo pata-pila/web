@@ -17,11 +17,13 @@ export const ImpactBanner: FC<Props> = (props) => {
         backgroundImage: `url(${(background_image as any).url})`,
       }}
     >
-      <span className={styles.title}>{section_title[0].text}</span>
-      <div>
-        {icon_list_elements.map((item, index) => (
-          <ImpactItem data={item} key={index} />
-        ))}
+      <div className={styles.sectionContent}>
+        <span className={styles.title}>{section_title[0].text}</span>
+        <div>
+          {icon_list_elements.map((item, index) => (
+            <ImpactItem data={item} key={index} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -7,3 +7,4 @@ export { PresentationContainer as Presentation } from "./presentation/Presentati
 export { ImpactBannerContainer as Icon_list } from "./ImpactBanner/ImpactBanner";
 export { NewsBannerContainer as News_banner } from "./NewsBanner/NewsBanner";
 export { Founder, Tabs, Vertical_tabs };
+export { IconTabsContainer as Icon_tabs_section } from "./IconTabs/IconTabs";
