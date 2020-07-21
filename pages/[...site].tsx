@@ -40,9 +40,6 @@ class Site extends Component<Props> {
                 ... on Founder {
                   ...Founder_data
                 }
-                ... on Tabs {
-                  ...Tabs_data
-                }
                 ... on Icon_tabs_section {
                   ...IconTabs_data
                 }
