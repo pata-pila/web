@@ -1,6 +1,7 @@
 $poppins-semibold: 'Poppins Semibold';
 $poppins-medium: 'Poppins Medium';
 $poppins-regular: 'Poppins Regular';
+$poppins-light: 'Poppins Light';
 
 @font-face {
   font-family: $poppins-semibold;
@@ -19,6 +20,13 @@ $poppins-regular: 'Poppins Regular';
 @font-face {
   font-family: $poppins-regular;
   src: url(/fonts/Poppins-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $poppins-light;
+  src: url(/fonts/Poppins-Light.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
