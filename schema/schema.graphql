@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Thu Jul 23 2020 18:34:00 GMT-0300 (Argentina Standard Time)
+# timestamp: Tue Jul 28 2020 14:54:47 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
