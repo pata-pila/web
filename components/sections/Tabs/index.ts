@@ -1,2 +1,2 @@
-import { TabsContainer } from "./Tabs";
+import TabsContainer from "./Tabs.container";
 export default TabsContainer;
