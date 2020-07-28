@@ -9,5 +9,9 @@ export const Responsive = (props) => {
   delete componentProps.mobile;
   delete componentProps.desktop;
 
-  return isBrowser ? <Mobile {...props} /> : <Desktop {...props} />;
+  return isBrowser ? (
+    <Mobile {...componentProps} />
+  ) : (
+    <Desktop {...componentProps} />
+  );
 };
