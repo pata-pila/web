@@ -41,7 +41,7 @@
   padding: 50px 0;
 }
 
-.sectionName {
+.section-name {
   font-family: $poppins-semibold;
   font-size: 15px;
   color: #df8832;
@@ -56,7 +56,7 @@
   align-items: center;
 }
 
-.sectionName p {
+.section-name p {
   transform: rotate(-90deg);
   @media (max-width: 500px) {
     transform: rotate(0deg);

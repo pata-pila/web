@@ -1,0 +1,59 @@
+@import "../../../../styles/fonts.scss";
+@import "../../../../styles/colors.scss";
+
+.section {
+  padding-bottom: 5vw;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header img {
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  padding: 0 8vw;
+}
+
+.tab-name {
+  font-family: $poppins-semibold;
+  font-size: 20px;
+  padding: 10px 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+.selected-tab-name {
+  color: $buccaneer;
+}
+
+.tabs-name {
+  flex: 1 1 0px;
+}
+
+.tab-name .icon {
+  font-family: $poppins-regular;
+  margin-left: auto;
+  color: $buccaneer;
+}
+
+.tab-content {
+  font-family: $poppins-regular;
+  flex: 1 1 0px;
+}
+
+.section-name {
+  width: 60%;
+  margin-bottom: 20px;
+  font-family: $poppins-semibold;
+  font-size: 15px;
+  color: $gold-drop;
+  padding: 0 5vw;
+}
