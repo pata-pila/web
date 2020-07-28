@@ -1,0 +1,78 @@
+@import "styles/colors";
+@import "styles/fonts";
+
+.presentation {
+  padding: 30px 20px 0; // TODO: Section padding should be the same everywhere.
+
+  // TODO: Title placement should be the same everywhere.
+  h3 {
+    // TODO: Title placement should be the same everywhere.   
+    margin-top: 0;
+    color: $gold-drop;
+    font-family: $poppins-semibold;
+    margin-right: 30px;
+    font-size: 14px;
+  }
+  
+  > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.slider {
+  width: 100%;
+}
+
+.presentation-slide {
+  padding-bottom: 40px;
+  text-align: center;
+
+  :global(.block-img) {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    
+    img {
+      max-height: 100px;
+      max-width: 200px;
+    }
+  }
+}
+
+// TODO: Switch min-width to ~768 in all places so it applies to ipad portrait.
+// TODO: Switch from mobile first to desktop first in all places by using max-width instead.
+@media (min-width: 900px) {
+  .presentation {
+    padding: 20px; // TODO: Section padding should be the same everywhere.
+
+    // TODO: Title placement should be the same everywhere.
+    h3 {
+      margin-top: 40px; // TODO: This is hardcoded. It should be placed the same in all places.
+      transform: rotate(180deg);
+      writing-mode: vertical-rl;
+      display: inline-block;
+      font-size: 12px;
+    }
+  }
+
+  // TODO: This has to do with the width of the title when vertical. This rule should also apply everywhere.
+  .slider {
+    width: calc(100% - 60px);
+  }
+  
+  .presentation-slide {
+    img {
+      max-height: 150px;
+      max-width: 300px; 
+    }
+  }
+}
+
+@each $alignment in (left right center justify) {
+  .text-#{$alignment} {
+    > * {
+      text-align: $alignment;
+    }
+  }
+}
