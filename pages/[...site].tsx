@@ -34,6 +34,9 @@ class Site extends Component<Props> {
                 ... on Presentation {
                   ...Presentation_data
                 }
+                ... on Organizations {
+                  ...Organizations_data
+                }
                 ... on News_banner {
                   ...NewsBanner_data
                 }
@@ -42,6 +45,9 @@ class Site extends Component<Props> {
                 }
                 ... on Tabs {
                   ...Tabs_data
+                }
+                ...on Vertical_tabs {
+                  ...VerticalTabs_data
                 }
                 ... on Icon_tabs_section {
                   ...IconTabs_data
@@ -65,7 +71,7 @@ class Site extends Component<Props> {
     }
 
     return (
-      <div>
+      <>
         <Head>
           <title>Pata Pila</title>
           <link
@@ -81,7 +87,7 @@ class Site extends Component<Props> {
               return <Container data={section} key={index} />;
             })}
         </main>
-      </div>
+      </>
     );
   }
 }

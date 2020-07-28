@@ -1,0 +1,29 @@
+@import "../../../../styles/fonts.scss";
+
+.tabs {
+  min-height: 300px;
+  font-family: $poppins-semibold;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+
+  .item {
+    padding: 10vw 10vw 10vw 10vw;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .name {
+      font-size: 20px;
+      color: #df8832;
+    }
+
+    .content {
+      text-align: center;
+      font-size: 15px;
+      color: #000000;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Fri Jun 19 2020 10:16:00 GMT-0300 (Argentina Standard Time)
+# timestamp: Tue Jul 28 2020 15:37:08 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -56,6 +56,49 @@ interface _Linkable {
 
 """DateTime"""
 scalar DateTime
+
+type Footer implements _Document & _Linkable {
+  section_name: String
+  social_networks: [FooterSocial_networks!]
+  action_buttons: [FooterAction_buttons!]
+  navigation_links: [FooterNavigation_links!]
+  _meta: Meta!
+  _linkType: String
+}
+
+type FooterAction_buttons {
+  text: String
+  link: _Linkable
+}
+
+"""A connection to a list of items."""
+type FooterConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [FooterConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type FooterConnectionEdge {
+  """The item at the end of the edge."""
+  node: Footer!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type FooterNavigation_links {
+  text: String
+  link: _Linkable
+}
+
+type FooterSocial_networks {
+  image: Json
+  link: _Linkable
+}
 
 type Founder implements _Document & _Linkable {
   section_name: String
@@ -225,6 +268,40 @@ type Icon_tabs_sectionIcon_tabs {
   tab_description: Json
 }
 
+type Image_text implements _Document & _Linkable {
+  title: Json
+  text: Json
+  text_align: String
+  image: Json
+  image_positioning: String
+  image_x: Float
+  image_y: Float
+  text_positioning: String
+  text_x: Float
+  text_y: Float
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type Image_textConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [Image_textConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type Image_textConnectionEdge {
+  """The item at the end of the edge."""
+  node: Image_text!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
 """Raw JSON value"""
 scalar Json
 
@@ -274,7 +351,8 @@ type Malnutrition implements _Document & _Linkable {
 }
 
 type Malnutrition_section implements _Document & _Linkable {
-  malnutrition_title: Json
+  malnutrition_title: String
+  malnutrition_image_1: Json
   _meta: Meta!
   _linkType: String
 }
@@ -526,8 +604,10 @@ type Query {
   allHeaders(sortBy: SortHeadery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): HeaderConnectionConnection!
   allLandings(sortBy: SortLandingy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereLanding, before: String, after: String, first: Int, last: Int): LandingConnectionConnection!
   allIcon_lists(sortBy: SortIcon_listy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereIcon_list, before: String, after: String, first: Int, last: Int): Icon_listConnectionConnection!
+  allImage_texts(sortBy: SortImage_texty, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereImage_text, before: String, after: String, first: Int, last: Int): Image_textConnectionConnection!
   allOther_types(sortBy: SortOther_typey, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): Other_typeConnectionConnection!
   allOrganizationss(sortBy: SortOrganizationsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereOrganizations, before: String, after: String, first: Int, last: Int): OrganizationsConnectionConnection!
+  allFooters(sortBy: SortFootery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereFooter, before: String, after: String, first: Int, last: Int): FooterConnectionConnection!
   allTeam_members(sortBy: SortTeam_membery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): Team_memberConnectionConnection!
   allPresentations(sortBy: SortPresentationy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WherePresentation, before: String, after: String, first: Int, last: Int): PresentationConnectionConnection!
   allMalnutritions(sortBy: SortMalnutritiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereMalnutrition, before: String, after: String, first: Int, last: Int): MalnutritionConnectionConnection!
@@ -557,6 +637,15 @@ enum SortDocumentsBy {
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
+}
+
+enum SortFootery {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  section_name_ASC
+  section_name_DESC
 }
 
 enum SortFoundery {
@@ -602,6 +691,31 @@ enum SortIcon_tabs_sectiony {
   meta_lastPublicationDate_DESC
   section_title_ASC
   section_title_DESC
+}
+
+enum SortImage_texty {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  title_ASC
+  title_DESC
+  text_ASC
+  text_DESC
+  text_align_ASC
+  text_align_DESC
+  image_positioning_ASC
+  image_positioning_DESC
+  image_x_ASC
+  image_x_DESC
+  image_y_ASC
+  image_y_DESC
+  text_positioning_ASC
+  text_positioning_DESC
+  text_x_ASC
+  text_x_DESC
+  text_y_ASC
+  text_y_DESC
 }
 
 enum SortLandingy {
@@ -717,7 +831,6 @@ type Tabs implements _Document & _Linkable {
   background_color: String
   tabs_name_color: String
   tabs_name_selected_color: String
-  tabs_content_color: String
   tabs_list: [TabsTabs_list!]
   _meta: Meta!
   _linkType: String
@@ -745,6 +858,8 @@ type TabsConnectionEdge {
 type TabsTabs_list {
   name: String
   content: Json
+  content_color: String
+  content_background_color: String
 }
 
 type Team_member implements _Document & _Linkable {
@@ -839,6 +954,11 @@ type Vertical_tabsTabs_list {
   content: Json
 }
 
+input WhereFooter {
+  section_name: String
+  section_name_fulltext: String
+}
+
 input WhereFounder {
   section_name: String
   section_name_fulltext: String
@@ -862,6 +982,68 @@ input WhereIcon_tabs_section {
   section_title_fulltext: String
 }
 
+input WhereImage_text {
+  """title"""
+  title_fulltext: String
+
+  """text"""
+  text_fulltext: String
+  text_align: String
+  text_align_fulltext: String
+  image_positioning: String
+  image_positioning_fulltext: String
+
+  """image_x"""
+  image_x: Float
+
+  """image_x"""
+  image_x_lt: Float
+
+  """image_x"""
+  image_x_gt: Float
+
+  """image_x"""
+  image_x_range: [Float!]
+
+  """image_y"""
+  image_y: Float
+
+  """image_y"""
+  image_y_lt: Float
+
+  """image_y"""
+  image_y_gt: Float
+
+  """image_y"""
+  image_y_range: [Float!]
+  text_positioning: String
+  text_positioning_fulltext: String
+
+  """text_x"""
+  text_x: Float
+
+  """text_x"""
+  text_x_lt: Float
+
+  """text_x"""
+  text_x_gt: Float
+
+  """text_x"""
+  text_x_range: [Float!]
+
+  """text_y"""
+  text_y: Float
+
+  """text_y"""
+  text_y_lt: Float
+
+  """text_y"""
+  text_y_gt: Float
+
+  """text_y"""
+  text_y_range: [Float!]
+}
+
 input WhereLanding {
   """title"""
   title_fulltext: String
@@ -878,7 +1060,7 @@ input WhereMalnutrition {
 }
 
 input WhereMalnutrition_section {
-  """malnutrition_title"""
+  malnutrition_title: String
   malnutrition_title_fulltext: String
 }
 

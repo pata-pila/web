@@ -3,19 +3,19 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type Presentation_data = {
-  readonly title: unknown | null;
-  readonly theme: string | null;
-  readonly slides: ReadonlyArray<{
-    readonly text_alignment: string | null;
-    readonly content: unknown | null;
-  }> | null;
-  readonly " $refType": "Presentation_data";
+export type VerticalTabs_data = {
+    readonly section_name: string | null;
+    readonly section_header: unknown | null;
+    readonly tabs_list: ReadonlyArray<{
+        readonly name: string | null;
+        readonly content: unknown | null;
+    }> | null;
+    readonly " $refType": "VerticalTabs_data";
 };
-export type Presentation_data$data = Presentation_data;
-export type Presentation_data$key = {
-  readonly " $data"?: Presentation_data$data;
-  readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
+export type VerticalTabs_data$data = VerticalTabs_data;
+export type VerticalTabs_data$key = {
+    readonly " $data"?: VerticalTabs_data$data;
+    readonly " $fragmentRefs": FragmentRefs<"VerticalTabs_data">;
 };
 
 
@@ -24,35 +24,35 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "Presentation_data",
+  "name": "VerticalTabs_data",
   "selections": [
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "title",
+      "name": "section_name",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "theme",
+      "name": "section_header",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
-      "concreteType": "PresentationSlides",
+      "concreteType": "Vertical_tabsTabs_list",
       "kind": "LinkedField",
-      "name": "slides",
+      "name": "tabs_list",
       "plural": true,
       "selections": [
         {
           "alias": null,
           "args": null,
           "kind": "ScalarField",
-          "name": "text_alignment",
+          "name": "name",
           "storageKey": null
         },
         {
@@ -66,7 +66,7 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Presentation"
+  "type": "Vertical_tabs"
 };
-(node as any).hash = '79e908b2436d5281ff8470245df865cc';
+(node as any).hash = '8cb35a0a8972d1876c277719c84e424e';
 export default node;

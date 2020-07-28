@@ -1,4 +1,4 @@
-@import "../../../styles/fonts.scss";
+@import "../../../../styles/fonts.scss";
 
 .tabs {
   min-height: 300px;
@@ -14,9 +14,6 @@
   padding-bottom: 30px;
   justify-content: center;
   align-content: center;
-  @media (max-width: 500px) {
-    flex-direction: column;
-  }
 }
 
 .tab-title {
@@ -34,9 +31,6 @@
 
 .tabs-content {
   padding: 0 15vw;
-  @media (max-width: 500px) {
-    padding: 0 10vw;
-  }
 }
 
 .selected-tab-name {

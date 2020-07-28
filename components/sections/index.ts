@@ -1,10 +1,13 @@
 import Founder from "./Founder";
 import Tabs from "./Tabs";
+import Vertical_tabs from "./VerticalTabs";
+import Organizations from "./organizations";
+import Presentation from "./presentation";
 
 export { HomeBannerContainer as Home_banner } from "./home-banner/HomeBanner";
-export { PresentationContainer as Presentation } from "./presentation/Presentation";
 export { ImpactBannerContainer as Icon_list } from "./ImpactBanner/ImpactBanner";
 export { NewsBannerContainer as News_banner } from "./NewsBanner/NewsBanner";
 export { IconTabsContainer as Icon_tabs_section } from "./IconTabs/IconTabs";
 export { HeaderContainer as Header } from "./Header/Header";
-export { Founder, Tabs };
+
+export { Founder, Tabs, Vertical_tabs, Organizations, Presentation };
