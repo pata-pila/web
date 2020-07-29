@@ -2,8 +2,11 @@
 @import "styles/fonts";
 
 .presentation {
-  padding: 30px 20px 0; // TODO: Section padding should be the same everywhere.
-
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   // TODO: Title placement should be the same everywhere.
   h3 {
     // TODO: Title placement should be the same everywhere.   
@@ -12,11 +15,17 @@
     font-family: $poppins-semibold;
     margin-right: 30px;
     font-size: 14px;
+    align-self: flex-start;
   }
   
   > * {
     display: inline-block;
     vertical-align: top;
+  }
+
+  @media (max-width: 500px) {
+    height: auto;
+    padding: 30px;
   }
 }
 

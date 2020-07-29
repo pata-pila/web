@@ -12,10 +12,8 @@ import Text from "../../text";
 
 const Founder: FC<Props> = (props) => (
   <section className={styles.section}>
-    <article className={styles.founder}>
-      <div className={styles.sectionName}>
-        <p>{props.section_name}</p>
-      </div>
+    <article className={`${styles.founder} section-content mobile-column`}>
+      <span className="vertical-title">{props.section_name}</span>
       <div className={styles.founderPicture}>
         <img src={(props.founder_picture as any).url} />
       </div>

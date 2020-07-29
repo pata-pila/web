@@ -12,18 +12,18 @@ import Organization from "./Organization";
 
 export const Organizations: FC<Props> = (props) => (
   <section className={styles.section}>
-    <div className={styles.titleWrapper}>
-      <h1 className={styles.title}>{props.section_name}</h1>
-    </div>
-    <div className={styles.organizations}>
-      {props.organizations.map((item, index) => (
-        <div className={styles.organizationWrapper} key={index}>
-          <Organization data={item.organization} />
-          {index + 1 < props.organizations.length && (
-            <hr className={styles.line} />
-          )}
-        </div>
-      ))}
+    <div className="section-content mobile-column">
+      <span className="vertical-title">{props.section_name}</span>
+      <div className={styles.organizations}>
+        {props.organizations.map((item, index) => (
+          <div className={styles.organizationWrapper} key={index}>
+            <Organization data={item.organization} />
+            {index + 1 < props.organizations.length && (
+              <hr className={styles.line} />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 );

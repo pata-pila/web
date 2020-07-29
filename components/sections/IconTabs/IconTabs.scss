@@ -1,5 +1,6 @@
 @import "../../../styles/fonts.scss";
 @import "../../../styles/colors.scss";
+@import "../../../styles/sizes.scss";
 
 .container {
   background-size: cover;
@@ -7,22 +8,8 @@
   height: 600px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 60px;
-}
-
-.section-content {
-  display: flex;
-  width: 100%;
-}
-
-.title {
-  color: $gold-drop;
-  font-family: $poppins-semibold;
-  transform: rotate(180deg);
-  writing-mode: vertical-rl;
-  align-self: flex-start;
-  margin-right: 30px;
-  font-size: 12px;
 }
 
 .tabs {

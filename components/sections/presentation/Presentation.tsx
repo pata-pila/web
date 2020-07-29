@@ -18,19 +18,21 @@ export const Presentation: FC<Props> = (props) => {
     <section
       className={classnames(props.theme.toLowerCase(), css.presentation)}
     >
-      <RichText render={props.title} />
-      <Slider className={css.slider}>
-        {props.slides.map((slide) => (
-          <article
-            className={classnames(
-              css.presentationSlide,
-              css[`text${slide.text_alignment}`]
-            )}
-          >
-            <Text elements={slide.content} />
-          </article>
-        ))}
-      </Slider>
+      <div className="section-content mobile-column">
+        <RichText render={props.title} />
+        <Slider className={css.slider}>
+          {props.slides.map((slide) => (
+            <article
+              className={classnames(
+                css.presentationSlide,
+                css[`text${slide.text_alignment}`]
+              )}
+            >
+              <Text elements={slide.content} />
+            </article>
+          ))}
+        </Slider>
+      </div>
     </section>
   );
 };
