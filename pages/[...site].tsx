@@ -43,6 +43,9 @@ class Site extends Component<Props> {
                 ... on Founder {
                   ...Founder_data
                 }
+                ... on Donations {
+                  ...Donations_data
+                }
                 ... on Tabs {
                   ...Tabs_data
                 }
