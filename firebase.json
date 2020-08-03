@@ -20,7 +20,8 @@
       }
     ],
     "ignore": [
-      "!dist/_next/static/**"
+      "dist/_next/cache/**",
+      "dist/_next/server/**"
     ]
   }
 }
