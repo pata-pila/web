@@ -24,6 +24,9 @@ export type Header_data = {
         readonly background_color: string | null;
         readonly border_color: string | null;
         readonly text_color: string | null;
+        readonly mobile_background_color: string | null;
+        readonly mobile_border_color: string | null;
+        readonly mobile_text_color: string | null;
         readonly action_title: unknown | null;
         readonly action: {
             readonly _linkType: string | null;
@@ -172,6 +175,27 @@ return {
           "alias": null,
           "args": null,
           "kind": "ScalarField",
+          "name": "mobile_background_color",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "mobile_border_color",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "mobile_text_color",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
           "name": "action_title",
           "storageKey": null
         },
@@ -192,5 +216,5 @@ return {
   "type": "Header"
 };
 })();
-(node as any).hash = '91f5a734f4d7f5d2460c6f23b2c593af';
+(node as any).hash = 'b2c51b03806c82eab9682d0883ec081f';
 export default node;

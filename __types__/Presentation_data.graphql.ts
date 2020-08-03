@@ -4,18 +4,18 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Presentation_data = {
-  readonly title: unknown | null;
-  readonly theme: string | null;
-  readonly slides: ReadonlyArray<{
-    readonly text_alignment: string | null;
-    readonly content: unknown | null;
-  }> | null;
-  readonly " $refType": "Presentation_data";
+    readonly title: unknown | null;
+    readonly theme: string | null;
+    readonly slides: ReadonlyArray<{
+        readonly text_alignment: string | null;
+        readonly content: unknown | null;
+    }> | null;
+    readonly " $refType": "Presentation_data";
 };
 export type Presentation_data$data = Presentation_data;
 export type Presentation_data$key = {
-  readonly " $data"?: Presentation_data$data;
-  readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
+    readonly " $data"?: Presentation_data$data;
+    readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
 };
 
 

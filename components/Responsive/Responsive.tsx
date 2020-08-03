@@ -1,17 +1,22 @@
 import React from "react";
-import { useMediaQuery } from "react-responsive";
+
+import styles from "./Response.scss";
 
 export const Responsive = (props) => {
-  const isBrowser = useMediaQuery({ maxWidth: 1024 });
   const Mobile = props.mobile;
   const Desktop = props.desktop;
   const componentProps = { ...props };
   delete componentProps.mobile;
   delete componentProps.desktop;
 
-  return isBrowser ? (
-    <Mobile {...componentProps} />
-  ) : (
-    <Desktop {...componentProps} />
+  return (
+    <>
+      <div className={styles.mobile}>
+        <Mobile {...componentProps} />
+      </div>
+      <div className={styles.desktop}>
+        <Desktop {...componentProps} />
+      </div>
+    </>
   );
 };
