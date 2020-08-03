@@ -37,6 +37,7 @@ const Slider: FC<any> = (props) => {
       <ul className={css.slides}>
         {props.children.map((child, thisSlide) => (
           <InView
+            key={thisSlide}
             ref={slideRefs[thisSlide]}
             threshold={0.5}
             as="li"
@@ -50,15 +51,13 @@ const Slider: FC<any> = (props) => {
         <nav>
           <ul>
             {props.children.map((_, thisSlide) => (
-              <li>
-                <label
-                  className={css.sliderNavButton}
-                  onClick={onNavTo(thisSlide)}
-                >
+              <li key={thisSlide}>
+                <label className={css.sliderNavButton}>
                   <input
                     type="radio"
                     name="slide"
                     checked={currentSlide === thisSlide}
+                    onChange={onNavTo(thisSlide)}
                   />
                   <figure className={css.checkmark} />
                 </label>

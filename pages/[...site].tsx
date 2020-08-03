@@ -1,7 +1,8 @@
-import React, { Component, FC } from "react";
+import React, { Component } from "react";
 import Head from "next/head";
 import { graphql } from "react-relay";
 import withData from "../lib/withData";
+import { RoutesContextProvider } from "lib/RoutesContext";
 import Error from "next/error";
 
 import * as sections from "components/sections";
@@ -19,6 +20,16 @@ import "../styles/global.scss";
 class Site extends Component<Props> {
   static query = graphql`
     query SiteQuery($where: WhereLanding) {
+      routes: allLandings {
+        edges {
+          node {
+            route
+            _meta {
+              id
+            }
+          }
+        }
+      }
       allLandings(where: $where) {
         edges {
           node {
@@ -55,6 +66,9 @@ class Site extends Component<Props> {
                 ... on Icon_tabs_section {
                   ...IconTabs_data
                 }
+                ... on Footer {
+                  ...Footer_data
+                }
               }
             }
           }
@@ -62,6 +76,15 @@ class Site extends Component<Props> {
       }
     }
   `;
+
+  getRoutesContextProviderValue() {
+    return new Map(
+      this.props.routes.edges.map((edge) => [
+        edge.node._meta.id,
+        edge.node.route,
+      ])
+    );
+  }
 
   render() {
     const { props } = this;
@@ -71,7 +94,7 @@ class Site extends Component<Props> {
     }
 
     return (
-      <>
+      <RoutesContextProvider value={this.getRoutesContextProviderValue()}>
         <Head>
           <title>Pata Pila</title>
           <link
@@ -87,7 +110,7 @@ class Site extends Component<Props> {
               return <Container data={section} key={index} />;
             })}
         </main>
-      </>
+      </RoutesContextProvider>
     );
   }
 }

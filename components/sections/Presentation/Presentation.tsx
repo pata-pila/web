@@ -20,8 +20,9 @@ export const Presentation: FC<Props> = (props) => {
     >
       <RichText render={props.title} />
       <Slider className={css.slider}>
-        {props.slides.map((slide) => (
+        {props.slides.map((slide, index) => (
           <article
+            key={index}
             className={classnames(
               css.presentationSlide,
               css[`text${slide.text_alignment}`]

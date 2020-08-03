@@ -12,6 +12,16 @@ export type SiteQueryVariables = {
     where?: WhereLanding | null;
 };
 export type SiteQueryResponse = {
+    readonly routes: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly route: string | null;
+                readonly _meta: {
+                    readonly id: string;
+                };
+            };
+        } | null> | null;
+    };
     readonly allLandings: {
         readonly edges: ReadonlyArray<{
             readonly node: {
@@ -47,6 +57,9 @@ export type SiteQueryResponse = {
                         readonly __typename: "Icon_tabs_section";
                         readonly " $fragmentRefs": FragmentRefs<"IconTabs_data">;
                     } | {
+                        readonly __typename: "Footer";
+                        readonly " $fragmentRefs": FragmentRefs<"Footer_data">;
+                    } | {
                         /*This will never be '%other', but we need some
                         value in case none of the concrete values match.*/
                         readonly __typename: "%other";
@@ -67,6 +80,16 @@ export type SiteQuery = {
 query SiteQuery(
   $where: WhereLanding
 ) {
+  routes: allLandings {
+    edges {
+      node {
+        route
+        _meta {
+          id
+        }
+      }
+    }
+  }
   allLandings(where: $where) {
     edges {
       node {
@@ -103,6 +126,9 @@ query SiteQuery(
             ... on Icon_tabs_section {
               ...IconTabs_data
             }
+            ... on Footer {
+              ...Footer_data
+            }
           }
         }
       }
@@ -115,6 +141,40 @@ fragment Donations_data on Donations {
     __typename
     ... on _ExternalLink {
       url
+    }
+  }
+}
+
+fragment Footer_data on Footer {
+  social_networks {
+    image
+    link {
+      __typename
+      ... on _ExternalLink {
+        url
+      }
+    }
+  }
+  action_buttons {
+    text
+    link {
+      __typename
+      ... on _Document {
+        _meta {
+          id
+        }
+      }
+    }
+  }
+  navigation_links {
+    text
+    link {
+      __typename
+      ... on _Document {
+        _meta {
+          id
+        }
+      }
     }
   }
 }
@@ -238,63 +298,122 @@ var v0 = [
     "type": "WhereLanding"
   }
 ],
-v1 = [
+v1 = {
+  "alias": null,
+  "args": null,
+  "concreteType": "Meta",
+  "kind": "LinkedField",
+  "name": "_meta",
+  "plural": false,
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    }
+  ],
+  "storageKey": null
+},
+v2 = {
+  "alias": "routes",
+  "args": null,
+  "concreteType": "LandingConnectionConnection",
+  "kind": "LinkedField",
+  "name": "allLandings",
+  "plural": false,
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "LandingConnectionEdge",
+      "kind": "LinkedField",
+      "name": "edges",
+      "plural": true,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "concreteType": "Landing",
+          "kind": "LinkedField",
+          "name": "node",
+          "plural": false,
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "route",
+              "storageKey": null
+            },
+            (v1/*: any*/)
+          ],
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
+    }
+  ],
+  "storageKey": null
+},
+v3 = [
   {
     "kind": "Variable",
     "name": "where",
     "variableName": "where"
   }
 ],
-v2 = {
+v4 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "__typename",
   "storageKey": null
 },
-v3 = {
+v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "section_title",
   "storageKey": null
 },
-v4 = {
+v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "title",
   "storageKey": null
 },
-v5 = {
+v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "content",
   "storageKey": null
 },
-v6 = {
+v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "section_name",
   "storageKey": null
 },
-v7 = {
+v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "name",
   "storageKey": null
 },
-v8 = {
+v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "_linkType",
   "storageKey": null
 },
-v9 = {
+v11 = {
   "kind": "InlineFragment",
   "selections": [
     {
@@ -307,10 +426,36 @@ v9 = {
   ],
   "type": "_ExternalLink"
 },
-v10 = [
-  (v2/*: any*/),
-  (v8/*: any*/),
-  (v9/*: any*/)
+v12 = [
+  (v4/*: any*/),
+  (v10/*: any*/),
+  (v11/*: any*/)
+],
+v13 = [
+  (v4/*: any*/),
+  (v11/*: any*/)
+],
+v14 = [
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "text",
+    "storageKey": null
+  },
+  {
+    "alias": null,
+    "args": null,
+    "concreteType": null,
+    "kind": "LinkedField",
+    "name": "link",
+    "plural": false,
+    "selections": [
+      (v4/*: any*/),
+      (v1/*: any*/)
+    ],
+    "storageKey": null
+  }
 ];
 return {
   "fragment": {
@@ -319,9 +464,10 @@ return {
     "metadata": null,
     "name": "SiteQuery",
     "selections": [
+      (v2/*: any*/),
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v3/*: any*/),
         "concreteType": "LandingConnectionConnection",
         "kind": "LinkedField",
         "name": "allLandings",
@@ -359,7 +505,7 @@ return {
                         "name": "section",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/),
+                          (v4/*: any*/),
                           {
                             "kind": "InlineFragment",
                             "selections": [
@@ -469,6 +615,17 @@ return {
                               }
                             ],
                             "type": "Icon_tabs_section"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              {
+                                "args": null,
+                                "kind": "FragmentSpread",
+                                "name": "Footer_data"
+                              }
+                            ],
+                            "type": "Footer"
                           }
                         ],
                         "storageKey": null
@@ -494,9 +651,10 @@ return {
     "kind": "Operation",
     "name": "SiteQuery",
     "selections": [
+      (v2/*: any*/),
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v3/*: any*/),
         "concreteType": "LandingConnectionConnection",
         "kind": "LinkedField",
         "name": "allLandings",
@@ -534,7 +692,7 @@ return {
                         "name": "section",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/),
+                          (v4/*: any*/),
                           {
                             "kind": "InlineFragment",
                             "selections": [
@@ -558,7 +716,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v3/*: any*/),
+                              (v5/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -567,7 +725,7 @@ return {
                                 "name": "icon_list_elements",
                                 "plural": true,
                                 "selections": [
-                                  (v4/*: any*/),
+                                  (v6/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -598,7 +756,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v4/*: any*/),
+                              (v6/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -621,7 +779,7 @@ return {
                                     "name": "text_alignment",
                                     "storageKey": null
                                   },
-                                  (v5/*: any*/)
+                                  (v7/*: any*/)
                                 ],
                                 "storageKey": null
                               }
@@ -631,7 +789,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v6/*: any*/),
+                              (v8/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -648,7 +806,7 @@ return {
                                     "name": "organization",
                                     "plural": false,
                                     "selections": [
-                                      (v2/*: any*/),
+                                      (v4/*: any*/),
                                       {
                                         "kind": "InlineFragment",
                                         "selections": [
@@ -667,7 +825,7 @@ return {
                                             "name": "members",
                                             "plural": true,
                                             "selections": [
-                                              (v7/*: any*/),
+                                              (v9/*: any*/),
                                               {
                                                 "alias": null,
                                                 "args": null,
@@ -693,7 +851,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v8/*: any*/),
+                              (v10/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -730,7 +888,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "article_url",
                                     "plural": false,
-                                    "selections": (v10/*: any*/),
+                                    "selections": (v12/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -742,7 +900,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v6/*: any*/),
+                              (v8/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -770,10 +928,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "donation_link",
                                 "plural": false,
-                                "selections": [
-                                  (v2/*: any*/),
-                                  (v9/*: any*/)
-                                ],
+                                "selections": (v13/*: any*/),
                                 "storageKey": null
                               }
                             ],
@@ -811,8 +966,8 @@ return {
                                 "name": "tabs_list",
                                 "plural": true,
                                 "selections": [
+                                  (v9/*: any*/),
                                   (v7/*: any*/),
-                                  (v5/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -836,7 +991,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v6/*: any*/),
+                              (v8/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -852,8 +1007,8 @@ return {
                                 "name": "tabs_list",
                                 "plural": true,
                                 "selections": [
-                                  (v7/*: any*/),
-                                  (v5/*: any*/)
+                                  (v9/*: any*/),
+                                  (v7/*: any*/)
                                 ],
                                 "storageKey": null
                               }
@@ -863,7 +1018,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v3/*: any*/),
+                              (v5/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -900,7 +1055,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "tab_link",
                                     "plural": false,
-                                    "selections": (v10/*: any*/),
+                                    "selections": (v12/*: any*/),
                                     "storageKey": null
                                   },
                                   {
@@ -922,6 +1077,60 @@ return {
                               }
                             ],
                             "type": "Icon_tabs_section"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              {
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "FooterSocial_networks",
+                                "kind": "LinkedField",
+                                "name": "social_networks",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "image",
+                                    "storageKey": null
+                                  },
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "concreteType": null,
+                                    "kind": "LinkedField",
+                                    "name": "link",
+                                    "plural": false,
+                                    "selections": (v13/*: any*/),
+                                    "storageKey": null
+                                  }
+                                ],
+                                "storageKey": null
+                              },
+                              {
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "FooterAction_buttons",
+                                "kind": "LinkedField",
+                                "name": "action_buttons",
+                                "plural": true,
+                                "selections": (v14/*: any*/),
+                                "storageKey": null
+                              },
+                              {
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "FooterNavigation_links",
+                                "kind": "LinkedField",
+                                "name": "navigation_links",
+                                "plural": true,
+                                "selections": (v14/*: any*/),
+                                "storageKey": null
+                              }
+                            ],
+                            "type": "Footer"
                           }
                         ],
                         "storageKey": null
@@ -945,9 +1154,9 @@ return {
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  routes: allLandings {\n    edges {\n      node {\n        route\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Footer {\n              ...Footer_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Footer_data on Footer {\n  social_networks {\n    image\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  action_buttons {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  navigation_links {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'a935b16fe809ee060d36c73731cb0bad';
+(node as any).hash = '844c4dee1f1104e87ca4e9c13a02ccb9';
 export default node;
