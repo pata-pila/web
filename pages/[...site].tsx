@@ -60,7 +60,7 @@ class Site extends Component<Props> {
                 ... on Tabs {
                   ...Tabs_data
                 }
-                ...on Vertical_tabs {
+                ... on Vertical_tabs {
                   ...VerticalTabs_data
                 }
                 ... on Icon_tabs_section {
@@ -68,6 +68,9 @@ class Site extends Component<Props> {
                 }
                 ... on Footer {
                   ...Footer_data
+                }
+                ... on Header {
+                  ...Header_data
                 }
               }
             }
