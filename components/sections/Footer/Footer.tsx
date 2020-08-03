@@ -15,7 +15,9 @@ const Footer: FC<Props> = (props) => (
     <ul>
       {props.navigation_links.map((link, index) => (
         <li key={index}>
-          <DocumentLink id={link.link._meta.id}>{link.text}</DocumentLink>
+          <DocumentLink documentId={link.link._meta.id}>
+            {link.text}
+          </DocumentLink>
         </li>
       ))}
     </ul>
