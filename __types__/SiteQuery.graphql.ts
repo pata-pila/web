@@ -35,6 +35,9 @@ export type SiteQueryResponse = {
                         readonly __typename: "Founder";
                         readonly " $fragmentRefs": FragmentRefs<"Founder_data">;
                     } | {
+                        readonly __typename: "Donations";
+                        readonly " $fragmentRefs": FragmentRefs<"Donations_data">;
+                    } | {
                         readonly __typename: "Tabs";
                         readonly " $fragmentRefs": FragmentRefs<"Tabs_data">;
                     } | {
@@ -88,6 +91,9 @@ query SiteQuery(
             ... on Founder {
               ...Founder_data
             }
+            ... on Donations {
+              ...Donations_data
+            }
             ... on Tabs {
               ...Tabs_data
             }
@@ -100,6 +106,15 @@ query SiteQuery(
           }
         }
       }
+    }
+  }
+}
+
+fragment Donations_data on Donations {
+  donation_link {
+    __typename
+    ... on _ExternalLink {
+      url
     }
   }
 }
@@ -279,22 +294,23 @@ v8 = {
   "name": "_linkType",
   "storageKey": null
 },
-v9 = [
+v9 = {
+  "kind": "InlineFragment",
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "url",
+      "storageKey": null
+    }
+  ],
+  "type": "_ExternalLink"
+},
+v10 = [
   (v2/*: any*/),
   (v8/*: any*/),
-  {
-    "kind": "InlineFragment",
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "url",
-        "storageKey": null
-      }
-    ],
-    "type": "_ExternalLink"
-  }
+  (v9/*: any*/)
 ];
 return {
   "fragment": {
@@ -409,6 +425,17 @@ return {
                               }
                             ],
                             "type": "Founder"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              {
+                                "args": null,
+                                "kind": "FragmentSpread",
+                                "name": "Donations_data"
+                              }
+                            ],
+                            "type": "Donations"
                           },
                           {
                             "kind": "InlineFragment",
@@ -703,7 +730,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "article_url",
                                     "plural": false,
-                                    "selections": (v9/*: any*/),
+                                    "selections": (v10/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -732,6 +759,25 @@ return {
                               }
                             ],
                             "type": "Founder"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              {
+                                "alias": null,
+                                "args": null,
+                                "concreteType": null,
+                                "kind": "LinkedField",
+                                "name": "donation_link",
+                                "plural": false,
+                                "selections": [
+                                  (v2/*: any*/),
+                                  (v9/*: any*/)
+                                ],
+                                "storageKey": null
+                              }
+                            ],
+                            "type": "Donations"
                           },
                           {
                             "kind": "InlineFragment",
@@ -854,7 +900,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "tab_link",
                                     "plural": false,
-                                    "selections": (v9/*: any*/),
+                                    "selections": (v10/*: any*/),
                                     "storageKey": null
                                   },
                                   {
@@ -899,9 +945,9 @@ return {
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '3484f0b569f3f0e50e421b6a73a377c6';
+(node as any).hash = 'a935b16fe809ee060d36c73731cb0bad';
 export default node;
