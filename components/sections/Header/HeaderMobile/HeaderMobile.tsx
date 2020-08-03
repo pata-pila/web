@@ -53,8 +53,8 @@ export const Header: FC<Props> = (props) => {
                   className={styles.actionButton}
                   style={{
                     backgroundColor: button.mobile_background_color ?? "transparent",
-                    borderColor: button.mobile_border_color,
-                    color: button.mobile_text_color,
+                    borderColor: button.mobile_border_color ?? "black",
+                    color: button.mobile_text_color ?? "black",
                   }}
                 >
                   {button.action_title[0].text}
