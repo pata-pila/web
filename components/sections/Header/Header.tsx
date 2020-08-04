@@ -29,10 +29,11 @@ export const HeaderContainer = createFragmentContainer(
         }
         header_links {
           link_title
-          link_url {
-            _linkType
-            ... on _ExternalLink {
-              url
+          link_document {
+            ... on _Document {
+              _meta {
+                id
+              }
             }
           }
         }
@@ -45,9 +46,10 @@ export const HeaderContainer = createFragmentContainer(
           mobile_text_color
           action_title
           action {
-            _linkType
-            ... on _ExternalLink {
-              url
+            ... on _Document {
+              _meta {
+                id
+              }
             }
           }
         }

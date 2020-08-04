@@ -15,9 +15,10 @@ export type Header_data = {
     }> | null;
     readonly header_links: ReadonlyArray<{
         readonly link_title: unknown | null;
-        readonly link_url: {
-            readonly _linkType: string | null;
-            readonly url?: string;
+        readonly link_document: {
+            readonly _meta?: {
+                readonly id: string;
+            };
         } | null;
     }> | null;
     readonly action_buttons: ReadonlyArray<{
@@ -29,8 +30,9 @@ export type Header_data = {
         readonly mobile_text_color: string | null;
         readonly action_title: unknown | null;
         readonly action: {
-            readonly _linkType: string | null;
-            readonly url?: string;
+            readonly _meta?: {
+                readonly id: string;
+            };
         } | null;
     }> | null;
     readonly " $refType": "Header_data";
@@ -48,22 +50,20 @@ var v0 = [
   {
     "alias": null,
     "args": null,
-    "kind": "ScalarField",
-    "name": "_linkType",
-    "storageKey": null
-  },
-  {
-    "kind": "InlineFragment",
+    "concreteType": "Meta",
+    "kind": "LinkedField",
+    "name": "_meta",
+    "plural": false,
     "selections": [
       {
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "url",
+        "name": "id",
         "storageKey": null
       }
     ],
-    "type": "_ExternalLink"
+    "storageKey": null
   }
 ];
 return {
@@ -108,7 +108,28 @@ return {
           "kind": "LinkedField",
           "name": "social_link",
           "plural": false,
-          "selections": (v0/*: any*/),
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "_linkType",
+              "storageKey": null
+            },
+            {
+              "kind": "InlineFragment",
+              "selections": [
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "url",
+                  "storageKey": null
+                }
+              ],
+              "type": "_ExternalLink"
+            }
+          ],
           "storageKey": null
         }
       ],
@@ -134,7 +155,7 @@ return {
           "args": null,
           "concreteType": null,
           "kind": "LinkedField",
-          "name": "link_url",
+          "name": "link_document",
           "plural": false,
           "selections": (v0/*: any*/),
           "storageKey": null
@@ -216,5 +237,5 @@ return {
   "type": "Header"
 };
 })();
-(node as any).hash = 'b2c51b03806c82eab9682d0883ec081f';
+(node as any).hash = 'f753f743e5ae840c9f18295098f30bb6';
 export default node;

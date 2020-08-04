@@ -4,6 +4,7 @@ import React, { FC } from "react";
 // Component
 import { Props } from "./HeaderDesktop.types";
 import styles from "./HeaderDesktop.scss";
+import DocumentLink from "components/DocumentLink";
 
 export const Header: FC<Props> = (props) => {
   return (
@@ -29,26 +30,28 @@ export const Header: FC<Props> = (props) => {
         })}
       </div>
       <div className={styles.headerContainer}>
-        <img
-          className={styles.icon}
-          src={(props.pata_pila_icon as any).url}
-          alt="Pata Pila"
-        />
+        <a href="/">
+          <img
+            className={styles.icon}
+            src={(props.pata_pila_icon as any).url}
+            alt="Pata Pila"
+          />
+        </a>
         <div className={styles.linksContainer}>
           {props.header_links.map((link, index) => {
             return (
-              <a
+              <DocumentLink
                 key={index}
-                href={link.link_url && (link.link_url as any).url}
+                documentId={link.link_document?._meta.id}
                 className={styles.link}
               >
                 {link.link_title[0].text}
-              </a>
+              </DocumentLink>
             );
           })}
           {props.action_buttons.map((button, index) => {
             return (
-              <button
+              <DocumentLink
                 key={index}
                 className={styles.actionButton}
                 style={{
@@ -56,9 +59,10 @@ export const Header: FC<Props> = (props) => {
                   borderColor: button.border_color ?? "black",
                   color: button.text_color ?? "black",
                 }}
+                documentId={button.action._meta.id}
               >
                 {button.action_title[0].text}
-              </button>
+              </DocumentLink>
             );
           })}
         </div>

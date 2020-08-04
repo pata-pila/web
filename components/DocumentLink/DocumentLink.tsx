@@ -14,8 +14,10 @@ export default function DocumentLink(props: Props) {
   if (!route) {
     console.warn("Route not found for document id", props.documentId);
   }
+  const elementProps = { ...props };
+  delete elementProps.documentId;
   return (
-    <a href={route} {...props}>
+    <a href={route} {...elementProps}>
       {props.children}
     </a>
   );
