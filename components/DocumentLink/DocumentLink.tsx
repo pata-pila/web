@@ -8,15 +8,15 @@ interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   documentId: string;
 }
 
-export default function DocumentLink(props: Props) {
+export default function DocumentLink({ documentId, ...elementProps }: Props) {
   const routeByDocumentId = useRouteByDocumentId();
-  const route = routeByDocumentId.get(props.documentId) ?? "";
+  const route = routeByDocumentId.get(documentId) ?? "";
   if (!route) {
-    console.warn("Route not found for document id", props.documentId);
+    console.warn("Route not found for document id", documentId);
   }
   return (
-    <a href={route} {...props}>
-      {props.children}
+    <a href={route} {...elementProps}>
+      {elementProps.children}
     </a>
   );
 }

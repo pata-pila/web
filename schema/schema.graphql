@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Mon Aug 03 2020 14:31:30 GMT-0300 (Argentina Standard Time)
+# timestamp: Tue Aug 04 2020 15:43:57 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -195,7 +195,7 @@ type HeaderConnectionEdge {
 
 type HeaderHeader_links {
   link_title: Json
-  link_url: _Linkable
+  link_document: _Linkable
 }
 
 type HeaderSocial_media {

@@ -27,6 +27,7 @@
 }
 
 .link {
+  text-decoration: none;
   font-family: $poppins-semibold;
   font-size: 14px;
   color: white;
@@ -36,6 +37,7 @@
 }
 
 .action-button {
+  text-decoration: none;
   text-transform: uppercase;
   padding: 5px 15px;
   outline: none;
