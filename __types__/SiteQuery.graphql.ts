@@ -32,9 +32,6 @@ export type SiteQueryResponse = {
                         readonly __typename: "Founder";
                         readonly " $fragmentRefs": FragmentRefs<"Founder_data">;
                     } | {
-                        readonly __typename: "Tabs";
-                        readonly " $fragmentRefs": FragmentRefs<"Tabs_data">;
-                    } | {
                         readonly __typename: "Icon_tabs_section";
                         readonly " $fragmentRefs": FragmentRefs<"IconTabs_data">;
                     } | {
@@ -81,9 +78,6 @@ query SiteQuery(
             }
             ... on Founder {
               ...Founder_data
-            }
-            ... on Tabs {
-              ...Tabs_data
             }
             ... on Icon_tabs_section {
               ...IconTabs_data
@@ -143,6 +137,18 @@ fragment ImpactItem_data on Icon_listIcon_list_elements {
 
 fragment MalnutritionSection_data on Malnutrition_section {
   malnutrition_title
+  malnutrition_image_1
+  malnutrition_external_menu {
+    __typename
+    _linkType
+    ... on Malnutrition_menu {
+      malnutrition_menu {
+        malnutrition_menu_item
+        malnutrition_menu_item_text
+        malnutrition_menu_item_description
+      }
+    }
+  }
 }
 
 fragment NewsBanner_data on News_banner {
@@ -163,17 +169,6 @@ fragment NewsBanner_data on News_banner {
 
 fragment Presentation_data on Presentation {
   title
-}
-
-fragment Tabs_data on Tabs {
-  background_color
-  tabs_name_color
-  tabs_name_selected_color
-  tabs_content_color
-  tabs_list {
-    name
-    content
-  }
 }
 */
 
@@ -340,17 +335,6 @@ return {
                               }
                             ],
                             "type": "Founder"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              {
-                                "args": null,
-                                "kind": "FragmentSpread",
-                                "name": "Tabs_data"
-                              }
-                            ],
-                            "type": "Tabs"
                           },
                           {
                             "kind": "InlineFragment",
@@ -585,65 +569,6 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "background_color",
-                                "storageKey": null
-                              },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "tabs_name_color",
-                                "storageKey": null
-                              },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "tabs_name_selected_color",
-                                "storageKey": null
-                              },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "tabs_content_color",
-                                "storageKey": null
-                              },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "concreteType": "TabsTabs_list",
-                                "kind": "LinkedField",
-                                "name": "tabs_list",
-                                "plural": true,
-                                "selections": [
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "name",
-                                    "storageKey": null
-                                  },
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "content",
-                                    "storageKey": null
-                                  }
-                                ],
-                                "storageKey": null
-                              }
-                            ],
-                            "type": "Tabs"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
                               (v3/*: any*/),
                               {
                                 "alias": null,
@@ -713,6 +638,64 @@ return {
                                 "kind": "ScalarField",
                                 "name": "malnutrition_title",
                                 "storageKey": null
+                              },
+                              {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
+                                "name": "malnutrition_image_1",
+                                "storageKey": null
+                              },
+                              {
+                                "alias": null,
+                                "args": null,
+                                "concreteType": null,
+                                "kind": "LinkedField",
+                                "name": "malnutrition_external_menu",
+                                "plural": false,
+                                "selections": [
+                                  (v2/*: any*/),
+                                  (v5/*: any*/),
+                                  {
+                                    "kind": "InlineFragment",
+                                    "selections": [
+                                      {
+                                        "alias": null,
+                                        "args": null,
+                                        "concreteType": "Malnutrition_menuMalnutrition_menu",
+                                        "kind": "LinkedField",
+                                        "name": "malnutrition_menu",
+                                        "plural": true,
+                                        "selections": [
+                                          {
+                                            "alias": null,
+                                            "args": null,
+                                            "kind": "ScalarField",
+                                            "name": "malnutrition_menu_item",
+                                            "storageKey": null
+                                          },
+                                          {
+                                            "alias": null,
+                                            "args": null,
+                                            "kind": "ScalarField",
+                                            "name": "malnutrition_menu_item_text",
+                                            "storageKey": null
+                                          },
+                                          {
+                                            "alias": null,
+                                            "args": null,
+                                            "kind": "ScalarField",
+                                            "name": "malnutrition_menu_item_description",
+                                            "storageKey": null
+                                          }
+                                        ],
+                                        "storageKey": null
+                                      }
+                                    ],
+                                    "type": "Malnutrition_menu"
+                                  }
+                                ],
+                                "storageKey": null
                               }
                             ],
                             "type": "Malnutrition_section"
@@ -739,9 +722,9 @@ return {
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Malnutrition_section {\n              ...MalnutritionSection_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment MalnutritionSection_data on Malnutrition_section {\n  malnutrition_title\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_content_color\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Icon_list {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Malnutrition_section {\n              ...MalnutritionSection_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Icon_list {\n  section_title\n  icon_list_elements {\n    ...ImpactItem_data\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listIcon_list_elements {\n  title\n  subtitle\n  icon\n}\n\nfragment MalnutritionSection_data on Malnutrition_section {\n  malnutrition_title\n  malnutrition_image_1\n  malnutrition_external_menu {\n    __typename\n    _linkType\n    ... on Malnutrition_menu {\n      malnutrition_menu {\n        malnutrition_menu_item\n        malnutrition_menu_item_text\n        malnutrition_menu_item_description\n      }\n    }\n  }\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n}\n"
   }
 };
 })();
-(node as any).hash = 'ce40c398180554e68f2ea020077fb1ff';
+(node as any).hash = '0903fa3362af2215ff065f6a2a3cccfe';
 export default node;
