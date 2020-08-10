@@ -76,7 +76,7 @@
 }
 
 .menu-icon {
-  max-width: 50px;
+  max-width: 90px;
   padding: 10px;
   margin-right: 10px;
 }
@@ -86,7 +86,6 @@
   color: $buccaneer;
   font-family: $poppins-regular;
   align-content: right;
-  margin-right: 0px;
 
   .menu:not(.selected) & {
     display: none;
