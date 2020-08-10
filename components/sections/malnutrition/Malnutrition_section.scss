@@ -8,31 +8,28 @@
   height: 2600px;
   position: relative;
   padding: 50px;
-  
-  article {
-    position: absolute;
-    align-content: center;
-    bottom: 95%;
-    color: black;
-    width: 100%;
-  }
 }
 
 .section-title {
+  justify-content: center;
+  text-align: center;
   position: absolute;
   align-content: center;
-  bottom: 95%;
   color: black;
-  width: 100%;
+  width: 500px;
+  padding-left: 33%;
+  //font-size: 15px;
 }
 
 .section-content {
   display: flex;
   width: 100%;
+  padding-top: 20%;
 }
 
 .malnutrition_menues {
   flex: 1;
+  padding-left: 15%;
 }
 
 .malnutrition_menu {
@@ -45,7 +42,7 @@
   text-align: left;
   cursor: pointer;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
 
   &:last-child {
     margin-bottom: 0;
@@ -64,22 +61,14 @@
   }
 }
 
-.menuSelectedIcon {
-  font-size: 35px;
-  color: $buccaneer;
-  font-family: $poppins-regular;
-
-  .menu:not(.selected) & {
-    display: none;
-  }
-}
-
 .menu-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding-right: 15%;
+  max-width: 30%;
 }
 
 .menu-image {
@@ -87,11 +76,21 @@
 }
 
 .menu-icon {
-  max-width: 40px;
-  background-color: $gold-drop;
-  border-radius: 50%;
+  max-width: 50px;
   padding: 10px;
-  margin-right: 20px;
+  margin-right: 10px;
+}
+
+.menuSelectedIcon {
+  font-size: 35px;
+  color: $buccaneer;
+  font-family: $poppins-regular;
+  align-content: right;
+  margin-right: 0px;
+
+  .menu:not(.selected) & {
+    display: none;
+  }
 }
 
 .menu-description {
@@ -105,21 +104,5 @@
 .menu-info {
   display: flex;
   align-items: center;
-}
-
-@media (max-width: 500px) {
-  .malnutrition-section {
-    $padding: 20px;
-    
-    background-position: center;
-    text-align: center;
-    padding: $padding;
-    
-    article {
-      width: calc(100% - #{$padding * 2});
-    }
-
-    @include background-opaque;
-  }
 }
 

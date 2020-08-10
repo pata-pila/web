@@ -39,9 +39,8 @@ export const Malnutrition_section: FC<Props> = (props) => {
   >
 
     <div className={css.sectionTitle}>
-      {props.malnutrition_title}
+      <h1>{props.malnutrition_title}</h1>
     </div>
-
     <div className={css.sectionContent}>
         <div className={classnames(css.malnutrition_menues, css.webContent)}>
           {props.malnutrition_external_menu.malnutrition_menu.map((menu, index) => (
