@@ -5,7 +5,7 @@
 .malnutrition-section {
   background-size: cover;
   background-position: left;
-  height: 2600px;
+  height: 1500px;
   position: relative;
   padding: 50px;
 }
@@ -18,24 +18,24 @@
   color: black;
   width: 500px;
   padding-left: 33%;
-  //font-size: 15px;
+  margin-top: 1%;
+  font-size: 40px;
 }
 
 .section-content {
   display: flex;
   width: 100%;
-  padding-top: 20%;
+  padding-top: 11%;
 }
 
 .malnutrition_menues {
   flex: 1;
-  padding-left: 15%;
+  padding-left: 10%;
 }
 
 .malnutrition_menu {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -52,9 +52,9 @@
 .menu-title {
   text-transform: uppercase;
   font-family: $poppins-semibold;
-  font-size: 20px;
+  font-size: 30px;
   letter-spacing: 2px;
-  max-width: 200px;
+  margin-right: 10%;
 
   .selected & {
     color: $buccaneer;
@@ -67,8 +67,9 @@
   align-items: center;
   flex: 1;
   justify-content: flex-start;
-  padding-right: 15%;
-  max-width: 30%;
+  padding-right: 10%;
+  max-width: 40%;
+  font-size: 20px;
 }
 
 .menu-image {
@@ -76,13 +77,14 @@
 }
 
 .menu-icon {
-  max-width: 90px;
+  max-width: 110px;
   padding: 10px;
   margin-right: 10px;
+  font-size: 50px;
 }
 
 .menuSelectedIcon {
-  font-size: 35px;
+  font-size: 50px;
   color: $buccaneer;
   font-family: $poppins-regular;
   align-content: right;

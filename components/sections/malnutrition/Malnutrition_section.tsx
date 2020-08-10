@@ -39,7 +39,7 @@ export const Malnutrition_section: FC<Props> = (props) => {
   >
 
     <div className={css.sectionTitle}>
-      <h1>{props.malnutrition_title}</h1>
+      {props.malnutrition_title}
     </div>
     <div className={css.sectionContent}>
         <div className={classnames(css.malnutrition_menues, css.webContent)}>
