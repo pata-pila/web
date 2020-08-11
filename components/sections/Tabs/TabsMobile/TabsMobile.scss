@@ -2,7 +2,6 @@
 
 .tabs {
   min-height: 300px;
-  font-family: $poppins-semibold;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -16,14 +15,19 @@
     flex-direction: column;
 
     .name {
+      font-family: $poppins-semibold;
       font-size: 20px;
       color: #df8832;
     }
 
     .content {
       text-align: center;
-      font-size: 15px;
       color: #000000;
+    }
+
+    .content p {
+      font-family: $poppins-semibold;
+      font-size: 15px;
     }
   }
 }
