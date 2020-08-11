@@ -1,0 +1,66 @@
+@import "styles/colors.scss";
+
+.footerRoot {
+  color: $dune;
+  font-family: "Poppins Semibold", serif;
+  padding: 30px 15px;
+  text-align: center;
+  border-top: 1px solid;
+}
+
+.actionButtonList {
+  display: flex;
+  justify-content: center;
+  margin: 0 -10px;
+}
+
+.actionButtonItem {
+  display: inline-flex;
+  margin: 0 10px;
+}
+
+.actionButton {
+  color: $dune;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  border: 1px solid $dune;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navigationLinkList {
+  margin: 30px 0;
+}
+
+.navigationLinkItem {
+  margin: 10px 0;
+}
+
+.navigationLink {
+  color: $dune;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.socialNetworkList {
+  margin: 15px -15px;
+}
+
+.socialNetworkItem {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.socialNetworkImage {
+  // 83.5% is to match the $dune color.
+  -webkit-filter: invert(83.5%);
+  filter: invert(83.5%);
+  height: 32px;
+}
+
+.copyright {
+  font-family: "Poppins Light", serif;
+  font-size: 10px;
+}
