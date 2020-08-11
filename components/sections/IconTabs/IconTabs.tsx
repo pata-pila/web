@@ -39,8 +39,8 @@ export const IconTabs: FC<Props> = (props) => {
         backgroundColor: section_background_color,
       }}
     >
-      <div className={styles.sectionContent}>
-        <span className={styles.title}>{section_title[0].text}</span>
+      <div className="section-content mobile-column">
+        <span className="vertical-title">{section_title[0].text}</span>
         <div className={classnames(styles.tabs, styles.webContent)}>
           {icon_tabs.map((tab, index) => (
             <button

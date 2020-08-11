@@ -1,4 +1,5 @@
-@import "../../../styles/fonts.scss";
+@import "styles/fonts";
+@import "styles/sizes";
 
 .container {
   background-size: cover;
@@ -6,20 +7,17 @@
   height: 600px;
   display: flex;
   align-items: center;
-  padding: 0 60px;
-}
+  justify-content: center;
+  padding: $section-vertical-padding $section-horizontal-padding;
 
-.title {
-  color: white;
-  font-family: $poppins-semibold;
-  transform: rotate(180deg);
-  writing-mode: vertical-rl;
-  align-self: flex-start;
-  margin-right: 30px;
-  font-size: 12px;
+  .title {
+    color: white;
+  }
+  
 }
 
 .section-content {
   display: flex;
   width: 100%;
+  max-width: $max-desktop-size;
 }

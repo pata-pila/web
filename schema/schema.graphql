@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Tue Aug 04 2020 15:43:57 GMT-0300 (Argentina Standard Time)
+# timestamp: Tue Aug 11 2020 15:18:17 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -408,6 +408,7 @@ type Malnutrition_menuConnectionEdge {
 type Malnutrition_menuMalnutrition_menu {
   malnutrition_menu_item: Json
   malnutrition_menu_item_text: Json
+  malnutrition_menu_item_description: Json
 }
 
 type Malnutrition_section implements _Document & _Linkable {

@@ -1,8 +1,13 @@
 @import "styles/colors";
 @import "styles/fonts";
+@import "styles/sizes";
 
 .presentation {
-  padding: 30px 20px 0; // TODO: Section padding should be the same everywhere.
+  padding: $section-vertical-padding $section-horizontal-padding; // TODO: Section padding should be the same everywhere.
+  min-height: $section-vertical-min-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   // TODO: Title placement should be the same everywhere.
   h3 {
@@ -44,8 +49,6 @@
 // TODO: Switch from mobile first to desktop first in all places by using max-width instead.
 @media (min-width: 900px) {
   .presentation {
-    padding: 20px; // TODO: Section padding should be the same everywhere.
-
     // TODO: Title placement should be the same everywhere.
     h3 {
       margin-top: 40px; // TODO: This is hardcoded. It should be placed the same in all places.

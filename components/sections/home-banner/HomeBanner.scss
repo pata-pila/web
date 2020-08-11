@@ -3,15 +3,17 @@
 .home-banner {
   background-size: cover;
   background-position: left;
-  height: 600px;
+  height: 800px;
   position: relative;
   padding: 50px;
+  display: flex;
+  justify-content: center;
   
   article {
-    position: absolute;
-    bottom: 20%;
     color: white;
     width: 35%;
+    align-self: flex-end;
+    z-index: 1;
   }
 }
 

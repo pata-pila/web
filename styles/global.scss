@@ -1,6 +1,11 @@
 @import "colors";
 @import "fonts";
 @import "themes";
+@import "sizes";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -59,5 +64,34 @@ strong > a, a > strong {
   
   p {
     font-size: 12px;
+  }
+} 
+:global {
+  .section-content {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    max-width: $max-desktop-size;
+
+    &.mobile-column {
+      @media (max-width: $mobile-max) {
+        flex-direction: column;
+      }
+    }
+  }
+  
+  .vertical-title {
+    color: $gold-drop;
+    font-family: $poppins-semibold;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    align-self: flex-start;
+    margin-right: 30px;
+    font-size: 12px;
+
+    @media (max-width: $mobile-max) {
+      transform: none;
+      writing-mode: horizontal-tb;
+    }
   }
 }
