@@ -4,7 +4,7 @@
 .container {
   background-size: cover;
   background-position: center;
-  height: 600px;
+  min-height: $section-vertical-min-height;
   display: flex;
   align-items: center;
   justify-content: center;
