@@ -19,15 +19,6 @@ export class TabsDesktop extends PureComponent<Props, { selectedTab: number }> {
     this.setState({ selectedTab: index });
   }
 
-  private tabNameColor(index: number): string {
-    const { tabs_name_selected_color } = this.props;
-    const { selectedTab } = this.state;
-
-    if (selectedTab === index) {
-      return tabs_name_selected_color ?? "#df8832";
-    }
-  }
-
   private isSelectedTab(index: number): boolean {
     const { selectedTab } = this.state;
     return selectedTab === index;
@@ -68,10 +59,9 @@ export class TabsDesktop extends PureComponent<Props, { selectedTab: number }> {
         <div className={styles.tabsContent}>
           {tabs_list.map((tab, index) => (
             <div
-              key={`tab-contant-${index}`}
-              className={styles.tabTitle}
+              key={`tab-content-${index}`}
+              className={styles.tabContent}
               style={{
-                color: tab.content_color,
                 display: this.isSelectedTab(index) ? "block" : "none",
               }}
             >
