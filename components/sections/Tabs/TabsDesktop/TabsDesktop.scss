@@ -4,20 +4,16 @@
   min-height: 300px;
   padding-top: 50px;
   padding-bottom: 50px;
-  font-family: $poppins-semibold;
   background-color: #31683d;
 }
 
 .tabs-name {
+  font-family: $poppins-semibold;
   display: flex;
   flex-direction: row;
   padding-bottom: 30px;
   justify-content: center;
   align-content: center;
-}
-
-.tab-title {
-  color: #ffffff;
 }
 
 .tab-name {
@@ -31,6 +27,13 @@
 
 .tabs-content {
   padding: 0 15vw;
+  text-align: center;
+}
+
+.tabs-content p {
+  font-family: $poppins-semibold;
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .selected-tab-name {
