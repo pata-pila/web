@@ -34,7 +34,7 @@ export const IconTabs: FC<Props> = (props) => {
   const { section_title, icon_tabs, section_background_color } = props;
   return (
     <section
-      className={styles.container}
+      className={`${styles.container} section-container`}
       style={{
         backgroundColor: section_background_color,
       }}

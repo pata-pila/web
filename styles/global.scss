@@ -79,6 +79,11 @@ strong > a, a > strong {
       }
     }
   }
+
+  .section-container {
+    min-height: $section-vertical-min-height;
+    padding: $section-vertical-padding $section-horizontal-padding;
+  }
   
   .vertical-title {
     color: $gold-drop;

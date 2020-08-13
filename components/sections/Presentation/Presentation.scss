@@ -3,8 +3,6 @@
 @import "styles/sizes";
 
 .presentation {
-  padding: $section-vertical-padding $section-horizontal-padding; // TODO: Section padding should be the same everywhere.
-  min-height: $section-vertical-min-height;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -3,10 +3,8 @@
 @import "styles/sizes";
 
 .container {
-  padding: $section-vertical-padding $section-horizontal-padding;
   display: flex;
   justify-content: center;
-  min-height: $section-vertical-min-height;
 }
 
 .article-container {

@@ -16,7 +16,11 @@ import { RichText } from "prismic-reactjs";
 export const Presentation: FC<Props> = (props) => {
   return (
     <section
-      className={classnames(props.theme.toLowerCase(), css.presentation)}
+      className={classnames(
+        props.theme.toLowerCase(),
+        css.presentation,
+        "section-container"
+      )}
     >
       <div className="section-content mobile-column">
         <span className="vertical-title">{props.title[0].text}</span>

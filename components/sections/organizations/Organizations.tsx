@@ -11,7 +11,7 @@ import styles from "./Organizations.scss";
 import Organization from "./Organization";
 
 export const Organizations: FC<Props> = (props) => (
-  <section className={styles.section}>
+  <section className={`${styles.section} section-container`}>
     <div className="section-content mobile-column">
       <span className="vertical-title">{props.section_name}</span>
       <div className={styles.organizations}>

@@ -12,7 +12,7 @@ export const ImpactBanner: FC<Props> = (props) => {
   const { section_title, icon_list_elements, background_image } = props;
   return (
     <section
-      className={styles.container}
+      className={`${styles.container} section-container`}
       style={{
         backgroundImage: `url(${(background_image as any).url})`,
       }}

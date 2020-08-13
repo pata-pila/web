@@ -43,7 +43,7 @@ export class TabsDesktop extends PureComponent<Props, { selectedTab: number }> {
 
     return (
       <section
-        className={styles.tabs}
+        className={`${styles.tabs} section-container`}
         style={{ backgroundColor: background_color }}
       >
         <div className={styles.tabsName}>

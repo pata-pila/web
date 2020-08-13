@@ -9,6 +9,7 @@ export const Responsive = (props) => {
   const componentProps = { ...props };
   delete componentProps.mobile;
   delete componentProps.desktop;
+  delete componentProps.tablet;
 
   return (
     <>

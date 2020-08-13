@@ -5,11 +5,9 @@
 .container {
   background-size: cover;
   background-position: center;
-  min-height: $section-vertical-min-height;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: $section-vertical-padding $section-horizontal-padding;
 }
 
 .tabs {
