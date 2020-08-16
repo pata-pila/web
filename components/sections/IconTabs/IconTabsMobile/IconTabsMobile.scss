@@ -1,0 +1,114 @@
+@import "../../../../styles/fonts.scss";
+@import "../../../../styles/colors.scss";
+
+.container {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8vw;
+}
+
+.title {
+  padding: 7vw 0 7vw 8vw;
+  color: $gold-drop;
+  font-family: $poppins-semibold;
+  align-self: flex-start;
+  font-size: 12px;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10vw 40px 10vw;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tab-item {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+
+  .selected & {
+    margin-bottom: 30px;
+  }
+}
+
+.tab-title {
+  display: flex;
+  align-items: center;
+
+  span {
+    text-transform: uppercase;
+    font-family: $poppins-semibold;
+    font-size: 17px;
+    letter-spacing: 2px;
+    line-height: normal;
+  }
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: space-between;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .tab:not(.selected) & {
+    display: none;
+  }
+}
+
+.tabSelectedIcon {
+  font-size: 40px;
+  color: $buccaneer;
+  font-family: $poppins-light;
+}
+
+.tab-icon {
+  max-width: 60px;
+  margin-right: 20px;
+}
+
+.tab-description {
+  font-size: 13px;
+  padding: 10px 0 10px 0;
+  font-family: $poppins-regular;
+  color: gray;
+  text-align: center;
+}
+
+.read-more-button {
+  color: white;
+  width: 150px;
+  background-color: $gold-drop;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: $poppins-semibold;
+  text-align: center;
+}
+
+.mobile-content {
+  display: none;
+}
