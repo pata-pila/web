@@ -4,6 +4,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Footer_data = {
+    readonly pata_pila_icon: unknown | null;
     readonly social_networks: ReadonlyArray<{
         readonly image: unknown | null;
         readonly link: {
@@ -84,6 +85,13 @@ return {
     {
       "alias": null,
       "args": null,
+      "kind": "ScalarField",
+      "name": "pata_pila_icon",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
       "concreteType": "FooterSocial_networks",
       "kind": "LinkedField",
       "name": "social_networks",
@@ -147,5 +155,5 @@ return {
   "type": "Footer"
 };
 })();
-(node as any).hash = '3d1a2ea52418ca3a59174776503fe5dc';
+(node as any).hash = '3f290d9db5ae6399b5a32ed124847ce6';
 export default node;
