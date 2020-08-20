@@ -5,7 +5,12 @@ import { TabsMobile } from "./TabsMobile";
 import { Responsive } from "../../Responsive";
 
 const Tabs = (props: any) => (
-  <Responsive {...props} mobile={TabsMobile} desktop={TabsDesktop} />
+  <Responsive
+    {...props}
+    mobile={TabsMobile}
+    desktop={TabsDesktop}
+    tablet={TabsDesktop}
+  />
 );
 
 export default createFragmentContainer(singleFragmentComponent(Tabs), {

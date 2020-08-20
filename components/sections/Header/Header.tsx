@@ -8,7 +8,12 @@ import HeaderDesktop from "./HeaderDesktop";
 import { Responsive } from "../../Responsive";
 
 const Header = (props: any) => (
-  <Responsive {...props} mobile={HeaderMobile} desktop={HeaderDesktop} />
+  <Responsive
+    {...props}
+    mobile={HeaderMobile}
+    tablet={HeaderMobile}
+    desktop={HeaderDesktop}
+  />
 );
 
 export const HeaderContainer = createFragmentContainer(

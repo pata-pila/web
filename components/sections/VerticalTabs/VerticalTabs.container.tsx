@@ -8,6 +8,7 @@ const VerticalTabs = (props: any) => (
   <Responsive
     {...props}
     mobile={VerticalTabsMobile}
+    tablet={VerticalTabsDesktop}
     desktop={VerticalTabsDesktop}
   />
 );

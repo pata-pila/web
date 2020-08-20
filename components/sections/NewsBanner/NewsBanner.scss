@@ -1,11 +1,10 @@
-@import "../../../styles/colors.scss";
-@import "../../../styles/fonts.scss";
+@import "styles/colors";
+@import "styles/fonts";
+@import "styles/sizes";
 
 .container {
-  padding: 40px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .article-container {
@@ -20,6 +19,12 @@
   &:last-child {
     margin-right: 0;
   }
+}
+
+.section-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .info-container {

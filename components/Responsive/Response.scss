@@ -1,15 +1,27 @@
+@import "styles/sizes";
+
 .mobile {
   display: none;
 
-  @media (max-width: 1024px) {
+  @media (max-width: $mobile-max) {
     display: block;
   }
 }
 
-.desktop {
-  display: block;
 
-  @media (max-width: 1024px) {
-    display: none;
+.tablet {
+  display: none;
+
+  @media (min-width: $tablet-min + 1px) and (max-width: $tablet-max) {
+    display: block;
+  }
+}
+
+
+.desktop {
+  display: none;
+
+  @media (min-width: $desktop-min + 1px) {
+    display: block;
   }
 }
