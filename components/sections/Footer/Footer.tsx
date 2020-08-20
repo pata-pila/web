@@ -15,56 +15,64 @@ const Footer: FC<Props> = (props) => {
   const pataPilaIcon = props.pata_pila_icon as PrismicImage;
   return (
     <footer className={styles.footerRoot}>
-      <div>
-        <img
-          src={pataPilaIcon.url}
-          alt={pataPilaIcon.alt}
-          className={styles.logo}
-        />
-      </div>
-      <ul className={styles.actionButtonList}>
-        {props.action_buttons.map((link, index) => (
-          <li key={index} className={styles.actionButtonItem}>
-            <DocumentLink
-              className={styles.actionButton}
-              documentId={link.link._meta.id}
-            >
-              {link.text}
-            </DocumentLink>
-          </li>
-        ))}
-      </ul>
-      <ul className={styles.navigationLinkList}>
-        {props.navigation_links.map((link, index) => (
-          <li key={index} className={styles.navigationLinkItem}>
-            <DocumentLink
-              className={styles.navigationLink}
-              documentId={link.link._meta.id}
-            >
-              {link.text}
-            </DocumentLink>
-          </li>
-        ))}
-      </ul>
-      <ul className={styles.socialNetworkList}>
-        {props.social_networks.map((socialNetwork, index) => {
-          const image = socialNetwork.image as PrismicImage;
-          return (
-            <li key={index} className={styles.socialNetworkItem}>
-              <a href={socialNetwork.link.url}>
-                <img
-                  className={styles.socialNetworkImage}
-                  src={image.url}
-                  alt={image.alt}
-                />
-              </a>
+      <div className={styles.footerWrapper}>
+        <div className={styles.logoWrapper}>
+          <img
+            src={pataPilaIcon.url}
+            alt={pataPilaIcon.alt}
+            className={styles.logo}
+          />
+        </div>
+        <ul className={styles.actionButtonList}>
+          {props.action_buttons.map((link, index) => (
+            <li key={index} className={styles.actionButtonItem}>
+              <DocumentLink
+                className={styles.actionButton}
+                documentId={link.link._meta.id}
+              >
+                {link.text}
+              </DocumentLink>
             </li>
-          );
-        })}
-      </ul>
-      <small className={styles.copyright}>
-        All rights reserved © 2020 Pata Pila Asociación Civil
-      </small>
+          ))}
+        </ul>
+        <ul className={styles.navigationLinkList}>
+          {props.navigation_links.map((link, index) => (
+            <>
+              {index > 0 ? <li className={styles.navigationSeparator} /> : null}
+              <li key={index} className={styles.navigationLinkItem}>
+                <DocumentLink
+                  className={styles.navigationLink}
+                  documentId={link.link._meta.id}
+                >
+                  {link.text}
+                </DocumentLink>
+              </li>
+            </>
+          ))}
+        </ul>
+        <ul className={styles.socialNetworkList}>
+          {props.social_networks.map((socialNetwork, index) => {
+            const image = socialNetwork.image as PrismicImage;
+            return (
+              <li key={index} className={styles.socialNetworkItem}>
+                <a href={socialNetwork.link.url}>
+                  <img
+                    className={styles.socialNetworkImage}
+                    src={image.url}
+                    alt={image.alt}
+                  />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <small className={styles.copyright}>
+          <span className={styles.rights}>All rights reserved</span>
+          <span className={styles.copyrightNotice}>
+            © 2020 Pata Pila Asociación Civil
+          </span>
+        </small>
+      </div>
     </footer>
   );
 };
