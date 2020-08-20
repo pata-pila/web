@@ -1,5 +1,6 @@
-@import "../../../../styles/fonts.scss";
-@import "../../../../styles/colors.scss";
+@import "styles/fonts.scss";
+@import "styles/colors.scss";
+@import "styles/sizes";
 
 .container {
   background-size: cover;
@@ -68,6 +69,10 @@
   justify-content: space-between;
 
   img {
+    @media (max-width: $tablet-max) {
+      max-width: 70%;
+    }
+
     max-width: 100%;
     max-height: 100%;
   }
