@@ -12,13 +12,13 @@ export const ImpactBanner: FC<Props> = (props) => {
   const { section_title, icon_list_elements, background_image } = props;
   return (
     <section
-      className={styles.container}
+      className={`${styles.container} section-container`}
       style={{
         backgroundImage: `url(${(background_image as any).url})`,
       }}
     >
-      <div className={styles.sectionContent}>
-        <span className={styles.title}>{section_title[0].text}</span>
+      <div className="section-content mobile-column">
+        <span className={`${styles.title} vertical-title`}>{section_title[0].text}</span>
         <div>
           {icon_list_elements.map((item, index) => (
             <ImpactItem data={item} key={index} />

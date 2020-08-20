@@ -17,9 +17,11 @@ export const HomeBanner: FC<Props> = (props) => (
       backgroundImage: `url(${(props.banner_image as any).url})`,
     }}
   >
-    <article>
-      <Text elements={props.banner_text} />
-    </article>
+    <div className="section-content">
+      <article>
+        <Text elements={props.banner_text} />
+      </article>
+    </div>
   </section>
 );
 
