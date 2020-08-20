@@ -3,9 +3,13 @@
 .footerRoot {
   color: $dune;
   font-family: "Poppins Semibold", serif;
-  padding: 30px 15px;
+  padding: 15px 15px 30px;
   text-align: center;
   border-top: 1px solid;
+}
+
+.logo {
+  height: 220px;
 }
 
 .actionButtonList {
