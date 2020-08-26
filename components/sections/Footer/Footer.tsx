@@ -55,7 +55,7 @@ const Footer: FC<Props> = (props) => {
             const image = socialNetwork.image as PrismicImage;
             return (
               <li key={index} className={styles.socialNetworkItem}>
-                <a href={socialNetwork.link.url}>
+                <a href={socialNetwork.link.url} target="_blank">
                   <img
                     className={styles.socialNetworkImage}
                     src={image.url}
