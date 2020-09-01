@@ -11,7 +11,6 @@ import css from "./Presentation.scss";
 // External
 import Slider from "../../Slider";
 import Text from "../../text";
-import { RichText } from "prismic-reactjs";
 
 export const Presentation: FC<Props> = (props) => {
   return (
