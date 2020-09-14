@@ -3,16 +3,16 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type ImpactItem_data = {
-    readonly title: unknown | null;
-    readonly subtitle: unknown | null;
+export type Item_data = {
+    readonly title: string | null;
+    readonly subtitle: string | null;
     readonly icon: unknown | null;
-    readonly " $refType": "ImpactItem_data";
+    readonly " $refType": "Item_data";
 };
-export type ImpactItem_data$data = ImpactItem_data;
-export type ImpactItem_data$key = {
-    readonly " $data"?: ImpactItem_data$data;
-    readonly " $fragmentRefs": FragmentRefs<"ImpactItem_data">;
+export type Item_data$data = Item_data;
+export type Item_data$key = {
+    readonly " $data"?: Item_data$data;
+    readonly " $fragmentRefs": FragmentRefs<"Item_data">;
 };
 
 
@@ -21,7 +21,7 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "ImpactItem_data",
+  "name": "Item_data",
   "selections": [
     {
       "alias": null,
@@ -45,7 +45,7 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Icon_listIcon_list_elements"
+  "type": "Icon_listElements"
 };
-(node as any).hash = '0fd32a7c7280998119e46bf7e496812e';
+(node as any).hash = '856e68b5ac5015608dfc201ec0d389b8';
 export default node;
