@@ -39,7 +39,7 @@ class Site extends Component<Props> {
                 ... on Home_banner {
                   ...HomeBanner_data
                 }
-                ... on Icon_list {
+                ... on Impact_section {
                   ...ImpactBanner_data
                 }
                 ... on Presentation {

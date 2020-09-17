@@ -1,4 +1,4 @@
-// React/Relay
+// Libraries
 import React, { FC } from "react";
 import { createFragmentContainer, graphql } from "react-relay";
 import singleFragmentComponent from "../../../lib/singleFragmentComponent";
@@ -7,9 +7,16 @@ import singleFragmentComponent from "../../../lib/singleFragmentComponent";
 import { Props } from "./ImpactBanner.types";
 import styles from "./ImpactBanner.scss";
 import { ImpactItemContainer as ImpactItem } from "./components/ImpactItem/ImpactItem";
+import Text from "../../text";
 
 export const ImpactBanner: FC<Props> = (props) => {
-  const { section_title, icon_list_elements, background_image } = props;
+  const { title, icons, background_image } = props;
+
+  let elements;
+  if (icons.__typename == "Icon_list") {
+    elements = icons.elements;
+  }
+
   return (
     <section
       className={`${styles.container} section-container`}
@@ -18,9 +25,11 @@ export const ImpactBanner: FC<Props> = (props) => {
       }}
     >
       <div className="section-content mobile-column">
-        <span className={`${styles.title} vertical-title`}>{section_title[0].text}</span>
+        <span className={`${styles.title} vertical-title`}>
+          <Text elements={title} />
+        </span>
         <div>
-          {icon_list_elements.map((item, index) => (
+          {elements.map((item, index) => (
             <ImpactItem data={item} key={index} />
           ))}
         </div>
@@ -33,10 +42,15 @@ export const ImpactBannerContainer = createFragmentContainer(
   singleFragmentComponent(ImpactBanner),
   {
     data: graphql`
-      fragment ImpactBanner_data on Icon_list {
-        section_title
-        icon_list_elements {
-          ...ImpactItem_data
+      fragment ImpactBanner_data on Impact_section {
+        title
+        icons {
+          __typename
+          ... on Icon_list {
+            elements {
+              ...ImpactItem_data
+            }
+          }
         }
         background_image
       }
