@@ -12,8 +12,8 @@ export const ImpactItem: FC<Props> = (props) => {
     <div className={styles.container}>
       <img className={styles.icon} src={(icon as any).url} />
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>{title[0].text}</h1>
-        <h6 className={styles.subtitle}>{subtitle[0].text}</h6>
+        <h1 className={styles.title}>{title}</h1>
+        <h6 className={styles.subtitle}>{subtitle}</h6>
       </div>
     </div>
   );
@@ -23,7 +23,7 @@ export const ImpactItemContainer = createFragmentContainer(
   singleFragmentComponent(ImpactItem),
   {
     data: graphql`
-      fragment ImpactItem_data on Icon_listIcon_list_elements {
+      fragment ImpactItem_data on Icon_listElements {
         title
         subtitle
         icon

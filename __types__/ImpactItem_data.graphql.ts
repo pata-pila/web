@@ -4,8 +4,8 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ImpactItem_data = {
-    readonly title: unknown | null;
-    readonly subtitle: unknown | null;
+    readonly title: string | null;
+    readonly subtitle: string | null;
     readonly icon: unknown | null;
     readonly " $refType": "ImpactItem_data";
 };
@@ -45,7 +45,7 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Icon_listIcon_list_elements"
+  "type": "Icon_listElements"
 };
-(node as any).hash = '0fd32a7c7280998119e46bf7e496812e';
+(node as any).hash = '1ae124dfbcc2a101eb627aeac5c422e6';
 export default node;

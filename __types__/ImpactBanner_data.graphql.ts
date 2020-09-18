@@ -4,10 +4,17 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ImpactBanner_data = {
-    readonly section_title: unknown | null;
-    readonly icon_list_elements: ReadonlyArray<{
-        readonly " $fragmentRefs": FragmentRefs<"ImpactItem_data">;
-    }> | null;
+    readonly title: unknown | null;
+    readonly icons: ({
+        readonly __typename: "Icon_list";
+        readonly elements: ReadonlyArray<{
+            readonly " $fragmentRefs": FragmentRefs<"ImpactItem_data">;
+        }> | null;
+    } | {
+        /*This will never be '%other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    }) | null;
     readonly background_image: unknown | null;
     readonly " $refType": "ImpactBanner_data";
 };
@@ -29,21 +36,45 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "section_title",
+      "name": "title",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
-      "concreteType": "Icon_listIcon_list_elements",
+      "concreteType": null,
       "kind": "LinkedField",
-      "name": "icon_list_elements",
-      "plural": true,
+      "name": "icons",
+      "plural": false,
       "selections": [
         {
+          "alias": null,
           "args": null,
-          "kind": "FragmentSpread",
-          "name": "ImpactItem_data"
+          "kind": "ScalarField",
+          "name": "__typename",
+          "storageKey": null
+        },
+        {
+          "kind": "InlineFragment",
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "concreteType": "Icon_listElements",
+              "kind": "LinkedField",
+              "name": "elements",
+              "plural": true,
+              "selections": [
+                {
+                  "args": null,
+                  "kind": "FragmentSpread",
+                  "name": "ImpactItem_data"
+                }
+              ],
+              "storageKey": null
+            }
+          ],
+          "type": "Icon_list"
         }
       ],
       "storageKey": null
@@ -56,7 +87,7 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Icon_list"
+  "type": "Impact_section"
 };
-(node as any).hash = 'd051855387d7dc62d0e6ff5a787b7b99';
+(node as any).hash = 'ee3cc8467c22352e472e4f118ebdede6';
 export default node;
