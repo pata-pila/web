@@ -18,13 +18,10 @@ export const ImpactSection: FC<Props> = (props) => {
       }}
     >
       <div className="section-content mobile-column">
-        <span className={`${styles.title} vertical-title`}>{title}</span>
-        <IconList data={icons}/>
-        {/* <div>
-          {icon_list_elements.map((item, index) => (
-            <ImpactItem data={item} key={index} />
-          ))}
-        </div> */}
+        <span className={`${styles.title} vertical-title`}>
+          {title[0].text}
+        </span>
+        <IconList data={icons} />
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Sun Sep 13 2020 21:05:57 GMT-0300 (Argentina Standard Time)
+# timestamp: Mon Sep 21 2020 20:19:30 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -360,7 +360,7 @@ type Impact_bannerConnectionEdge {
 }
 
 type Impact_section implements _Document & _Linkable {
-  title: String
+  title: Json
   background_image: Json
   icons: _Linkable
   _meta: Meta!
@@ -1312,7 +1312,7 @@ input WhereImpact_banner {
 }
 
 input WhereImpact_section {
-  title: String
+  """title"""
   title_fulltext: String
 
   """icons"""
