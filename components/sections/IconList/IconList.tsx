@@ -5,13 +5,11 @@ import singleFragmentComponent from "../../../lib/singleFragmentComponent";
 
 // Component
 import { Props } from "./IconList.types";
-import styles from "./IconList.scss";
 import { ItemContainer as Item } from "./Item";
 
 export const IconList: FC<Props> = (props) => {
   const { elements } = props;
   return (
-    // <article className={`${styles.container} section-container`}>
     <article>
       <div className="section-content mobile-column">
         <div>
