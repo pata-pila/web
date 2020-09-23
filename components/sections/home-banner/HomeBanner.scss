@@ -8,23 +8,28 @@
   padding: 50px;
   display: flex;
   justify-content: center;
-  
+
   article {
     color: white;
     width: 35%;
     align-self: flex-end;
-    z-index: 1;
+    position: relative;
+
+    h1 {
+      font-size: 53px;
+      line-height: 1.25;
+    }
   }
 }
 
 @media (max-width: 500px) {
   .home-banner {
     $padding: 20px;
-    
+
     background-position: center;
     text-align: center;
     padding: $padding;
-    
+
     article {
       width: calc(100% - #{$padding * 2});
     }

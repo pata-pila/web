@@ -1,4 +1,5 @@
 @import "styles/colors.scss";
+@import "styles/sizes.scss";
 
 .footerRoot {
   color: $dune;
@@ -8,15 +9,24 @@
   border-top: 1px solid;
 }
 
+.footerWrapper {
+  max-width: $max-desktop-size;
+  margin: auto;
+}
+
+.logo {
+  height: 150px;
+}
+
 .actionButtonList {
   display: flex;
   justify-content: center;
-  margin: 0 -10px;
+  margin: 30px -10px;
 }
 
 .actionButtonItem {
   display: inline-flex;
-  margin: 0 10px;
+  margin: auto 10px;
 }
 
 .actionButton {
@@ -36,6 +46,10 @@
 
 .navigationLinkItem {
   margin: 10px 0;
+}
+
+.navigationSeparator {
+  display: none;
 }
 
 .navigationLink {
@@ -63,4 +77,63 @@
 .copyright {
   font-family: "Poppins Light", serif;
   font-size: 10px;
+}
+
+@media (min-width: $desktop-min) {
+  .footerWrapper {
+    display: grid;
+  }
+
+  .logoWrapper {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .actionButtonList {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: flex-start;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+
+  .socialNetworkList {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+
+  .navigationLinkList {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .copyright {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+
+  .navigationLinkItem {
+    display: inline-block;
+  }
+
+  .navigationSeparator {
+    display: inline-block;
+    &::after {
+      content: "•";
+    }
+  }
+
+  .rights {
+    float: left;
+  }
+
+  .copyrightNotice {
+    float: right;
+  }
 }

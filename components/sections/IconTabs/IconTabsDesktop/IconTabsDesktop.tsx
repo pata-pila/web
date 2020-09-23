@@ -1,12 +1,10 @@
 // React/Relay
 import React, { FC, useState } from "react";
 import classnames from "classnames";
-import { createFragmentContainer, graphql } from "react-relay";
-import singleFragmentComponent from "../../../lib/singleFragmentComponent";
 
 // Component
-import { Props } from "./IconTabs.types";
-import styles from "./IconTabs.scss";
+import { Props } from "../IconTabs.types";
+import styles from "./IconTabsDesktop.scss";
 
 const Content = ({
   className,
@@ -29,7 +27,7 @@ const Content = ({
     </div>
   );
 };
-export const IconTabs: FC<Props> = (props) => {
+export const IconTabsDesktop: FC<Props> = (props) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const { section_title, icon_tabs, section_background_color } = props;
   return (
@@ -84,27 +82,3 @@ export const IconTabs: FC<Props> = (props) => {
     </section>
   );
 };
-
-export const IconTabsContainer = createFragmentContainer(
-  singleFragmentComponent(IconTabs),
-  {
-    data: graphql`
-      fragment IconTabs_data on Icon_tabs_section {
-        section_title
-        section_background_color
-        icon_tabs {
-          tab_icon
-          tab_image
-          tab_link {
-            _linkType
-            ... on _ExternalLink {
-              url
-            }
-          }
-          tab_title
-          tab_description
-        }
-      }
-    `,
-  }
-);

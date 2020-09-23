@@ -23,6 +23,7 @@ export const Header: FC<Props> = (props) => {
                   socialMedia.social_link &&
                   (socialMedia.social_link as any).url
                 }
+                target="_blank"
               >
                 <img
                   src={
