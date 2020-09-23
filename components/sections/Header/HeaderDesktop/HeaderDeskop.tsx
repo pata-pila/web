@@ -10,7 +10,9 @@ import DocumentLink from "components/DocumentLink";
 export const Header: FC<Props> = (props) => {
   return (
     <section className={styles.container}>
-      <div className={classnames("section-content", styles.headerSectionContainer)}>
+      <div
+        className={classnames("section-content", styles.headerSectionContainer)}
+      >
         <div className={styles.socialMedia}>
           {props.social_media.map((socialMedia, index) => {
             return (
