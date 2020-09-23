@@ -31,7 +31,7 @@ export type SiteQueryResponse = {
                         readonly " $fragmentRefs": FragmentRefs<"HomeBanner_data">;
                     } | {
                         readonly __typename: "Impact_section";
-                        readonly " $fragmentRefs": FragmentRefs<"ImpactBanner_data">;
+                        readonly " $fragmentRefs": FragmentRefs<"ImpactSection_data">;
                     } | {
                         readonly __typename: "Presentation";
                         readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
@@ -103,7 +103,7 @@ query SiteQuery(
               ...HomeBanner_data
             }
             ... on Impact_section {
-              ...ImpactBanner_data
+              ...ImpactSection_data
             }
             ... on Presentation {
               ...Presentation_data
@@ -240,6 +240,13 @@ fragment HomeBanner_data on Home_banner {
   banner_image
 }
 
+fragment IconList_data on Icon_list {
+  list_name
+  elements {
+    ...Item_data
+  }
+}
+
 fragment IconTabs_data on Icon_tabs_section {
   section_title
   section_background_color
@@ -258,20 +265,18 @@ fragment IconTabs_data on Icon_tabs_section {
   }
 }
 
-fragment ImpactBanner_data on Impact_section {
+fragment ImpactSection_data on Impact_section {
   title
   icons {
     __typename
     ... on Icon_list {
-      elements {
-        ...ImpactItem_data
-      }
+      ...IconList_data
     }
   }
   background_image
 }
 
-fragment ImpactItem_data on Icon_listElements {
+fragment Item_data on Icon_listElements {
   title
   subtitle
   icon
@@ -586,7 +591,7 @@ return {
                               {
                                 "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "ImpactBanner_data"
+                                "name": "ImpactSection_data"
                               }
                             ],
                             "type": "Impact_section"
@@ -803,6 +808,13 @@ return {
                                   {
                                     "kind": "InlineFragment",
                                     "selections": [
+                                      {
+                                        "alias": null,
+                                        "args": null,
+                                        "kind": "ScalarField",
+                                        "name": "list_name",
+                                        "storageKey": null
+                                      },
                                       {
                                         "alias": null,
                                         "args": null,
@@ -1381,9 +1393,9 @@ return {
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  routes: allLandings {\n    edges {\n      node {\n        route\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Impact_section {\n              ...ImpactBanner_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Footer {\n              ...Footer_data\n            }\n            ... on Header {\n              ...Header_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Footer_data on Footer {\n  pata_pila_icon\n  social_networks {\n    image\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  action_buttons {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  navigation_links {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment Header_data on Header {\n  pata_pila_icon\n  social_media {\n    social_icon\n    social_name\n    social_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  header_links {\n    link_title\n    link_document {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  action_buttons {\n    background_color\n    border_color\n    text_color\n    mobile_background_color\n    mobile_border_color\n    mobile_text_color\n    action_title\n    action {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactBanner_data on Impact_section {\n  title\n  icons {\n    __typename\n    ... on Icon_list {\n      elements {\n        ...ImpactItem_data\n      }\n    }\n  }\n  background_image\n}\n\nfragment ImpactItem_data on Icon_listElements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  routes: allLandings {\n    edges {\n      node {\n        route\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Impact_section {\n              ...ImpactSection_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Footer {\n              ...Footer_data\n            }\n            ... on Header {\n              ...Header_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Footer_data on Footer {\n  pata_pila_icon\n  social_networks {\n    image\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  action_buttons {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  navigation_links {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment Header_data on Header {\n  pata_pila_icon\n  social_media {\n    social_icon\n    social_name\n    social_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  header_links {\n    link_title\n    link_document {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  action_buttons {\n    background_color\n    border_color\n    text_color\n    mobile_background_color\n    mobile_border_color\n    mobile_text_color\n    action_title\n    action {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconList_data on Icon_list {\n  list_name\n  elements {\n    ...Item_data\n  }\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactSection_data on Impact_section {\n  title\n  icons {\n    __typename\n    ... on Icon_list {\n      ...IconList_data\n    }\n  }\n  background_image\n}\n\nfragment Item_data on Icon_listElements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '32cfc41ba623bbff82967d35a6d54a37';
+(node as any).hash = '09ec694505773cc98505bc4c927f5792';
 export default node;

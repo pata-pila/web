@@ -1,12 +1,12 @@
 // React/Relay
 import React, { FC } from "react";
 import { createFragmentContainer, graphql } from "react-relay";
-import singleFragmentComponent from "../../../../../lib/singleFragmentComponent";
+import singleFragmentComponent from "../../../../lib/singleFragmentComponent";
 
-import { Props } from "./ImpactItem.types";
-import styles from "./ImpactItem.scss";
+import { Props } from "./Item.types";
+import styles from "./Item.scss";
 
-export const ImpactItem: FC<Props> = (props) => {
+export const Item: FC<Props> = (props) => {
   const { title, subtitle, icon } = props;
   return (
     <div className={styles.container}>
@@ -19,11 +19,11 @@ export const ImpactItem: FC<Props> = (props) => {
   );
 };
 
-export const ImpactItemContainer = createFragmentContainer(
-  singleFragmentComponent(ImpactItem),
+export const ItemContainer = createFragmentContainer(
+  singleFragmentComponent(Item),
   {
     data: graphql`
-      fragment ImpactItem_data on Icon_listElements {
+      fragment Item_data on Icon_listElements {
         title
         subtitle
         icon

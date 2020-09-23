@@ -40,7 +40,7 @@ class Site extends Component<Props> {
                   ...HomeBanner_data
                 }
                 ... on Impact_section {
-                  ...ImpactBanner_data
+                  ...ImpactSection_data
                 }
                 ... on Presentation {
                   ...Presentation_data
