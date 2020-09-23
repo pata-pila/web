@@ -41,6 +41,10 @@
   margin-right: 20px;
   cursor: pointer;
 
+  &.selected {
+    text-decoration: underline;
+  }
+
   &:hover {
     text-decoration: underline;
   }
@@ -56,6 +60,11 @@
   font-family: $poppins-semibold;
   margin-right: 10px;
   cursor: pointer;
+
+  &:hover {
+    background-color: $gold-drop !important;
+    border-color: $gold-drop !important;
+  }
 
   &:last-child {
     margin-right: 0;
