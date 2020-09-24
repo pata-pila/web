@@ -36,18 +36,6 @@ export type SiteQueryResponse = {
                         readonly __typename: "Presentation";
                         readonly " $fragmentRefs": FragmentRefs<"Presentation_data">;
                     } | {
-                        readonly __typename: "Organizations";
-                        readonly " $fragmentRefs": FragmentRefs<"Organizations_data">;
-                    } | {
-                        readonly __typename: "News_banner";
-                        readonly " $fragmentRefs": FragmentRefs<"NewsBanner_data">;
-                    } | {
-                        readonly __typename: "Founder";
-                        readonly " $fragmentRefs": FragmentRefs<"Founder_data">;
-                    } | {
-                        readonly __typename: "Donations";
-                        readonly " $fragmentRefs": FragmentRefs<"Donations_data">;
-                    } | {
                         readonly __typename: "Tabs";
                         readonly " $fragmentRefs": FragmentRefs<"Tabs_data">;
                     } | {
@@ -62,6 +50,9 @@ export type SiteQueryResponse = {
                     } | {
                         readonly __typename: "Header";
                         readonly " $fragmentRefs": FragmentRefs<"Header_data">;
+                    } | {
+                        readonly __typename: "Column_section";
+                        readonly " $fragmentRefs": FragmentRefs<"ColumnSection_data">;
                     } | {
                         /*This will never be '%other', but we need some
                         value in case none of the concrete values match.*/
@@ -108,18 +99,6 @@ query SiteQuery(
             ... on Presentation {
               ...Presentation_data
             }
-            ... on Organizations {
-              ...Organizations_data
-            }
-            ... on News_banner {
-              ...NewsBanner_data
-            }
-            ... on Founder {
-              ...Founder_data
-            }
-            ... on Donations {
-              ...Donations_data
-            }
             ... on Tabs {
               ...Tabs_data
             }
@@ -135,6 +114,9 @@ query SiteQuery(
             ... on Header {
               ...Header_data
             }
+            ... on Column_section {
+              ...ColumnSection_data
+            }
           }
         }
       }
@@ -142,11 +124,15 @@ query SiteQuery(
   }
 }
 
-fragment Donations_data on Donations {
-  donation_link {
-    __typename
-    ... on _ExternalLink {
-      url
+fragment ColumnSection_data on Column_section {
+  section_title
+  section_background
+  subsections_list {
+    subsection {
+      __typename
+      ... on Subsection {
+        ...Subsection_data
+      }
     }
   }
 }
@@ -184,12 +170,6 @@ fragment Footer_data on Footer {
       }
     }
   }
-}
-
-fragment Founder_data on Founder {
-  section_name
-  founder_information
-  founder_picture
 }
 
 fragment Header_data on Header {
@@ -282,48 +262,29 @@ fragment Item_data on Icon_listElements {
   icon
 }
 
-fragment NewsBanner_data on News_banner {
-  _linkType
-  articles_list {
-    article_image
-    newspaper_icon
-    article_title
-    article_url {
-      __typename
-      _linkType
-      ... on _ExternalLink {
-        url
-      }
-    }
-  }
-}
-
-fragment Organization_data on Organization {
-  organization_name
-  members {
-    name
-    position
-  }
-}
-
-fragment Organizations_data on Organizations {
-  section_name
-  organizations {
-    organization {
-      __typename
-      ... on Organization {
-        ...Organization_data
-      }
-    }
-  }
-}
-
 fragment Presentation_data on Presentation {
   title
   theme
   slides {
     text_alignment
     content
+  }
+}
+
+fragment Subsection_data on Subsection {
+  __typename
+  body {
+    __typename
+    ... on SubsectionBodyImage_section {
+      primary {
+        subsection_image
+      }
+    }
+    ... on SubsectionBodyParagraph_section {
+      primary {
+        subsection_paragraph
+      }
+    }
   }
 }
 
@@ -449,7 +410,7 @@ v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "section_name",
+  "name": "background_color",
   "storageKey": null
 },
 v8 = {
@@ -463,7 +424,7 @@ v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "_linkType",
+  "name": "section_title",
   "storageKey": null
 },
 v10 = {
@@ -481,32 +442,27 @@ v10 = {
 },
 v11 = [
   (v4/*: any*/),
-  (v9/*: any*/),
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "_linkType",
+    "storageKey": null
+  },
   (v10/*: any*/)
 ],
-v12 = [
-  (v4/*: any*/),
-  (v10/*: any*/)
-],
-v13 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "background_color",
-  "storageKey": null
-},
-v14 = {
+v12 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "pata_pila_icon",
   "storageKey": null
 },
-v15 = [
+v13 = [
   (v4/*: any*/),
   (v1/*: any*/)
 ],
-v16 = [
+v14 = [
   {
     "alias": null,
     "args": null,
@@ -521,7 +477,7 @@ v16 = [
     "kind": "LinkedField",
     "name": "link",
     "plural": false,
-    "selections": (v15/*: any*/),
+    "selections": (v13/*: any*/),
     "storageKey": null
   }
 ];
@@ -613,50 +569,6 @@ return {
                               {
                                 "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "Organizations_data"
-                              }
-                            ],
-                            "type": "Organizations"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              {
-                                "args": null,
-                                "kind": "FragmentSpread",
-                                "name": "NewsBanner_data"
-                              }
-                            ],
-                            "type": "News_banner"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              {
-                                "args": null,
-                                "kind": "FragmentSpread",
-                                "name": "Founder_data"
-                              }
-                            ],
-                            "type": "Founder"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              {
-                                "args": null,
-                                "kind": "FragmentSpread",
-                                "name": "Donations_data"
-                              }
-                            ],
-                            "type": "Donations"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              {
-                                "args": null,
-                                "kind": "FragmentSpread",
                                 "name": "Tabs_data"
                               }
                             ],
@@ -705,6 +617,17 @@ return {
                               }
                             ],
                             "type": "Header"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              {
+                                "args": null,
+                                "kind": "FragmentSpread",
+                                "name": "ColumnSection_data"
+                              }
+                            ],
+                            "type": "Column_section"
                           }
                         ],
                         "storageKey": null
@@ -897,154 +820,6 @@ return {
                               {
                                 "alias": null,
                                 "args": null,
-                                "concreteType": "OrganizationsOrganizations",
-                                "kind": "LinkedField",
-                                "name": "organizations",
-                                "plural": true,
-                                "selections": [
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "concreteType": null,
-                                    "kind": "LinkedField",
-                                    "name": "organization",
-                                    "plural": false,
-                                    "selections": [
-                                      (v4/*: any*/),
-                                      {
-                                        "kind": "InlineFragment",
-                                        "selections": [
-                                          {
-                                            "alias": null,
-                                            "args": null,
-                                            "kind": "ScalarField",
-                                            "name": "organization_name",
-                                            "storageKey": null
-                                          },
-                                          {
-                                            "alias": null,
-                                            "args": null,
-                                            "concreteType": "OrganizationMembers",
-                                            "kind": "LinkedField",
-                                            "name": "members",
-                                            "plural": true,
-                                            "selections": [
-                                              (v8/*: any*/),
-                                              {
-                                                "alias": null,
-                                                "args": null,
-                                                "kind": "ScalarField",
-                                                "name": "position",
-                                                "storageKey": null
-                                              }
-                                            ],
-                                            "storageKey": null
-                                          }
-                                        ],
-                                        "type": "Organization"
-                                      }
-                                    ],
-                                    "storageKey": null
-                                  }
-                                ],
-                                "storageKey": null
-                              }
-                            ],
-                            "type": "Organizations"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              (v9/*: any*/),
-                              {
-                                "alias": null,
-                                "args": null,
-                                "concreteType": "News_bannerArticles_list",
-                                "kind": "LinkedField",
-                                "name": "articles_list",
-                                "plural": true,
-                                "selections": [
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "article_image",
-                                    "storageKey": null
-                                  },
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "newspaper_icon",
-                                    "storageKey": null
-                                  },
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "article_title",
-                                    "storageKey": null
-                                  },
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "concreteType": null,
-                                    "kind": "LinkedField",
-                                    "name": "article_url",
-                                    "plural": false,
-                                    "selections": (v11/*: any*/),
-                                    "storageKey": null
-                                  }
-                                ],
-                                "storageKey": null
-                              }
-                            ],
-                            "type": "News_banner"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              (v7/*: any*/),
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "founder_information",
-                                "storageKey": null
-                              },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "founder_picture",
-                                "storageKey": null
-                              }
-                            ],
-                            "type": "Founder"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              {
-                                "alias": null,
-                                "args": null,
-                                "concreteType": null,
-                                "kind": "LinkedField",
-                                "name": "donation_link",
-                                "plural": false,
-                                "selections": (v12/*: any*/),
-                                "storageKey": null
-                              }
-                            ],
-                            "type": "Donations"
-                          },
-                          {
-                            "kind": "InlineFragment",
-                            "selections": [
-                              (v13/*: any*/),
-                              {
-                                "alias": null,
-                                "args": null,
                                 "kind": "ScalarField",
                                 "name": "tabs_name_color",
                                 "storageKey": null
@@ -1089,7 +864,13 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v7/*: any*/),
+                              {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
+                                "name": "section_name",
+                                "storageKey": null
+                              },
                               {
                                 "alias": null,
                                 "args": null,
@@ -1116,13 +897,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "section_title",
-                                "storageKey": null
-                              },
+                              (v9/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1185,7 +960,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v14/*: any*/),
+                              (v12/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1208,7 +983,10 @@ return {
                                     "kind": "LinkedField",
                                     "name": "link",
                                     "plural": false,
-                                    "selections": (v12/*: any*/),
+                                    "selections": [
+                                      (v4/*: any*/),
+                                      (v10/*: any*/)
+                                    ],
                                     "storageKey": null
                                   }
                                 ],
@@ -1221,7 +999,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "action_buttons",
                                 "plural": true,
-                                "selections": (v16/*: any*/),
+                                "selections": (v14/*: any*/),
                                 "storageKey": null
                               },
                               {
@@ -1231,7 +1009,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "navigation_links",
                                 "plural": true,
-                                "selections": (v16/*: any*/),
+                                "selections": (v14/*: any*/),
                                 "storageKey": null
                               }
                             ],
@@ -1240,7 +1018,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v14/*: any*/),
+                              (v12/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1298,7 +1076,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "link_document",
                                     "plural": false,
-                                    "selections": (v15/*: any*/),
+                                    "selections": (v13/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1312,7 +1090,7 @@ return {
                                 "name": "action_buttons",
                                 "plural": true,
                                 "selections": [
-                                  (v13/*: any*/),
+                                  (v7/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -1362,7 +1140,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "action",
                                     "plural": false,
-                                    "selections": (v15/*: any*/),
+                                    "selections": (v13/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1370,6 +1148,109 @@ return {
                               }
                             ],
                             "type": "Header"
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "selections": [
+                              (v9/*: any*/),
+                              {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
+                                "name": "section_background",
+                                "storageKey": null
+                              },
+                              {
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "Column_sectionSubsections_list",
+                                "kind": "LinkedField",
+                                "name": "subsections_list",
+                                "plural": true,
+                                "selections": [
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "concreteType": null,
+                                    "kind": "LinkedField",
+                                    "name": "subsection",
+                                    "plural": false,
+                                    "selections": [
+                                      (v4/*: any*/),
+                                      {
+                                        "kind": "InlineFragment",
+                                        "selections": [
+                                          {
+                                            "alias": null,
+                                            "args": null,
+                                            "concreteType": null,
+                                            "kind": "LinkedField",
+                                            "name": "body",
+                                            "plural": true,
+                                            "selections": [
+                                              (v4/*: any*/),
+                                              {
+                                                "kind": "InlineFragment",
+                                                "selections": [
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "concreteType": "SubsectionBodyImage_sectionPrimary",
+                                                    "kind": "LinkedField",
+                                                    "name": "primary",
+                                                    "plural": false,
+                                                    "selections": [
+                                                      {
+                                                        "alias": null,
+                                                        "args": null,
+                                                        "kind": "ScalarField",
+                                                        "name": "subsection_image",
+                                                        "storageKey": null
+                                                      }
+                                                    ],
+                                                    "storageKey": null
+                                                  }
+                                                ],
+                                                "type": "SubsectionBodyImage_section"
+                                              },
+                                              {
+                                                "kind": "InlineFragment",
+                                                "selections": [
+                                                  {
+                                                    "alias": null,
+                                                    "args": null,
+                                                    "concreteType": "SubsectionBodyParagraph_sectionPrimary",
+                                                    "kind": "LinkedField",
+                                                    "name": "primary",
+                                                    "plural": false,
+                                                    "selections": [
+                                                      {
+                                                        "alias": null,
+                                                        "args": null,
+                                                        "kind": "ScalarField",
+                                                        "name": "subsection_paragraph",
+                                                        "storageKey": null
+                                                      }
+                                                    ],
+                                                    "storageKey": null
+                                                  }
+                                                ],
+                                                "type": "SubsectionBodyParagraph_section"
+                                              }
+                                            ],
+                                            "storageKey": null
+                                          }
+                                        ],
+                                        "type": "Subsection"
+                                      }
+                                    ],
+                                    "storageKey": null
+                                  }
+                                ],
+                                "storageKey": null
+                              }
+                            ],
+                            "type": "Column_section"
                           }
                         ],
                         "storageKey": null
@@ -1393,9 +1274,9 @@ return {
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  routes: allLandings {\n    edges {\n      node {\n        route\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Impact_section {\n              ...ImpactSection_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Founder {\n              ...Founder_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Footer {\n              ...Footer_data\n            }\n            ... on Header {\n              ...Header_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Footer_data on Footer {\n  pata_pila_icon\n  social_networks {\n    image\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  action_buttons {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  navigation_links {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Founder_data on Founder {\n  section_name\n  founder_information\n  founder_picture\n}\n\nfragment Header_data on Header {\n  pata_pila_icon\n  social_media {\n    social_icon\n    social_name\n    social_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  header_links {\n    link_title\n    link_document {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  action_buttons {\n    background_color\n    border_color\n    text_color\n    mobile_background_color\n    mobile_border_color\n    mobile_text_color\n    action_title\n    action {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconList_data on Icon_list {\n  list_name\n  elements {\n    ...Item_data\n  }\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactSection_data on Impact_section {\n  title\n  icons {\n    __typename\n    ... on Icon_list {\n      ...IconList_data\n    }\n  }\n  background_image\n}\n\nfragment Item_data on Icon_listElements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ... on Organization {\n        ...Organization_data\n      }\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  routes: allLandings {\n    edges {\n      node {\n        route\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Impact_section {\n              ...ImpactSection_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Footer {\n              ...Footer_data\n            }\n            ... on Header {\n              ...Header_data\n            }\n            ... on Column_section {\n              ...ColumnSection_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment ColumnSection_data on Column_section {\n  section_title\n  section_background\n  subsections_list {\n    subsection {\n      __typename\n      ... on Subsection {\n        ...Subsection_data\n      }\n    }\n  }\n}\n\nfragment Footer_data on Footer {\n  pata_pila_icon\n  social_networks {\n    image\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  action_buttons {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  navigation_links {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Header_data on Header {\n  pata_pila_icon\n  social_media {\n    social_icon\n    social_name\n    social_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  header_links {\n    link_title\n    link_document {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  action_buttons {\n    background_color\n    border_color\n    text_color\n    mobile_background_color\n    mobile_border_color\n    mobile_text_color\n    action_title\n    action {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconList_data on Icon_list {\n  list_name\n  elements {\n    ...Item_data\n  }\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  icon_tabs {\n    tab_icon\n    tab_image\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n    tab_description\n  }\n}\n\nfragment ImpactSection_data on Impact_section {\n  title\n  icons {\n    __typename\n    ... on Icon_list {\n      ...IconList_data\n    }\n  }\n  background_image\n}\n\nfragment Item_data on Icon_listElements {\n  title\n  subtitle\n  icon\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Subsection_data on Subsection {\n  __typename\n  body {\n    __typename\n    ... on SubsectionBodyImage_section {\n      primary {\n        subsection_image\n      }\n    }\n    ... on SubsectionBodyParagraph_section {\n      primary {\n        subsection_paragraph\n      }\n    }\n  }\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '09ec694505773cc98505bc4c927f5792';
+(node as any).hash = '1724a4344fd2fa9f9ef9df3dcd6c8091';
 export default node;
