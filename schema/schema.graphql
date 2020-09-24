@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Thu Sep 24 2020 00:55:15 GMT-0300 (Argentina Standard Time)
+# timestamp: Thu Sep 24 2020 15:47:12 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -86,9 +86,32 @@ type CardConnectionEdge {
 type Column_section implements _Document & _Linkable {
   section_title: Json
   section_background: String
-  subsections_list: [Column_sectionSubsections_list!]
+  section_title_color: String
+  body: [Column_sectionBody!]
   _meta: Meta!
   _linkType: String
+}
+
+union Column_sectionBody = Column_sectionBodyImage_section | Column_sectionBodyParagraph_subsection
+
+type Column_sectionBodyImage_section {
+  type: String
+  label: String
+  primary: Column_sectionBodyImage_sectionPrimary
+}
+
+type Column_sectionBodyImage_sectionPrimary {
+  subsection_image: Json
+}
+
+type Column_sectionBodyParagraph_subsection {
+  type: String
+  label: String
+  primary: Column_sectionBodyParagraph_subsectionPrimary
+}
+
+type Column_sectionBodyParagraph_subsectionPrimary {
+  subsection_paragraph: Json
 }
 
 """A connection to a list of items."""
@@ -108,10 +131,6 @@ type Column_sectionConnectionEdge {
 
   """A cursor for use in pagination."""
   cursor: String!
-}
-
-type Column_sectionSubsections_list {
-  subsection: _Linkable
 }
 
 """DateTime"""

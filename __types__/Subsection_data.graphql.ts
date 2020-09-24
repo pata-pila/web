@@ -5,12 +5,20 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Subsection_data = {
     readonly body: ReadonlyArray<{
-        readonly primary?: {
+        readonly __typename: "SubsectionBodyImage_section";
+        readonly primary: {
             readonly subsection_image: unknown | null;
-            readonly subsection_paragraph?: unknown | null;
         } | null;
+    } | {
+        readonly __typename: "SubsectionBodyParagraph_section";
+        readonly primary: {
+            readonly subsection_paragraph: unknown | null;
+        } | null;
+    } | {
+        /*This will never be '%other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
     }> | null;
-    readonly __typename: "Subsection";
     readonly " $refType": "Subsection_data";
 };
 export type Subsection_data$data = Subsection_data;
@@ -30,18 +38,18 @@ const node: ReaderFragment = {
     {
       "alias": null,
       "args": null,
-      "kind": "ScalarField",
-      "name": "__typename",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
       "concreteType": null,
       "kind": "LinkedField",
       "name": "body",
       "plural": true,
       "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "__typename",
+          "storageKey": null
+        },
         {
           "kind": "InlineFragment",
           "selections": [
@@ -96,5 +104,5 @@ const node: ReaderFragment = {
   ],
   "type": "Subsection"
 };
-(node as any).hash = '6f03eb51cfaa94448fab73215b2ad66a';
+(node as any).hash = '0a3d40f61851c286b62f2e5ce50c610c';
 export default node;

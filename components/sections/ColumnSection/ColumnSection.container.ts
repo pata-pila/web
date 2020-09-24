@@ -7,11 +7,16 @@ export default createFragmentContainer(singleFragmentComponent(ColumnSection), {
     fragment ColumnSection_data on Column_section {
       section_title
       section_background
-      subsections_list {
-        subsection {
-          __typename
-          ... on Subsection {
-            ...Subsection_data
+      section_title_color
+      body {
+        ... on Column_sectionBodyImage_section {
+          primary {
+            subsection_image
+          }
+        }
+        ... on Column_sectionBodyParagraph_subsection {
+          primary {
+            subsection_paragraph
           }
         }
       }

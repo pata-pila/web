@@ -13,7 +13,7 @@ export const NewsBanner: FC<Props> = (props) => {
   return (
     <section className={`${styles.container} section-container`}>
       <div className={classnames("section-content", styles.sectionContainer)}>
-        {articles_list.map((item, index) => (
+        {articles_list?.map((item, index) => (
           <div key={index} className={styles.articleContainer}>
             <div
               className={styles.articleImage}

@@ -1,0 +1,29 @@
+@import "styles/sizes";
+
+section.container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0;
+  min-height: 500px;
+}
+
+.subsections-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  @media (max-width: $tablet-max) {
+    flex-direction: column-reverse;
+  }
+}
+
+.subsection {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  .image {
+    max-width: 100%;
+  }
+}
