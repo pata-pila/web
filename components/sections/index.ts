@@ -5,6 +5,7 @@ import Vertical_tabs from "./VerticalTabs";
 import Organizations from "./organizations";
 import Presentation from "./Presentation";
 import Donations from "./Donations";
+import Column_section from "./ColumnSection";
 
 export { HomeBannerContainer as Home_banner } from "./home-banner/HomeBanner";
 export { ImpactSectionContainer as Impact_section } from "./ImpactSection";
@@ -18,7 +19,8 @@ export {
   Founder,
   Tabs,
   Vertical_tabs,
+  Column_section,
   Organizations,
-  // Presentation,
+  Presentation,
   Donations,
 };

@@ -75,6 +75,9 @@ class Site extends Component<Props> {
                 ... on Header {
                   ...Header_data
                 }
+                ... on Column_section {
+                  ...ColumnSection_data
+                }
               }
             }
           }
