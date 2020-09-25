@@ -1,0 +1,40 @@
+@import "styles/fonts";
+@import "styles/sizes";
+
+.container {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  @media (max-width: $mobile-max) {
+    flex-direction: column;
+  }
+  @media (min-width: $tablet-min + 1px) and (max-width: $tablet-max) {
+    flex-direction: row;
+  }
+  @media (min-width: $desktop-min + 1px) {
+    flex-direction: row;
+  }
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.title {
+  @media (max-width: $mobile-max) {
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+  @media (min-width: $tablet-min + 1px) and (max-width: $tablet-max) {
+    margin-bottom: 50px;
+    font-size: 25px;
+  }
+  @media (min-width: $desktop-min + 1px) {
+    font-size: 35px;
+  }
+  color: white;
+  text-transform: uppercase;
+  font-family: $poppins-regular;
+}
