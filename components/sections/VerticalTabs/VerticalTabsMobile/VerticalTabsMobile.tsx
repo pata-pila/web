@@ -48,7 +48,7 @@ export class VerticalTabsMobile extends PureComponent<
                       [styles.selectedTabName]: this.isSelectedTab(index),
                     })}
                     onClick={() => this.selectTab(index)}
-                    key={index}
+                    key={`tab-name-${index}`}
                   >
                     <div>{tab.name}</div>
                     <div className={styles.icon}>+</div>
@@ -58,7 +58,7 @@ export class VerticalTabsMobile extends PureComponent<
                     style={{
                       display: this.isSelectedTab(index) ? "block" : "none",
                     }}
-                    key={index}
+                    key={`tab-content-${index}`}
                   >
                     <Text elements={tab.content} />
                   </div>

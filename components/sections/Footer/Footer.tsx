@@ -38,7 +38,12 @@ const Footer: FC<Props> = (props) => {
         <ul className={styles.navigationLinkList}>
           {props.navigation_links.map((link, index) => (
             <>
-              {index > 0 ? <li className={styles.navigationSeparator} /> : null}
+              {index > 0 ? (
+                <li
+                  key={`navigation-${index}`}
+                  className={styles.navigationSeparator}
+                />
+              ) : null}
               <li key={index} className={styles.navigationLinkItem}>
                 <DocumentLink
                   className={styles.navigationLink}

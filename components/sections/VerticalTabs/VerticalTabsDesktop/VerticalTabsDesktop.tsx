@@ -46,6 +46,7 @@ export class VerticalTabsDesktop extends PureComponent<
                       [styles.selectedTabName]: this.isSelectedTab(index),
                     })}
                     onClick={() => this.selectTab(index)}
+                    key={`tab-name-${index}`}
                   >
                     <div>{tab.name}</div>
                     <div

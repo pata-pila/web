@@ -6,6 +6,7 @@ import Organizations from "./organizations";
 import Presentation from "./Presentation";
 import Donations from "./Donations";
 import Column_section from "./ColumnSection";
+import Grid_section from "./GridSection";
 
 export { HomeBannerContainer as Home_banner } from "./home-banner/HomeBanner";
 export { ImpactSectionContainer as Impact_section } from "./ImpactSection";
@@ -20,6 +21,7 @@ export {
   Tabs,
   Vertical_tabs,
   Column_section,
+  Grid_section,
   Organizations,
   Presentation,
   Donations,
