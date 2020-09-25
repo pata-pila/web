@@ -42,6 +42,9 @@ class Site extends Component<Props> {
                 ... on Impact_section {
                   ...ImpactSection_data
                 }
+                ... on Impact_statistics {
+                  ...ImpactStatistics_data
+                }
                 ... on Presentation {
                   ...Presentation_data
                 }
@@ -71,6 +74,9 @@ class Site extends Component<Props> {
                 }
                 ... on Header {
                   ...Header_data
+                }
+                ... on Column_section {
+                  ...ColumnSection_data
                 }
               }
             }
