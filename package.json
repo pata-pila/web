@@ -12,7 +12,8 @@
     "upload-gcr": "docker build . -t gcr.io/pata-pila-web/web && docker push gcr.io/pata-pila-web/web",
     "deploy-gcloud": "gcloud run deploy web --image gcr.io/pata-pila-web/web --region us-central1 --allow-unauthenticated --platform managed",
     "deploy-gcrun": "npm run build && npm run upload-gcr && npm run deploy-gcloud && firebase deploy --only hosting",
-    "deploy": "ncp public dist && firebase deploy"
+    "deploy": "ncp public dist && firebase deploy",
+    "lol": "firebase serve"
   },
   "engines": {
     "node": "10"
