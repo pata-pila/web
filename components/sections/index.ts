@@ -11,6 +11,7 @@ export { ImpactSectionContainer as Impact_section } from "./ImpactSection";
 export { NewsBannerContainer as News_banner } from "./NewsBanner/NewsBanner";
 export { IconTabsContainer as Icon_tabs_section } from "./IconTabs/";
 export { HeaderContainer as Header } from "./Header/Header";
+export { ImpactStatisticsContainer as Impact_statistics } from "./ImpactStatistics";
 
 export {
   Footer,
@@ -18,6 +19,6 @@ export {
   Tabs,
   Vertical_tabs,
   Organizations,
-  Presentation,
+  // Presentation,
   Donations,
 };

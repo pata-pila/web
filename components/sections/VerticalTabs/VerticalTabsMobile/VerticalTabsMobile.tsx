@@ -48,6 +48,7 @@ export class VerticalTabsMobile extends PureComponent<
                       [styles.selectedTabName]: this.isSelectedTab(index),
                     })}
                     onClick={() => this.selectTab(index)}
+                    key={index}
                   >
                     <div>{tab.name}</div>
                     <div className={styles.icon}>+</div>
