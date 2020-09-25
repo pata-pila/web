@@ -41,11 +41,7 @@
   margin-right: 20px;
   cursor: pointer;
 
-  &.selected {
-    text-decoration: underline;
-  }
-
-  &:hover {
+  &:hover, &.selected {
     text-decoration: underline;
   }
 }

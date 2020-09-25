@@ -68,6 +68,10 @@
   margin-right: 20px;
   cursor: pointer;
   margin-bottom: 30px;
+
+  &.selected {
+    text-decoration: underline;
+  }
 }
 
 .action-button {

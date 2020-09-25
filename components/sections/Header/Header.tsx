@@ -1,20 +1,25 @@
 // React/Relay
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { createFragmentContainer, graphql } from "react-relay";
 import singleFragmentComponent from "../../../lib/singleFragmentComponent";
+import { ReactRelayContext } from "react-relay";
 
 import HeaderMobile from "./HeaderMobile";
 import HeaderDesktop from "./HeaderDesktop";
 import { Responsive } from "../../Responsive";
 
-const Header = (props: any) => (
-  <Responsive
-    {...props}
-    mobile={HeaderMobile}
-    tablet={HeaderMobile}
-    desktop={HeaderDesktop}
-  />
-);
+const Header = (props: any) => {
+  const context: any = useContext(ReactRelayContext);
+  return (
+    <Responsive
+      path={context.url.asPath}
+      {...props}
+      mobile={HeaderMobile}
+      tablet={HeaderMobile}
+      desktop={HeaderDesktop}
+    />
+  );
+};
 
 export const HeaderContainer = createFragmentContainer(
   singleFragmentComponent(Header),

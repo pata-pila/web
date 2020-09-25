@@ -10,8 +10,7 @@ import DocumentLink from "components/DocumentLink";
 
 export const Header: FC<Props> = (props) => {
   const routeByDocumentId = useRouteByDocumentId();
-  // const pathname = document.location.pathname;
-  console.log(props)
+  const { path } = props;
   return (
     <section className={styles.container}>
       <div
@@ -51,12 +50,14 @@ export const Header: FC<Props> = (props) => {
             {props.header_links.map((link, index) => {
               const documentId = link.link_document?._meta.id;
               const route = routeByDocumentId.get(documentId) ?? "";
-              console.log(route);
               return (
                 <DocumentLink
                   key={index}
                   documentId={link.link_document?._meta.id}
-                  className={classnames(styles.link, { [styles.selected]: route === "/" })}
+                  className={classnames(
+                    styles.link,
+                    route === path && styles.selected
+                  )}
                 >
                   {link.link_title[0].text}
                 </DocumentLink>
