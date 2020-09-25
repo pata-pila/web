@@ -7,6 +7,7 @@ import Presentation from "./Presentation";
 import Donations from "./Donations";
 import Column_section from "./ColumnSection";
 import Grid_section from "./GridSection";
+import Text_card from "./TextCard";
 
 export { HomeBannerContainer as Home_banner } from "./home-banner/HomeBanner";
 export { ImpactSectionContainer as Impact_section } from "./ImpactSection";
@@ -18,6 +19,7 @@ export { ImpactStatisticsContainer as Impact_statistics } from "./ImpactStatisti
 export {
   Footer,
   Founder,
+  Text_card,
   Tabs,
   Vertical_tabs,
   Column_section,

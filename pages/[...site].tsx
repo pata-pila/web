@@ -81,6 +81,9 @@ class Site extends Component<Props> {
                 ... on Grid_section {
                   ...GridSection_data
                 }
+                ... on Text_card {
+                  ...TextCard_data
+                }
               }
             }
           }

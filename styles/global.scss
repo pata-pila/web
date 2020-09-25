@@ -35,6 +35,11 @@ p {
   margin: 10px 0;
 }
 
+strong > p, p > strong {
+  font-family: $poppins-medium, serif;
+  font-weight: normal;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -43,7 +48,7 @@ ul {
 
 strong > a, a > strong {
   margin: 10px 0;
-  font-family: $poppins-medium, serif;
+  font-family: $poppins-semibold, serif;
   font-size: 12px;
   min-width: 120px;
   border-radius: 5px;

@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Fri Sep 25 2020 01:56:55 GMT-0300 (Argentina Standard Time)
+# timestamp: Fri Sep 25 2020 11:40:47 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -57,6 +57,7 @@ interface _Linkable {
 
 type Card implements _Document & _Linkable {
   title: Json
+  theme: String
   image: Json
   avatar: Json
   content: Json
@@ -884,6 +885,7 @@ type Query {
   allUijhius(sortBy: SortUijhiuy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): UijhiuConnectionConnection!
   allGrid_sections(sortBy: SortGrid_sectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereGrid_section, before: String, after: String, first: Int, last: Int): Grid_sectionConnectionConnection!
   allImpact_statisticss(sortBy: SortImpact_statisticsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereImpact_statistics, before: String, after: String, first: Int, last: Int): Impact_statisticsConnectionConnection!
+  allText_cards(sortBy: SortText_cardy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereText_card, before: String, after: String, first: Int, last: Int): Text_cardConnectionConnection!
   allColumn_sections(sortBy: SortColumn_sectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereColumn_section, before: String, after: String, first: Int, last: Int): Column_sectionConnectionConnection!
   allImpact_banners(sortBy: SortImpact_bannery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereImpact_banner, before: String, after: String, first: Int, last: Int): Impact_bannerConnectionConnection!
   allPepitos(sortBy: SortPepitoy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): PepitoConnectionConnection!
@@ -928,6 +930,8 @@ enum SortCardy {
   meta_lastPublicationDate_DESC
   title_ASC
   title_DESC
+  theme_ASC
+  theme_DESC
   content_ASC
   content_DESC
 }
@@ -1196,6 +1200,15 @@ enum SortTestimonyy {
   meta_lastPublicationDate_DESC
 }
 
+enum SortText_cardy {
+  meta_firstPublicationDate_ASC
+  meta_firstPublicationDate_DESC
+  meta_lastPublicationDate_ASC
+  meta_lastPublicationDate_DESC
+  text_ASC
+  text_DESC
+}
+
 enum SortUijhiuy {
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
@@ -1349,6 +1362,32 @@ type TestimonyConnectionEdge {
   cursor: String!
 }
 
+type Text_card implements _Document & _Linkable {
+  background_color: String
+  text: Json
+  _meta: Meta!
+  _linkType: String
+}
+
+"""A connection to a list of items."""
+type Text_cardConnectionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [Text_cardConnectionEdge]
+  totalCount: Long!
+}
+
+"""An edge in a connection."""
+type Text_cardConnectionEdge {
+  """The item at the end of the edge."""
+  node: Text_card!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
 type Uijhiu implements _Document & _Linkable {
   jni: [UijhiuJni!]
   _meta: Meta!
@@ -1414,6 +1453,8 @@ type Vertical_tabsTabs_list {
 input WhereCard {
   """title"""
   title_fulltext: String
+  theme: String
+  theme_fulltext: String
   avatar: Boolean
 
   """content"""
@@ -1606,6 +1647,11 @@ input WherePresentation {
 input WhereTabs {
   section_title: String
   section_title_fulltext: String
+}
+
+input WhereText_card {
+  """text"""
+  text_fulltext: String
 }
 
 input WhereVertical_tabs {
