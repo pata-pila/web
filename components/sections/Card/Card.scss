@@ -1,0 +1,86 @@
+@import "styles/fonts";
+@import "styles/sizes";
+@import "styles/colors";
+
+.card {
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.card-image {
+  @media(max-width: 768px) {
+    text-align: center;
+    padding-right: 0;
+  }
+
+  &.avatar {
+    img {
+
+      border: 2px solid #643633;
+      width: 200px;
+      height: 200px;
+    }
+  }
+  
+  img {
+    border-radius: 50%;
+    
+    width: 150px;
+    height: 150px;
+    
+    @media (max-width: 768px) {
+      width: 180px;
+      height: 180px;
+    }
+    padding: 5px;
+  }
+  padding-right: 40px;
+  @media (max-width: 500px) {
+    padding: 0;
+  }
+}
+
+.section {
+  padding: $section-vertical-padding $section-horizontal-padding;
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+  
+  &.white {
+    background-color: white;
+  }
+  
+  &.opaque {
+    background-color: $mercury;
+  }
+}
+
+.section-name {
+  font-family: $poppins-semibold;
+  white-space: nowrap;
+  display: flex;
+  justify-content: left;
+  
+  @media (max-width: 768px) {
+    align-self: flex-start;
+  }
+}
+
+.section-name h1 {
+  color: $gold-drop;
+  font-family: "Poppins Semibold";
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  align-self: flex-start;
+  margin-right: 30px;
+  font-size: 12px;
+
+  @media (max-width: 768px) {
+    transform: none;
+    writing-mode: horizontal-tb;
+  }
+}

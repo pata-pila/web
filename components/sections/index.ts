@@ -1,5 +1,5 @@
+import Card from "./Card";
 import Footer from "./Footer";
-import Founder from "./Founder";
 import Tabs from "./Tabs";
 import Vertical_tabs from "./VerticalTabs";
 import Organizations from "./organizations";
@@ -16,8 +16,8 @@ export { HeaderContainer as Header } from "./Header/Header";
 export { ImpactStatisticsContainer as Impact_statistics } from "./ImpactStatistics";
 
 export {
+  Card,
   Footer,
-  Founder,
   Tabs,
   Vertical_tabs,
   Column_section,
