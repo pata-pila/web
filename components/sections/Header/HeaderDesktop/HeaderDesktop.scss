@@ -40,6 +40,10 @@
   text-transform: uppercase;
   margin-right: 20px;
   cursor: pointer;
+
+  &:hover, &.selected {
+    text-decoration: underline;
+  }
 }
 
 .action-button {
@@ -52,6 +56,11 @@
   font-family: $poppins-semibold;
   margin-right: 10px;
   cursor: pointer;
+
+  &:hover {
+    background-color: $gold-drop !important;
+    border-color: $gold-drop !important;
+  }
 
   &:last-child {
     margin-right: 0;

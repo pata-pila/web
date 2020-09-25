@@ -1,6 +1,7 @@
 // React/Relay
 import React, { FC } from "react";
 import classnames from "classnames";
+import { useRouteByDocumentId } from "lib/RoutesContext";
 
 // Component
 import { Props } from "./HeaderDesktop.types";
@@ -8,6 +9,8 @@ import styles from "./HeaderDesktop.scss";
 import DocumentLink from "components/DocumentLink";
 
 export const Header: FC<Props> = (props) => {
+  const routeByDocumentId = useRouteByDocumentId();
+  const { path } = props;
   return (
     <section className={styles.container}>
       <div
@@ -45,11 +48,16 @@ export const Header: FC<Props> = (props) => {
           </a>
           <div className={styles.linksContainer}>
             {props.header_links.map((link, index) => {
+              const documentId = link.link_document?._meta.id;
+              const route = routeByDocumentId.get(documentId) ?? "";
               return (
                 <DocumentLink
                   key={index}
                   documentId={link.link_document?._meta.id}
-                  className={styles.link}
+                  className={classnames(
+                    styles.link,
+                    route === path && styles.selected
+                  )}
                 >
                   {link.link_title[0].text}
                 </DocumentLink>

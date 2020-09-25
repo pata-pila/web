@@ -1,5 +1,7 @@
 // React/Relay
 import React, { FC, useState } from "react";
+import classnames from "classnames";
+import { useRouteByDocumentId } from "lib/RoutesContext";
 
 // Component
 import { Props } from "./HeaderMobile.types";
@@ -8,6 +10,8 @@ import DocumentLink from "components/DocumentLink";
 
 export const Header: FC<Props> = (props) => {
   const [isMenuOpened, openMenu] = useState(false);
+  const routeByDocumentId = useRouteByDocumentId();
+  const { path } = props;
   return (
     <div className={styles.mobileContainer}>
       <img
@@ -42,11 +46,16 @@ export const Header: FC<Props> = (props) => {
 
           <div className={styles.links}>
             {props.header_links.map((link, index) => {
+              const documentId = link.link_document?._meta.id;
+              const route = routeByDocumentId.get(documentId) ?? "";
               return (
                 <DocumentLink
                   key={index}
                   documentId={link.link_document?._meta.id}
-                  className={styles.link}
+                  className={classnames(
+                    styles.link,
+                    route === path && styles.selected
+                  )}
                 >
                   {link.link_title[0].text}
                 </DocumentLink>
