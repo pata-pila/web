@@ -45,8 +45,8 @@ export type SiteQueryResponse = {
                         readonly __typename: "News_banner";
                         readonly " $fragmentRefs": FragmentRefs<"NewsBanner_data">;
                     } | {
-                        readonly __typename: "Founder";
-                        readonly " $fragmentRefs": FragmentRefs<"Founder_data">;
+                        readonly __typename: "Card";
+                        readonly " $fragmentRefs": FragmentRefs<"Card_data">;
                     } | {
                         readonly __typename: "Donations";
                         readonly " $fragmentRefs": FragmentRefs<"Donations_data">;
@@ -129,8 +129,8 @@ query SiteQuery(
             ... on News_banner {
               ...NewsBanner_data
             }
-            ... on Founder {
-              ...Founder_data
+            ... on Card {
+              ...Card_data
             }
             ... on Donations {
               ...Donations_data
@@ -164,6 +164,14 @@ query SiteQuery(
       }
     }
   }
+}
+
+fragment Card_data on Card {
+  title
+  theme
+  image
+  avatar
+  content
 }
 
 fragment ColumnSection_data on Column_section {
@@ -227,12 +235,6 @@ fragment Footer_data on Footer {
       }
     }
   }
-}
-
-fragment Founder_data on Founder {
-  section_name
-  founder_information
-  founder_picture
 }
 
 fragment GridSection_data on Grid_section {
@@ -569,31 +571,38 @@ v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "content",
+  "name": "theme",
   "storageKey": null
 },
 v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "section_name",
+  "name": "content",
   "storageKey": null
 },
 v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "section_name",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "_linkType",
+  "name": "name",
   "storageKey": null
 },
 v12 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "_linkType",
+  "storageKey": null
+},
+v13 = {
   "kind": "InlineFragment",
   "selections": [
     {
@@ -606,23 +615,30 @@ v12 = {
   ],
   "type": "_ExternalLink"
 },
-v13 = [
-  (v4/*: any*/),
-  (v11/*: any*/),
-  (v12/*: any*/)
-],
 v14 = [
   (v4/*: any*/),
-  (v12/*: any*/)
+  (v12/*: any*/),
+  (v13/*: any*/)
 ],
 v15 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "image",
+  "storageKey": null
+},
+v16 = [
+  (v4/*: any*/),
+  (v13/*: any*/)
+],
+v17 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "section_title",
   "storageKey": null
 },
-v16 = {
+v18 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -781,10 +797,10 @@ return {
                               {
                                 "args": null,
                                 "kind": "FragmentSpread",
-                                "name": "Founder_data"
+                                "name": "Card_data"
                               }
                             ],
-                            "type": "Founder"
+                            "type": "Card"
                           },
                           {
                             "kind": "InlineFragment",
@@ -999,13 +1015,7 @@ return {
                             "kind": "InlineFragment",
                             "selections": [
                               (v5/*: any*/),
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "theme",
-                                "storageKey": null
-                              },
+                              (v8/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1021,7 +1031,7 @@ return {
                                     "name": "text_alignment",
                                     "storageKey": null
                                   },
-                                  (v8/*: any*/)
+                                  (v9/*: any*/)
                                 ],
                                 "storageKey": null
                               }
@@ -1031,7 +1041,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v9/*: any*/),
+                              (v10/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1067,7 +1077,7 @@ return {
                                             "name": "members",
                                             "plural": true,
                                             "selections": [
-                                              (v10/*: any*/),
+                                              (v11/*: any*/),
                                               {
                                                 "alias": null,
                                                 "args": null,
@@ -1093,7 +1103,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v11/*: any*/),
+                              (v12/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1130,7 +1140,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "article_url",
                                     "plural": false,
-                                    "selections": (v13/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1142,23 +1152,19 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v9/*: any*/),
+                              (v5/*: any*/),
+                              (v8/*: any*/),
+                              (v15/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
                                 "kind": "ScalarField",
-                                "name": "founder_information",
+                                "name": "avatar",
                                 "storageKey": null
                               },
-                              {
-                                "alias": null,
-                                "args": null,
-                                "kind": "ScalarField",
-                                "name": "founder_picture",
-                                "storageKey": null
-                              }
+                              (v9/*: any*/)
                             ],
-                            "type": "Founder"
+                            "type": "Card"
                           },
                           {
                             "kind": "InlineFragment",
@@ -1170,7 +1176,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "donation_link",
                                 "plural": false,
-                                "selections": (v14/*: any*/),
+                                "selections": (v16/*: any*/),
                                 "storageKey": null
                               }
                             ],
@@ -1202,8 +1208,8 @@ return {
                                 "name": "tabs_list",
                                 "plural": true,
                                 "selections": [
-                                  (v10/*: any*/),
-                                  (v8/*: any*/),
+                                  (v11/*: any*/),
+                                  (v9/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -1227,7 +1233,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v9/*: any*/),
+                              (v10/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1243,8 +1249,8 @@ return {
                                 "name": "tabs_list",
                                 "plural": true,
                                 "selections": [
-                                  (v10/*: any*/),
-                                  (v8/*: any*/)
+                                  (v11/*: any*/),
+                                  (v9/*: any*/)
                                 ],
                                 "storageKey": null
                               }
@@ -1254,7 +1260,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v15/*: any*/),
+                              (v17/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1291,7 +1297,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "tab_link",
                                     "plural": false,
-                                    "selections": (v13/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   },
                                   {
@@ -1317,7 +1323,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v16/*: any*/),
+                              (v18/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1326,13 +1332,7 @@ return {
                                 "name": "social_networks",
                                 "plural": true,
                                 "selections": [
-                                  {
-                                    "alias": null,
-                                    "args": null,
-                                    "kind": "ScalarField",
-                                    "name": "image",
-                                    "storageKey": null
-                                  },
+                                  (v15/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -1340,7 +1340,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "link",
                                     "plural": false,
-                                    "selections": (v14/*: any*/),
+                                    "selections": (v16/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1372,7 +1372,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v16/*: any*/),
+                              (v18/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1402,7 +1402,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "social_link",
                                     "plural": false,
-                                    "selections": (v13/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1506,7 +1506,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v15/*: any*/),
+                              (v17/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,

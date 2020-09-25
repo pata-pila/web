@@ -21,6 +21,10 @@ h2 {
   font-family: $poppins-semibold, serif;
   font-size: 20px;
   margin: 10px 0;
+  
+  > strong {
+    color: $gold-drop;
+  }
 }
 
 h6 {
@@ -45,6 +49,14 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+}
+
+a :not(strong) {
+  text-decoration: underline;
+} 
 
 strong > a, a > strong {
   margin: 10px 0;
@@ -73,6 +85,12 @@ strong > a, a > strong {
   
   p {
     font-size: 12px;
+  }
+  
+  a > strong, strong > a {
+    margin: 0 auto;
+    display: block;
+    width: 120px;
   }
 } 
 :global {
