@@ -58,6 +58,10 @@ strong > a, a > strong {
 }
 
 @media (max-width: 900px) {
+  h1 {
+    font-size: 30px;
+  }
+
   h2 {
     font-size: 16px;
   }

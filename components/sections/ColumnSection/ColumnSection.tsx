@@ -26,9 +26,12 @@ const ColumnSection = (props: Props) => {
         <div className={styles.subsectionsContainer}>
           {body.map((item, index) => {
             return (
-              <div className={styles.subsection}>
+              <div className={styles.subsection} key={index}>
                 {item.primary.subsection_image ? (
-                  <img className={styles.image} src={(item.primary.subsection_image as any)?.url} />
+                  <img
+                    className={styles.image}
+                    src={(item.primary.subsection_image as any)?.url}
+                  />
                 ) : (
                   <Text elements={item.primary.subsection_paragraph} />
                 )}
