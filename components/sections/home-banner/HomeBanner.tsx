@@ -5,22 +5,27 @@ import singleFragmentComponent from "../../../lib/singleFragmentComponent";
 
 // Component
 import { Props } from "./HomeBanner.types";
-import css from "./HomeBanner.scss";
+import styles from "./HomeBanner.scss";
 
 // External
 import Text from "../../text";
 
 export const HomeBanner: FC<Props> = (props) => (
   <section
-    className={css.homeBanner}
+    className={styles.homeBanner}
     style={{
       backgroundImage: `url(${(props.banner_image as any).url})`,
     }}
   >
-    <div className="section-content">
-      <article>
-        <Text elements={props.banner_text} />
-      </article>
+    <div className={styles.textWithGradient}>
+      <div className={styles.gradient} />
+      <div className={styles.textWrapper}>
+        <div className="section-content">
+          <article>
+            <Text elements={props.banner_text} />
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 );

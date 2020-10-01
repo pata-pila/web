@@ -10,7 +10,7 @@
 body {
   margin: 0;
 }
-  
+
 h1 {
   font-family: $poppins-semibold, serif;
   font-size: 40px;
@@ -21,7 +21,7 @@ h2 {
   font-family: $poppins-semibold, serif;
   font-size: 20px;
   margin: 10px 0;
-  
+
   > strong {
     color: $gold-drop;
   }
@@ -39,7 +39,8 @@ p {
   margin: 10px 0;
 }
 
-strong > p, p > strong {
+strong > p,
+p > strong {
   font-family: $poppins-medium, serif;
   font-weight: normal;
 }
@@ -56,9 +57,10 @@ a {
 
 a :not(strong) {
   text-decoration: underline;
-} 
+}
 
-strong > a, a > strong {
+strong > a,
+a > strong {
   margin: 10px 0;
   font-family: $poppins-medium, serif;
   font-size: 12px;
@@ -82,23 +84,26 @@ strong > a, a > strong {
   h2 {
     font-size: 16px;
   }
-  
+
   p {
     font-size: 12px;
   }
-  
-  a > strong, strong > a {
+
+  a > strong,
+  strong > a {
     margin: 0 auto;
     display: block;
     width: 120px;
   }
-} 
+}
+
 :global {
   .section-content {
     flex: 1;
     display: flex;
     width: 100%;
     max-width: $max-desktop-size;
+    margin: auto;
 
     &.mobile-column {
       @media (max-width: $mobile-max) {
@@ -111,7 +116,7 @@ strong > a, a > strong {
     min-height: $section-vertical-min-height;
     padding: $section-vertical-padding $section-horizontal-padding;
   }
-  
+
   .vertical-title {
     color: $gold-drop;
     font-family: $poppins-semibold;
