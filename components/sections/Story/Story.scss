@@ -1,0 +1,54 @@
+@import "styles/fonts.scss";
+@import "styles/colors.scss";
+@import "styles/sizes.scss";
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  text-transform: capitalize;
+  color: $jewel;
+  font-size: 18px;
+  font-family: $poppins-semibold;
+}
+
+.section_title {
+  margin-bottom: 20px;
+}
+
+.article {
+  img {
+    width: 100%;
+  }
+
+  p {
+    @media (max-width: $mobile-max) {
+      font-size: 14px;
+    }
+  }
+
+  strong {
+    font-size: 20px;
+    color: $jewel;
+    font-family: $poppins-semibold;
+  }
+}
+
+.title {
+  color: black;
+  font-family: $poppins-semibold;
+  @media (max-width: $mobile-max) {
+    font-size: 30px;
+  }
+  font-size: 40px;
+}
+
+.story {
+  margin-left: 15%;
+
+  @media (max-width: $mobile-max) {
+    margin-left: 0;
+  }
+}
