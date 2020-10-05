@@ -39,6 +39,9 @@ class Site extends Component<Props> {
                 ... on Home_banner {
                   ...HomeBanner_data
                 }
+                ... on Story_section {
+                  ...Story_data
+                }
                 ... on Impact_section {
                   ...ImpactSection_data
                 }

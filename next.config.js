@@ -4,6 +4,7 @@ const path = require("path");
 const Dotenv = require("dotenv-webpack");
 const withSass = require("@zeit/next-sass");
 const withFonts = require("next-fonts")
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = withSass(withFonts({
   distDir: "dist/_next",
@@ -17,7 +18,10 @@ module.exports = withSass(withFonts({
       new Dotenv({
         path: path.join(__dirname, ".env"),
         systemvars: true
-      })
+      }),
+      new MomentLocalesPlugin({
+        localesToKeep: ['es']
+    }),
     ];
 
     return config;
