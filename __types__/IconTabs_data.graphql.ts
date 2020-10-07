@@ -6,15 +6,16 @@ import { FragmentRefs } from "relay-runtime";
 export type IconTabs_data = {
     readonly section_title: unknown | null;
     readonly section_background_color: string | null;
+    readonly background_illustration: unknown | null;
+    readonly title_enlarged: unknown | null;
     readonly icon_tabs: ReadonlyArray<{
         readonly tab_icon: unknown | null;
-        readonly tab_image: unknown | null;
+        readonly tab_content: unknown | null;
         readonly tab_link: {
             readonly _linkType: string | null;
             readonly url?: string;
         } | null;
         readonly tab_title: unknown | null;
-        readonly tab_description: unknown | null;
     }> | null;
     readonly " $refType": "IconTabs_data";
 };
@@ -49,6 +50,20 @@ const node: ReaderFragment = {
     {
       "alias": null,
       "args": null,
+      "kind": "ScalarField",
+      "name": "background_illustration",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "title_enlarged",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
       "concreteType": "Icon_tabs_sectionIcon_tabs",
       "kind": "LinkedField",
       "name": "icon_tabs",
@@ -65,7 +80,7 @@ const node: ReaderFragment = {
           "alias": null,
           "args": null,
           "kind": "ScalarField",
-          "name": "tab_image",
+          "name": "tab_content",
           "storageKey": null
         },
         {
@@ -105,13 +120,6 @@ const node: ReaderFragment = {
           "kind": "ScalarField",
           "name": "tab_title",
           "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "tab_description",
-          "storageKey": null
         }
       ],
       "storageKey": null
@@ -119,5 +127,5 @@ const node: ReaderFragment = {
   ],
   "type": "Icon_tabs_section"
 };
-(node as any).hash = 'f1184a17449e9d3b0ffd3084cee33368';
+(node as any).hash = 'fe1232cfe5d45febe3130f0e9308ef35';
 export default node;

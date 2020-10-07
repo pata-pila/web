@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Sat Oct 03 2020 22:40:43 GMT-0300 (Argentina Standard Time)
+# timestamp: Tue Oct 06 2020 22:58:06 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -380,7 +380,9 @@ type Icon_listElements {
 
 type Icon_tabs_section implements _Document & _Linkable {
   section_title: Json
+  title_enlarged: Json
   section_background_color: String
+  background_illustration: Json
   icon_tabs: [Icon_tabs_sectionIcon_tabs!]
   _meta: Meta!
   _linkType: String
@@ -409,69 +411,9 @@ type Icon_tabs_sectionIcon_tabs {
   tab_icon: Json
   tab_image: Json
   tab_title: Json
+  tab_content: Json
   tab_link: _Linkable
   tab_description: Json
-}
-
-type Image_text implements _Document & _Linkable {
-  title: Json
-  text: Json
-  text_align: String
-  image: Json
-  image_positioning: String
-  image_x: Float
-  image_y: Float
-  text_positioning: String
-  text_x: Float
-  text_y: Float
-  _meta: Meta!
-  _linkType: String
-}
-
-"""A connection to a list of items."""
-type Image_textConnectionConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [Image_textConnectionEdge]
-  totalCount: Long!
-}
-
-"""An edge in a connection."""
-type Image_textConnectionEdge {
-  """The item at the end of the edge."""
-  node: Image_text!
-
-  """A cursor for use in pagination."""
-  cursor: String!
-}
-
-type Impact_banner implements _Document & _Linkable {
-  title: String
-  background_image: Json
-  icons: _Linkable
-  _meta: Meta!
-  _linkType: String
-}
-
-"""A connection to a list of items."""
-type Impact_bannerConnectionConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [Impact_bannerConnectionEdge]
-  totalCount: Long!
-}
-
-"""An edge in a connection."""
-type Impact_bannerConnectionEdge {
-  """The item at the end of the edge."""
-  node: Impact_banner!
-
-  """A cursor for use in pagination."""
-  cursor: String!
 }
 
 type Impact_section implements _Document & _Linkable {
@@ -777,30 +719,6 @@ type OrganizationsOrganizations {
   organization: _Linkable
 }
 
-type Other_type implements _Document & _Linkable {
-  _meta: Meta!
-  _linkType: String
-}
-
-"""A connection to a list of items."""
-type Other_typeConnectionConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [Other_typeConnectionEdge]
-  totalCount: Long!
-}
-
-"""An edge in a connection."""
-type Other_typeConnectionEdge {
-  """The item at the end of the edge."""
-  node: Other_type!
-
-  """A cursor for use in pagination."""
-  cursor: String!
-}
-
 """Information about pagination in a connection."""
 type PageInfo {
   """When paginating forwards, are there more items?"""
@@ -814,30 +732,6 @@ type PageInfo {
 
   """When paginating forwards, the cursor to continue."""
   endCursor: String
-}
-
-type Pepito implements _Document & _Linkable {
-  _meta: Meta!
-  _linkType: String
-}
-
-"""A connection to a list of items."""
-type PepitoConnectionConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PepitoConnectionEdge]
-  totalCount: Long!
-}
-
-"""An edge in a connection."""
-type PepitoConnectionEdge {
-  """The item at the end of the edge."""
-  node: Pepito!
-
-  """A cursor for use in pagination."""
-  cursor: String!
 }
 
 type Presentation implements _Document & _Linkable {
@@ -885,20 +779,15 @@ type Query {
   allVertical_tabss(sortBy: SortVertical_tabsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereVertical_tabs, before: String, after: String, first: Int, last: Int): Vertical_tabsConnectionConnection!
   allMalnutrition_sections(sortBy: SortMalnutrition_sectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereMalnutrition_section, before: String, after: String, first: Int, last: Int): Malnutrition_sectionConnectionConnection!
   allTabss(sortBy: SortTabsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereTabs, before: String, after: String, first: Int, last: Int): TabsConnectionConnection!
-  allUijhius(sortBy: SortUijhiuy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): UijhiuConnectionConnection!
   allGrid_sections(sortBy: SortGrid_sectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereGrid_section, before: String, after: String, first: Int, last: Int): Grid_sectionConnectionConnection!
   allImpact_statisticss(sortBy: SortImpact_statisticsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereImpact_statistics, before: String, after: String, first: Int, last: Int): Impact_statisticsConnectionConnection!
   allText_cards(sortBy: SortText_cardy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereText_card, before: String, after: String, first: Int, last: Int): Text_cardConnectionConnection!
   allColumn_sections(sortBy: SortColumn_sectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereColumn_section, before: String, after: String, first: Int, last: Int): Column_sectionConnectionConnection!
-  allImpact_banners(sortBy: SortImpact_bannery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereImpact_banner, before: String, after: String, first: Int, last: Int): Impact_bannerConnectionConnection!
-  allPepitos(sortBy: SortPepitoy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): PepitoConnectionConnection!
   allHeaders(sortBy: SortHeadery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): HeaderConnectionConnection!
   allLandings(sortBy: SortLandingy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereLanding, before: String, after: String, first: Int, last: Int): LandingConnectionConnection!
   allMalnutrition_menus(sortBy: SortMalnutrition_menuy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): Malnutrition_menuConnectionConnection!
   allCards(sortBy: SortCardy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereCard, before: String, after: String, first: Int, last: Int): CardConnectionConnection!
   allIcon_lists(sortBy: SortIcon_listy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereIcon_list, before: String, after: String, first: Int, last: Int): Icon_listConnectionConnection!
-  allImage_texts(sortBy: SortImage_texty, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereImage_text, before: String, after: String, first: Int, last: Int): Image_textConnectionConnection!
-  allOther_types(sortBy: SortOther_typey, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): Other_typeConnectionConnection!
   allOrganizationss(sortBy: SortOrganizationsy, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereOrganizations, before: String, after: String, first: Int, last: Int): OrganizationsConnectionConnection!
   allSubsections(sortBy: SortSubsectiony, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, before: String, after: String, first: Int, last: Int): SubsectionConnectionConnection!
   allFooters(sortBy: SortFootery, id: String, id_in: [String!], uid: String, uid_in: [String!], lang: String, tags: [String!], tags_in: [String!], type: String, type_in: [String!], firstPublicationDate: DateTime, firstPublicationDate_after: DateTime, firstPublicationDate_before: DateTime, lastPublicationDate: DateTime, lastPublicationDate_after: DateTime, lastPublicationDate_before: DateTime, fulltext: String, similar: similar, where: WhereFooter, before: String, after: String, first: Int, last: Int): FooterConnectionConnection!
@@ -1031,40 +920,6 @@ enum SortIcon_tabs_sectiony {
   section_title_DESC
 }
 
-enum SortImage_texty {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
-  title_ASC
-  title_DESC
-  text_ASC
-  text_DESC
-  text_align_ASC
-  text_align_DESC
-  image_positioning_ASC
-  image_positioning_DESC
-  image_x_ASC
-  image_x_DESC
-  image_y_ASC
-  image_y_DESC
-  text_positioning_ASC
-  text_positioning_DESC
-  text_x_ASC
-  text_x_DESC
-  text_y_ASC
-  text_y_DESC
-}
-
-enum SortImpact_bannery {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
-  title_ASC
-  title_DESC
-}
-
 enum SortImpact_sectiony {
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
@@ -1148,20 +1003,6 @@ enum SortOrganizationy {
   organization_name_DESC
 }
 
-enum SortOther_typey {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
-}
-
-enum SortPepitoy {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
-}
-
 enum SortPresentationy {
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
@@ -1218,13 +1059,6 @@ enum SortText_cardy {
   meta_lastPublicationDate_DESC
   text_ASC
   text_DESC
-}
-
-enum SortUijhiuy {
-  meta_firstPublicationDate_ASC
-  meta_firstPublicationDate_DESC
-  meta_lastPublicationDate_ASC
-  meta_lastPublicationDate_DESC
 }
 
 enum SortVertical_tabsy {
@@ -1403,36 +1237,6 @@ type Text_cardConnectionEdge {
   cursor: String!
 }
 
-type Uijhiu implements _Document & _Linkable {
-  jni: [UijhiuJni!]
-  _meta: Meta!
-  _linkType: String
-}
-
-"""A connection to a list of items."""
-type UijhiuConnectionConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [UijhiuConnectionEdge]
-  totalCount: Long!
-}
-
-"""An edge in a connection."""
-type UijhiuConnectionEdge {
-  """The item at the end of the edge."""
-  node: Uijhiu!
-
-  """A cursor for use in pagination."""
-  cursor: String!
-}
-
-type UijhiuJni {
-  text_align: String
-  djkjiwjdwiowd: Json
-}
-
 type Vertical_tabs implements _Document & _Linkable {
   section_name: String
   section_header: Json
@@ -1526,76 +1330,7 @@ input WhereIcon_list {
 input WhereIcon_tabs_section {
   """section_title"""
   section_title_fulltext: String
-}
-
-input WhereImage_text {
-  """title"""
-  title_fulltext: String
-
-  """text"""
-  text_fulltext: String
-  text_align: String
-  text_align_fulltext: String
-  image_positioning: String
-  image_positioning_fulltext: String
-
-  """image_x"""
-  image_x: Float
-
-  """image_x"""
-  image_x_lt: Float
-
-  """image_x"""
-  image_x_gt: Float
-
-  """image_x"""
-  image_x_range: [Float!]
-
-  """image_y"""
-  image_y: Float
-
-  """image_y"""
-  image_y_lt: Float
-
-  """image_y"""
-  image_y_gt: Float
-
-  """image_y"""
-  image_y_range: [Float!]
-  text_positioning: String
-  text_positioning_fulltext: String
-
-  """text_x"""
-  text_x: Float
-
-  """text_x"""
-  text_x_lt: Float
-
-  """text_x"""
-  text_x_gt: Float
-
-  """text_x"""
-  text_x_range: [Float!]
-
-  """text_y"""
-  text_y: Float
-
-  """text_y"""
-  text_y_lt: Float
-
-  """text_y"""
-  text_y_gt: Float
-
-  """text_y"""
-  text_y_range: [Float!]
-}
-
-input WhereImpact_banner {
-  title: String
-  title_fulltext: String
-
-  """icons"""
-  icons: String
+  title_enlarged: Boolean
 }
 
 input WhereImpact_section {
