@@ -20,9 +20,11 @@ export const IconTabsContainer = createFragmentContainer(
       fragment IconTabs_data on Icon_tabs_section {
         section_title
         section_background_color
+        background_illustration
+        title_enlarged
         icon_tabs {
           tab_icon
-          tab_image
+          tab_content
           tab_link {
             _linkType
             ... on _ExternalLink {
@@ -30,7 +32,6 @@ export const IconTabsContainer = createFragmentContainer(
             }
           }
           tab_title
-          tab_description
         }
       }
     `,

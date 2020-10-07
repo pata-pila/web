@@ -5,31 +5,37 @@ import classnames from "classnames";
 // Component
 import { Props } from "../IconTabs.types";
 import styles from "./IconTabsMobile.scss";
+import Text from "../../../text";
 
 const Content = ({
   className,
-  image,
-  description,
+  content,
   link,
 }: {
   className?: string;
-  image: string;
-  description: string;
-  link: string;
+  content: {};
+  link?: string;
 }) => {
   return (
     <div className={classnames(styles.tabContent, className)}>
-      <img className={styles.tabImage} src={image} />
-      <span className={styles.tabDescription}>{description}</span>
-      <a className={styles.readMoreButton} href={link} target="_blank">
-        Leer mas
-      </a>
+      <Text elements={content} />
+      {link && (
+        <a className={styles.readMoreButton} href={link} target="_blank">
+          Leer mas
+        </a>
+      )}
     </div>
   );
 };
 export const IconTabsMobile: FC<Props> = (props) => {
   const [selectedTab, setSelectedTab] = useState(null);
-  const { section_title, icon_tabs, section_background_color } = props;
+  const {
+    section_title,
+    icon_tabs,
+    section_background_color,
+    background_illustration,
+    title_enlarged,
+  } = props;
   return (
     <section
       className={styles.container}
@@ -37,7 +43,11 @@ export const IconTabsMobile: FC<Props> = (props) => {
         backgroundColor: section_background_color,
       }}
     >
-      <div className={styles.title}>{section_title[0].text}</div>
+      {title_enlarged ? (
+        <h1>{section_title[0].text}</h1>
+      ) : (
+        <div className={styles.title}>{section_title[0].text}</div>
+      )}
       <div className={styles.sectionContent}>
         <div className={styles.tabs}>
           {icon_tabs.map((tab, index) => (
@@ -69,15 +79,20 @@ export const IconTabsMobile: FC<Props> = (props) => {
               </div>
               <div key={index} className={styles.tabContent}>
                 <Content
-                  image={(tab.tab_image as any).url}
-                  description={tab.tab_description[0].text}
-                  link={tab.tab_link.url}
+                  content={tab.tab_content}
+                  link={tab.tab_link && tab.tab_link.url}
                 />
               </div>
             </div>
           ))}
         </div>
       </div>
+      {background_illustration && (
+        <img
+          className={styles.illustration}
+          src={(background_illustration as any).url}
+        />
+      )}
     </section>
   );
 };
