@@ -1,32 +1,12 @@
 // React/Relay
 import React, { FC, useState } from "react";
 import classnames from "classnames";
+import { Content } from "../Content";
 
 // Component
 import { Props } from "../IconTabs.types";
 import styles from "./IconTabsMobile.scss";
-import Text from "../../../text";
 
-const Content = ({
-  className,
-  content,
-  link,
-}: {
-  className?: string;
-  content: {};
-  link?: string;
-}) => {
-  return (
-    <div className={classnames(styles.tabContent, className)}>
-      <Text elements={content} />
-      {link && (
-        <a className={styles.readMoreButton} href={link} target="_blank">
-          Leer mas
-        </a>
-      )}
-    </div>
-  );
-};
 export const IconTabsMobile: FC<Props> = (props) => {
   const [selectedTab, setSelectedTab] = useState(null);
   const {
@@ -79,6 +59,7 @@ export const IconTabsMobile: FC<Props> = (props) => {
               </div>
               <div key={index} className={styles.tabContent}>
                 <Content
+                  className={styles.tabContent}
                   content={tab.tab_content}
                   link={tab.tab_link && tab.tab_link.url}
                 />

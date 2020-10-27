@@ -5,28 +5,8 @@ import classnames from "classnames";
 // Component
 import { Props } from "../IconTabs.types";
 import styles from "./IconTabsDesktop.scss";
-import Text from "../../../text";
+import { Content } from "../Content";
 
-const Content = ({
-  className,
-  content,
-  link,
-}: {
-  className?: string;
-  content: any;
-  link?: string;
-}) => {
-  return (
-    <div className={classnames(styles.tabContent, className)}>
-      <Text elements={content} />
-      {link && (
-        <a className={styles.readMoreButton} href={link} target="_blank">
-          Leer mas
-        </a>
-      )}
-    </div>
-  );
-};
 export const IconTabsDesktop: FC<Props> = (props) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const {
@@ -48,7 +28,7 @@ export const IconTabsDesktop: FC<Props> = (props) => {
         {!title_enlarged ? (
           <span className="vertical-title">{section_title[0].text}</span>
         ) : null}
-        <div className={classnames(styles.tabs, styles.webContent)}>
+        <div className={styles.tabs}>
           {icon_tabs.map((tab, index) => (
             <button
               key={index}
@@ -69,19 +49,8 @@ export const IconTabsDesktop: FC<Props> = (props) => {
             </button>
           ))}
         </div>
-        <div className={classnames(styles.tabs, styles.mobileContent)}>
-          {icon_tabs.map((tab, index) => (
-            <div key={index} className={styles.tabContainer}>
-              <span className={styles.tabTitle}>{tab.tab_title[0].text}</span>
-              <Content
-                content={tab.tab_content}
-                link={tab.tab_link && tab.tab_link.url}
-              />
-            </div>
-          ))}
-        </div>
         <Content
-          className={styles.webContent}
+          className={styles.tabContent}
           content={icon_tabs[selectedTab].tab_content}
           link={
             icon_tabs[selectedTab].tab_link &&
