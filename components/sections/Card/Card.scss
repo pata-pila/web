@@ -49,6 +49,7 @@
   align-items: flex-start;
   justify-content: center;
   display: flex;
+  min-height: 400px;
   
   &.white {
     background-color: white;
@@ -77,7 +78,7 @@
   writing-mode: vertical-rl;
   align-self: flex-start;
   margin-right: 30px;
-  font-size: 12px;
+  font-size: 16px;
 
   @media (max-width: 768px) {
     transform: none;

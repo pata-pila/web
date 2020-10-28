@@ -3,6 +3,8 @@
 .tabs {
   font-family: $poppins-semibold;
   background-color: #31683d;
+  display: flex;
+  flex-direction: column;
 }
 
 .tabs-name {
@@ -26,6 +28,10 @@
 .tabs-content {
   padding: 0 15vw;
   text-align: center;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .tabs-content p {
