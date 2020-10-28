@@ -27,9 +27,19 @@ h2 {
   }
 }
 
+h3 {
+  font-family: $poppins-regular, serif;
+  font-size: 18px;
+  margin: 10px 0;
+
+  > strong {
+    color: $gold-drop;
+  }
+}
+
 h6 {
   font-family: $poppins-regular, serif;
-  font-size: 15px;
+  font-size: 16px;
   margin: 10px 0;
 }
 
@@ -63,7 +73,7 @@ strong > a,
 a > strong {
   margin: 10px 0;
   font-family: $poppins-medium, serif;
-  font-size: 12px;
+  font-size: 16px;
   min-width: 120px;
   border-radius: 5px;
   display: inline-block;
@@ -82,6 +92,10 @@ a > strong {
   }
 
   h2 {
+    font-size: 16px;
+  }
+
+  h3 {
     font-size: 16px;
   }
 
@@ -124,7 +138,7 @@ a > strong {
     writing-mode: vertical-rl;
     align-self: flex-start;
     margin-right: 30px;
-    font-size: 16px;
+    font-size: 18px;
 
     @media (max-width: $mobile-max) {
       transform: none;

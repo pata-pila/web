@@ -16,28 +16,6 @@ export const Header: FC<Props> = (props) => {
       <div
         className={classnames("section-content", styles.headerSectionContainer)}
       >
-        <div className={styles.socialMedia}>
-          {props.social_media.map((socialMedia, index) => {
-            return (
-              <a
-                className={styles.socialIcon}
-                key={index}
-                href={
-                  socialMedia.social_link &&
-                  (socialMedia.social_link as any).url
-                }
-                target="_blank"
-              >
-                <img
-                  src={
-                    socialMedia.social_icon &&
-                    (socialMedia.social_icon as any).url
-                  }
-                />
-              </a>
-            );
-          })}
-        </div>
         <div className={styles.headerContainer}>
           <a href="/">
             <img
@@ -46,6 +24,30 @@ export const Header: FC<Props> = (props) => {
               alt="Pata Pila"
             />
           </a>
+        </div>
+        <div className={styles.column}>
+          <div className={styles.socialMedia}>
+            {props.social_media.map((socialMedia, index) => {
+              return (
+                <a
+                  className={styles.socialIcon}
+                  key={index}
+                  href={
+                    socialMedia.social_link &&
+                    (socialMedia.social_link as any).url
+                  }
+                  target="_blank"
+                >
+                  <img
+                    src={
+                      socialMedia.social_icon &&
+                      (socialMedia.social_icon as any).url
+                    }
+                  />
+                </a>
+              );
+            })}
+          </div>
           <div className={styles.linksContainer}>
             {props.header_links.map((link, index) => {
               const documentId = link.link_document?._meta.id;
