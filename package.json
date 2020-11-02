@@ -9,11 +9,7 @@
     "relay": "relay-compiler --src ./ --artifactDirectory ./__types__ --exclude '**/dist/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' '**/schema/**' --schema ./schema/schema.graphql --language typescript",
     "schema": "node graphql-proxy.js & graphql get-schema dev",
     "serve": "cross-env NODE_ENV=production firebase serve",
-    "upload-gcr": "docker build . -t gcr.io/pata-pila-web/web && docker push gcr.io/pata-pila-web/web",
-    "deploy-gcloud": "gcloud run deploy web --image gcr.io/pata-pila-web/web --region us-central1 --allow-unauthenticated --platform managed",
-    "deploy-gcrun": "npm run build && npm run upload-gcr && npm run deploy-gcloud && firebase deploy --only hosting",
-    "deploy": "ncp public dist && firebase deploy",
-    "lol": "firebase serve"
+    "deploy": "ncp public dist && firebase deploy"
   },
   "engines": {
     "node": "10"
