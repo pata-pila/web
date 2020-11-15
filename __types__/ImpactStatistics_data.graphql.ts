@@ -5,14 +5,9 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ImpactStatistics_data = {
     readonly title: unknown | null;
-    readonly icons: ({
-        readonly __typename: "Icon_list";
+    readonly icons: {
         readonly " $fragmentRefs": FragmentRefs<"IconList_data">;
-    } | {
-        /*This will never be '%other', but we need some
-        value in case none of the concrete values match.*/
-        readonly __typename: "%other";
-    }) | null;
+    } | null;
     readonly background_color: string | null;
     readonly " $refType": "ImpactStatistics_data";
 };
@@ -46,22 +41,9 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
-          "alias": null,
           "args": null,
-          "kind": "ScalarField",
-          "name": "__typename",
-          "storageKey": null
-        },
-        {
-          "kind": "InlineFragment",
-          "selections": [
-            {
-              "args": null,
-              "kind": "FragmentSpread",
-              "name": "IconList_data"
-            }
-          ],
-          "type": "Icon_list"
+          "kind": "FragmentSpread",
+          "name": "IconList_data"
         }
       ],
       "storageKey": null
@@ -76,5 +58,5 @@ const node: ReaderFragment = {
   ],
   "type": "Impact_statistics"
 };
-(node as any).hash = 'c4998b1a40e090b797158ee5559756e9';
+(node as any).hash = '70d2f369b579ba818b673707a58b8158';
 export default node;
