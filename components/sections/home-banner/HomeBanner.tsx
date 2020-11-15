@@ -17,6 +17,7 @@ export const HomeBanner: FC<Props> = (props) => (
       backgroundImage: `url(${(props.banner_image as any).url})`,
     }}
   >
+    <div className={styles.topGradient} />
     <div className={styles.textWithGradient}>
       <div className={styles.gradient} />
       <div className={styles.textWrapper}>
