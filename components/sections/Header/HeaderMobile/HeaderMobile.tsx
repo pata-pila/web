@@ -81,6 +81,28 @@ export const Header: FC<Props> = (props) => {
               );
             })}
           </div>
+          <div className={styles.socialMedia}>
+            {props.social_media.map((socialMedia, index) => {
+              return (
+                <a
+                  className={styles.socialIcon}
+                  key={index}
+                  href={
+                    socialMedia.social_link &&
+                    (socialMedia.social_link as any).url
+                  }
+                  target="_blank"
+                >
+                  <img
+                    src={
+                      socialMedia.social_icon &&
+                      (socialMedia.social_icon as any).url
+                    }
+                  />
+                </a>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

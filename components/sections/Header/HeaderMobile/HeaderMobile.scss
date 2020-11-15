@@ -42,6 +42,8 @@
 }
 
 .menu-layer {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
@@ -65,7 +67,6 @@
   font-size: 16px;
   color: black;
   text-transform: uppercase;
-  margin-right: 20px;
   cursor: pointer;
   margin-bottom: 30px;
 
@@ -88,5 +89,22 @@
 
   &:last-child {
     margin-right: 0;
+  }
+}
+
+.social-media {
+  align-self: flex-end;
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-end;
+  align-self: center;
+  flex: 1;
+}
+
+.social-icon {
+  filter: invert(1);
+  margin: 0 10px;
+  > img {
+    width: 30px;
   }
 }
