@@ -40,8 +40,10 @@
     "react-responsive": "^8.1.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/node": "^13.11.1",
     "@types/react": "^16.9.35",
+    "@types/react-relay": "^7.0.17",
     "babel-plugin-relay": "^9.1.0",
     "firebase-tools": "^8.4.2",
     "graphql-cli": "^3.0.14",

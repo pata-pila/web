@@ -38,10 +38,7 @@ export const OrganizationsContainer = createFragmentContainer(
         section_name
         organizations {
           organization {
-            __typename
-            ... on Organization {
-              ...Organization_data
-            }
+            ...Organization_data
           }
         }
       }
