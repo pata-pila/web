@@ -29,6 +29,20 @@
   }
 }
 
+.topGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  // height is dependant on header component height
+  height: 150px;
+}
+
 .gradient {
   position: absolute;
   top: 0;
