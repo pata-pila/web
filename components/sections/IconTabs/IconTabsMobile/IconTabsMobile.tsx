@@ -54,7 +54,11 @@ export const IconTabsMobile: FC<Props> = (props) => {
                   <span>{tab.tab_title[0].text}</span>
                 </div>
                 <div className={styles.tabSelectedIcon}>
-                  {index === selectedTab ? "▾" : "+"}
+                  {index === selectedTab ? (
+                    <img className={styles.iconImg} src="/assets/arrow-down.png" />
+                  ) : (
+                    "+"
+                  )}
                 </div>
               </div>
               <div key={index} className={styles.tabContent}>

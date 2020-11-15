@@ -51,7 +51,13 @@ export class VerticalTabsMobile extends PureComponent<
                     key={`tab-name-${index}`}
                   >
                     <div>{tab.name}</div>
-                    <div className={styles.icon}>+</div>
+                    <div className={styles.icon}>
+                      {this.isSelectedTab(index) ? (
+                        <img className={styles.iconImg} src="/assets/arrow-down.png" />
+                      ) : (
+                        "+"
+                      )}
+                    </div>
                   </div>
                   <div
                     className={styles.tabContent}
