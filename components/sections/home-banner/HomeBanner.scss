@@ -3,6 +3,8 @@
   background-size: cover;
   background-position: left;
   height: 800px;
+  min-height: 600px;
+  max-height: 100vh;
   display: flex;
 }
 
