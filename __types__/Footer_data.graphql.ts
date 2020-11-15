@@ -17,6 +17,7 @@ export type Footer_data = {
             readonly _meta?: {
                 readonly id: string;
             };
+            readonly url?: string;
         } | null;
     }> | null;
     readonly navigation_links: ReadonlyArray<{
@@ -25,6 +26,7 @@ export type Footer_data = {
             readonly _meta?: {
                 readonly id: string;
             };
+            readonly url?: string;
         } | null;
     }> | null;
     readonly " $refType": "Footer_data";
@@ -38,7 +40,20 @@ export type Footer_data$key = {
 
 
 const node: ReaderFragment = (function(){
-var v0 = [
+var v0 = {
+  "kind": "InlineFragment",
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "url",
+      "storageKey": null
+    }
+  ],
+  "type": "_ExternalLink"
+},
+v1 = [
   {
     "alias": null,
     "args": null,
@@ -71,7 +86,8 @@ var v0 = [
           }
         ],
         "storageKey": null
-      }
+      },
+      (v0/*: any*/)
     ],
     "storageKey": null
   }
@@ -112,19 +128,7 @@ return {
           "name": "link",
           "plural": false,
           "selections": [
-            {
-              "kind": "InlineFragment",
-              "selections": [
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "url",
-                  "storageKey": null
-                }
-              ],
-              "type": "_ExternalLink"
-            }
+            (v0/*: any*/)
           ],
           "storageKey": null
         }
@@ -138,7 +142,7 @@ return {
       "kind": "LinkedField",
       "name": "action_buttons",
       "plural": true,
-      "selections": (v0/*: any*/),
+      "selections": (v1/*: any*/),
       "storageKey": null
     },
     {
@@ -148,12 +152,12 @@ return {
       "kind": "LinkedField",
       "name": "navigation_links",
       "plural": true,
-      "selections": (v0/*: any*/),
+      "selections": (v1/*: any*/),
       "storageKey": null
     }
   ],
   "type": "Footer"
 };
 })();
-(node as any).hash = '3f290d9db5ae6399b5a32ed124847ce6';
+(node as any).hash = 'b13a9909ce95aa4f5aa46af99aaf9b38';
 export default node;

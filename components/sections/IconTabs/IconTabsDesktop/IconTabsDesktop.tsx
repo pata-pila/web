@@ -52,10 +52,7 @@ export const IconTabsDesktop: FC<Props> = (props) => {
         <Content
           className={styles.tabContent}
           content={icon_tabs[selectedTab].tab_content}
-          link={
-            icon_tabs[selectedTab].tab_link &&
-            icon_tabs[selectedTab].tab_link.url
-          }
+          link={icon_tabs[selectedTab].tab_link}
         />
       </div>
       {background_illustration && (
