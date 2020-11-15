@@ -1,21 +1,55 @@
 import React from "react";
 import { useRouteByDocumentId } from "lib/RoutesContext";
 
-interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  /**
-   * This is the value of `_Document._meta.id` of the prismic schema.
-   */
-  documentId: string;
+/* Schema needed for GraphqlLink:
+link {
+  ... on _ExternalLink {
+    url
+  }
+  ... on _Document {
+    _meta {
+      id
+    }
+  }
+}
+*/
+
+export interface GraphqlLink {
+  url?: string;
+  _meta?: {
+    id: string;
+  };
 }
 
-export default function DocumentLink({ documentId, ...elementProps }: Props) {
+interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  /**
+   * This is the value of a `_Linkable` in the prismic schema.
+   * It can either be an external link or a document link.
+   */
+  graphqlLink: GraphqlLink;
+}
+
+export default function DocumentLink({ graphqlLink, ...elementProps }: Props) {
   const routeByDocumentId = useRouteByDocumentId();
-  const route = routeByDocumentId.get(documentId) ?? "";
-  if (!route) {
-    console.warn("Route not found for document id", documentId);
+  const documentId = graphqlLink._meta?.id;
+
+  let href: string = graphqlLink.url ?? "";
+  let target: string | undefined;
+
+  if (href) {
+    target = "_blank";
+  } else if (documentId) {
+    href = routeByDocumentId.get(documentId) ?? "";
+    target = undefined;
+    if (!href) {
+      console.warn("Route not found for document id", documentId);
+    }
+  } else {
+    href = "#";
+    console.warn("graphqlLink has no `href` or `_meta.id`", graphqlLink);
   }
   return (
-    <a href={route} {...elementProps}>
+    <a href={href} target={target} {...elementProps}>
       {elementProps.children}
     </a>
   );

@@ -9,7 +9,9 @@ export type Header_data = {
         readonly social_icon: unknown | null;
         readonly social_name: unknown | null;
         readonly social_link: {
-            readonly _linkType: string | null;
+            readonly _meta?: {
+                readonly id: string;
+            };
             readonly url?: string;
         } | null;
     }> | null;
@@ -19,6 +21,7 @@ export type Header_data = {
             readonly _meta?: {
                 readonly id: string;
             };
+            readonly url?: string;
         } | null;
     }> | null;
     readonly action_buttons: ReadonlyArray<{
@@ -33,6 +36,7 @@ export type Header_data = {
             readonly _meta?: {
                 readonly id: string;
             };
+            readonly url?: string;
         } | null;
     }> | null;
     readonly " $refType": "Header_data";
@@ -64,6 +68,19 @@ var v0 = [
       }
     ],
     "storageKey": null
+  },
+  {
+    "kind": "InlineFragment",
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "url",
+        "storageKey": null
+      }
+    ],
+    "type": "_ExternalLink"
   }
 ];
 return {
@@ -108,28 +125,7 @@ return {
           "kind": "LinkedField",
           "name": "social_link",
           "plural": false,
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "_linkType",
-              "storageKey": null
-            },
-            {
-              "kind": "InlineFragment",
-              "selections": [
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "url",
-                  "storageKey": null
-                }
-              ],
-              "type": "_ExternalLink"
-            }
-          ],
+          "selections": (v0/*: any*/),
           "storageKey": null
         }
       ],
@@ -237,5 +233,5 @@ return {
   "type": "Header"
 };
 })();
-(node as any).hash = 'f753f743e5ae840c9f18295098f30bb6';
+(node as any).hash = 'ed53cdd19d1162820b0e9990e5165531';
 export default node;
