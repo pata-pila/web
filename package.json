@@ -12,7 +12,7 @@
     "deploy": "ncp public dist && firebase deploy"
   },
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "author": "",
   "license": "ISC",
