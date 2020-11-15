@@ -1,5 +1,5 @@
 # source: http://localhost:3000
-# timestamp: Tue Oct 06 2020 22:58:06 GMT-0300 (Argentina Standard Time)
+# timestamp: Sat Nov 14 2020 21:23:39 GMT-0300 (Argentina Standard Time)
 
 """A prismic document"""
 interface _Document {
@@ -409,11 +409,9 @@ type Icon_tabs_sectionConnectionEdge {
 
 type Icon_tabs_sectionIcon_tabs {
   tab_icon: Json
-  tab_image: Json
   tab_title: Json
   tab_content: Json
   tab_link: _Linkable
-  tab_description: Json
 }
 
 type Impact_section implements _Document & _Linkable {
