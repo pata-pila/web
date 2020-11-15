@@ -12,7 +12,9 @@ export type IconTabs_data = {
         readonly tab_icon: unknown | null;
         readonly tab_content: unknown | null;
         readonly tab_link: {
-            readonly _linkType: string | null;
+            readonly _meta?: {
+                readonly id: string;
+            };
             readonly url?: string;
         } | null;
         readonly tab_title: unknown | null;
@@ -94,8 +96,19 @@ const node: ReaderFragment = {
             {
               "alias": null,
               "args": null,
-              "kind": "ScalarField",
-              "name": "_linkType",
+              "concreteType": "Meta",
+              "kind": "LinkedField",
+              "name": "_meta",
+              "plural": false,
+              "selections": [
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "id",
+                  "storageKey": null
+                }
+              ],
               "storageKey": null
             },
             {
@@ -127,5 +140,5 @@ const node: ReaderFragment = {
   ],
   "type": "Icon_tabs_section"
 };
-(node as any).hash = 'fe1232cfe5d45febe3130f0e9308ef35';
+(node as any).hash = '57ab39eda0d80d957d28170bd3b5e8b5';
 export default node;

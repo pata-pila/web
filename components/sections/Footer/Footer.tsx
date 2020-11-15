@@ -28,7 +28,7 @@ const Footer: FC<Props> = (props) => {
             <li key={index} className={styles.actionButtonItem}>
               <DocumentLink
                 className={styles.actionButton}
-                documentId={link.link._meta.id}
+                graphqlLink={link.link}
               >
                 {link.text}
               </DocumentLink>
@@ -47,7 +47,7 @@ const Footer: FC<Props> = (props) => {
               <li key={index} className={styles.navigationLinkItem}>
                 <DocumentLink
                   className={styles.navigationLink}
-                  documentId={link.link._meta.id}
+                  graphqlLink={link.link}
                 >
                   {link.text}
                 </DocumentLink>
@@ -99,6 +99,9 @@ export default createFragmentContainer(singleFragmentComponent(Footer), {
       action_buttons {
         text
         link {
+          ... on _ExternalLink {
+            url
+          }
           ... on _Document {
             _meta {
               id
@@ -109,6 +112,9 @@ export default createFragmentContainer(singleFragmentComponent(Footer), {
       navigation_links {
         text
         link {
+          ... on _ExternalLink {
+            url
+          }
           ... on _Document {
             _meta {
               id

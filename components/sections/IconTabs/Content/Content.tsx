@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./Content.scss";
 import Text from "../../../text";
+import DocumentLink, { GraphqlLink } from "components/DocumentLink";
 
 export const Content = ({
   className,
@@ -10,15 +11,15 @@ export const Content = ({
 }: {
   className?: string;
   content: any;
-  link?: string;
+  link?: GraphqlLink;
 }) => {
   return (
     <div className={className}>
       <Text elements={content} />
       {link && (
-        <a className={styles.readMoreButton} href={link} target="_blank">
+        <DocumentLink className={styles.readMoreButton} graphqlLink={link}>
           Leer mas
-        </a>
+        </DocumentLink>
       )}
     </div>
   );

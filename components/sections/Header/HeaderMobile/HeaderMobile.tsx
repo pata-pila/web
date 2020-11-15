@@ -53,7 +53,7 @@ export const Header: FC<Props> = (props) => {
               return (
                 <DocumentLink
                   key={index}
-                  documentId={link.link_document?._meta.id}
+                  graphqlLink={link.link_document}
                   className={classnames(
                     styles.link,
                     route === path && styles.selected
@@ -74,7 +74,7 @@ export const Header: FC<Props> = (props) => {
                     borderColor: button.mobile_border_color ?? "black",
                     color: button.mobile_text_color ?? "black",
                   }}
-                  documentId={button.action._meta.id}
+                  graphqlLink={button.action}
                 >
                   {button.action_title[0].text}
                 </DocumentLink>

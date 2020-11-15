@@ -39,13 +39,12 @@ export const NewsBanner: FC<Props> = (props) => {
                 target="_blank"
               >
                 Ver noticia
-            </a>
+              </a>
             </div>
           </div>
         ))}
-
       </div>
-    </section >
+    </section>
   );
 };
 
@@ -54,15 +53,18 @@ export const NewsBannerContainer = createFragmentContainer(
   {
     data: graphql`
       fragment NewsBanner_data on News_banner {
-        _linkType
         articles_list {
           article_image
           newspaper_icon
           article_title
           article_url {
-            _linkType
             ... on _ExternalLink {
               url
+            }
+            ... on _Document {
+              _meta {
+                id
+              }
             }
           }
         }
