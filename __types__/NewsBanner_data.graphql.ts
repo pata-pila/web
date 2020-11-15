@@ -4,13 +4,14 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type NewsBanner_data = {
-    readonly _linkType: string | null;
     readonly articles_list: ReadonlyArray<{
         readonly article_image: unknown | null;
         readonly newspaper_icon: unknown | null;
         readonly article_title: unknown | null;
         readonly article_url: {
-            readonly _linkType: string | null;
+            readonly _meta?: {
+                readonly id: string;
+            };
             readonly url?: string;
         } | null;
     }> | null;
@@ -24,21 +25,12 @@ export type NewsBanner_data$key = {
 
 
 
-const node: ReaderFragment = (function(){
-var v0 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "_linkType",
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "NewsBanner_data",
   "selections": [
-    (v0/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -76,7 +68,24 @@ return {
           "name": "article_url",
           "plural": false,
           "selections": [
-            (v0/*: any*/),
+            {
+              "alias": null,
+              "args": null,
+              "concreteType": "Meta",
+              "kind": "LinkedField",
+              "name": "_meta",
+              "plural": false,
+              "selections": [
+                {
+                  "alias": null,
+                  "args": null,
+                  "kind": "ScalarField",
+                  "name": "id",
+                  "storageKey": null
+                }
+              ],
+              "storageKey": null
+            },
             {
               "kind": "InlineFragment",
               "selections": [
@@ -99,6 +108,5 @@ return {
   ],
   "type": "News_banner"
 };
-})();
-(node as any).hash = '369afb94c69c3b460561b89c80d81bff';
+(node as any).hash = '9e68499ed2d18ba65bf3406bc9d65144';
 export default node;

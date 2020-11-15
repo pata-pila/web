@@ -223,6 +223,9 @@ fragment Footer_data on Footer {
     text
     link {
       __typename
+      ... on _ExternalLink {
+        url
+      }
       ... on _Document {
         _meta {
           id
@@ -234,6 +237,9 @@ fragment Footer_data on Footer {
     text
     link {
       __typename
+      ... on _ExternalLink {
+        url
+      }
       ... on _Document {
         _meta {
           id
@@ -260,9 +266,13 @@ fragment Header_data on Header {
     social_name
     social_link {
       __typename
-      _linkType
       ... on _ExternalLink {
         url
+      }
+      ... on _Document {
+        _meta {
+          id
+        }
       }
     }
   }
@@ -270,6 +280,9 @@ fragment Header_data on Header {
     link_title
     link_document {
       __typename
+      ... on _ExternalLink {
+        url
+      }
       ... on _Document {
         _meta {
           id
@@ -287,6 +300,9 @@ fragment Header_data on Header {
     action_title
     action {
       __typename
+      ... on _ExternalLink {
+        url
+      }
       ... on _Document {
         _meta {
           id
@@ -318,9 +334,13 @@ fragment IconTabs_data on Icon_tabs_section {
     tab_content
     tab_link {
       __typename
-      _linkType
       ... on _ExternalLink {
         url
+      }
+      ... on _Document {
+        _meta {
+          id
+        }
       }
     }
     tab_title
@@ -352,16 +372,19 @@ fragment Item_data on Icon_listElements {
 }
 
 fragment NewsBanner_data on News_banner {
-  _linkType
   articles_list {
     article_image
     newspaper_icon
     article_title
     article_url {
       __typename
-      _linkType
       ... on _ExternalLink {
         url
+      }
+      ... on _Document {
+        _meta {
+          id
+        }
       }
     }
   }
@@ -611,13 +634,6 @@ v12 = {
   "storageKey": null
 },
 v13 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "_linkType",
-  "storageKey": null
-},
-v14 = {
   "kind": "InlineFragment",
   "selections": [
     {
@@ -630,42 +646,38 @@ v14 = {
   ],
   "type": "_ExternalLink"
 },
-v15 = [
+v14 = [
   (v4/*: any*/),
-  (v13/*: any*/),
-  (v14/*: any*/)
+  (v1/*: any*/),
+  (v13/*: any*/)
 ],
-v16 = {
+v15 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "image",
   "storageKey": null
 },
-v17 = [
+v16 = [
   (v4/*: any*/),
-  (v14/*: any*/)
+  (v13/*: any*/)
 ],
-v18 = {
+v17 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "pata_pila_icon",
   "storageKey": null
 },
-v19 = {
+v18 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "text",
   "storageKey": null
 },
-v20 = [
-  (v4/*: any*/),
-  (v1/*: any*/)
-],
-v21 = [
-  (v19/*: any*/),
+v19 = [
+  (v18/*: any*/),
   {
     "alias": null,
     "args": null,
@@ -673,11 +685,11 @@ v21 = [
     "kind": "LinkedField",
     "name": "link",
     "plural": false,
-    "selections": (v20/*: any*/),
+    "selections": (v14/*: any*/),
     "storageKey": null
   }
 ],
-v22 = {
+v20 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -1144,7 +1156,6 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v13/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1181,7 +1192,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "article_url",
                                     "plural": false,
-                                    "selections": (v15/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1195,7 +1206,7 @@ return {
                             "selections": [
                               (v6/*: any*/),
                               (v9/*: any*/),
-                              (v16/*: any*/),
+                              (v15/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1217,7 +1228,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "donation_link",
                                 "plural": false,
-                                "selections": (v17/*: any*/),
+                                "selections": (v16/*: any*/),
                                 "storageKey": null
                               }
                             ],
@@ -1352,7 +1363,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "tab_link",
                                     "plural": false,
-                                    "selections": (v15/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   },
                                   {
@@ -1371,7 +1382,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v18/*: any*/),
+                              (v17/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1380,7 +1391,7 @@ return {
                                 "name": "social_networks",
                                 "plural": true,
                                 "selections": [
-                                  (v16/*: any*/),
+                                  (v15/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -1388,7 +1399,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "link",
                                     "plural": false,
-                                    "selections": (v17/*: any*/),
+                                    "selections": (v16/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1401,7 +1412,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "action_buttons",
                                 "plural": true,
-                                "selections": (v21/*: any*/),
+                                "selections": (v19/*: any*/),
                                 "storageKey": null
                               },
                               {
@@ -1411,7 +1422,7 @@ return {
                                 "kind": "LinkedField",
                                 "name": "navigation_links",
                                 "plural": true,
-                                "selections": (v21/*: any*/),
+                                "selections": (v19/*: any*/),
                                 "storageKey": null
                               }
                             ],
@@ -1420,7 +1431,7 @@ return {
                           {
                             "kind": "InlineFragment",
                             "selections": [
-                              (v18/*: any*/),
+                              (v17/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1450,7 +1461,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "social_link",
                                     "plural": false,
-                                    "selections": (v15/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1478,7 +1489,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "link_document",
                                     "plural": false,
-                                    "selections": (v20/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1542,7 +1553,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "action",
                                     "plural": false,
-                                    "selections": (v20/*: any*/),
+                                    "selections": (v14/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -1562,7 +1573,7 @@ return {
                                 "name": "section_background",
                                 "storageKey": null
                               },
-                              (v22/*: any*/),
+                              (v20/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1630,7 +1641,7 @@ return {
                             "kind": "InlineFragment",
                             "selections": [
                               (v5/*: any*/),
-                              (v22/*: any*/),
+                              (v20/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -1670,7 +1681,7 @@ return {
                             "kind": "InlineFragment",
                             "selections": [
                               (v8/*: any*/),
-                              (v19/*: any*/)
+                              (v18/*: any*/)
                             ],
                             "type": "Text_card"
                           }
@@ -1696,7 +1707,7 @@ return {
     "metadata": {},
     "name": "SiteQuery",
     "operationKind": "query",
-    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  routes: allLandings {\n    edges {\n      node {\n        route\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Story_section {\n              ...Story_data\n            }\n            ... on Impact_section {\n              ...ImpactSection_data\n            }\n            ... on Impact_statistics {\n              ...ImpactStatistics_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Card {\n              ...Card_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Footer {\n              ...Footer_data\n            }\n            ... on Header {\n              ...Header_data\n            }\n            ... on Column_section {\n              ...ColumnSection_data\n            }\n            ... on Grid_section {\n              ...GridSection_data\n            }\n            ... on Text_card {\n              ...TextCard_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Card_data on Card {\n  title\n  theme\n  image\n  avatar\n  content\n}\n\nfragment ColumnSection_data on Column_section {\n  section_title\n  section_background\n  section_title_color\n  body {\n    __typename\n    ... on Column_sectionBodyImage_section {\n      primary {\n        subsection_image\n      }\n    }\n    ... on Column_sectionBodyParagraph_subsection {\n      primary {\n        subsection_paragraph\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Footer_data on Footer {\n  pata_pila_icon\n  social_networks {\n    image\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  action_buttons {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  navigation_links {\n    text\n    link {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment GridSection_data on Grid_section {\n  section_title\n  section_title_color\n  grid_section_title\n  grid_section_subtitle\n  grid_items {\n    grid_item_image\n  }\n}\n\nfragment Header_data on Header {\n  pata_pila_icon\n  social_media {\n    social_icon\n    social_name\n    social_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  header_links {\n    link_title\n    link_document {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  action_buttons {\n    background_color\n    border_color\n    text_color\n    mobile_background_color\n    mobile_border_color\n    mobile_text_color\n    action_title\n    action {\n      __typename\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconList_data on Icon_list {\n  list_name\n  elements {\n    ...Item_data\n  }\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  background_illustration\n  title_enlarged\n  icon_tabs {\n    tab_icon\n    tab_content\n    tab_link {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n    tab_title\n  }\n}\n\nfragment ImpactSection_data on Impact_section {\n  title\n  icons {\n    __typename\n    ...IconList_data\n  }\n  background_image\n}\n\nfragment ImpactStatistics_data on Impact_statistics {\n  title\n  icons {\n    __typename\n    ...IconList_data\n  }\n  background_color\n}\n\nfragment Item_data on Icon_listElements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  _linkType\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      _linkType\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ...Organization_data\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Story_data on Story_section {\n  section_title\n  title\n  date\n  article\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment TextCard_data on Text_card {\n  background_color\n  text\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
+    "text": "query SiteQuery(\n  $where: WhereLanding\n) {\n  routes: allLandings {\n    edges {\n      node {\n        route\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  allLandings(where: $where) {\n    edges {\n      node {\n        sections {\n          section {\n            __typename\n            ... on Home_banner {\n              ...HomeBanner_data\n            }\n            ... on Story_section {\n              ...Story_data\n            }\n            ... on Impact_section {\n              ...ImpactSection_data\n            }\n            ... on Impact_statistics {\n              ...ImpactStatistics_data\n            }\n            ... on Presentation {\n              ...Presentation_data\n            }\n            ... on Organizations {\n              ...Organizations_data\n            }\n            ... on News_banner {\n              ...NewsBanner_data\n            }\n            ... on Card {\n              ...Card_data\n            }\n            ... on Donations {\n              ...Donations_data\n            }\n            ... on Tabs {\n              ...Tabs_data\n            }\n            ... on Vertical_tabs {\n              ...VerticalTabs_data\n            }\n            ... on Icon_tabs_section {\n              ...IconTabs_data\n            }\n            ... on Footer {\n              ...Footer_data\n            }\n            ... on Header {\n              ...Header_data\n            }\n            ... on Column_section {\n              ...ColumnSection_data\n            }\n            ... on Grid_section {\n              ...GridSection_data\n            }\n            ... on Text_card {\n              ...TextCard_data\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\nfragment Card_data on Card {\n  title\n  theme\n  image\n  avatar\n  content\n}\n\nfragment ColumnSection_data on Column_section {\n  section_title\n  section_background\n  section_title_color\n  body {\n    __typename\n    ... on Column_sectionBodyImage_section {\n      primary {\n        subsection_image\n      }\n    }\n    ... on Column_sectionBodyParagraph_subsection {\n      primary {\n        subsection_paragraph\n      }\n    }\n  }\n}\n\nfragment Donations_data on Donations {\n  donation_link {\n    __typename\n    ... on _ExternalLink {\n      url\n    }\n  }\n}\n\nfragment Footer_data on Footer {\n  pata_pila_icon\n  social_networks {\n    image\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n    }\n  }\n  action_buttons {\n    text\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  navigation_links {\n    text\n    link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment GridSection_data on Grid_section {\n  section_title\n  section_title_color\n  grid_section_title\n  grid_section_subtitle\n  grid_items {\n    grid_item_image\n  }\n}\n\nfragment Header_data on Header {\n  pata_pila_icon\n  social_media {\n    social_icon\n    social_name\n    social_link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  header_links {\n    link_title\n    link_document {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n  action_buttons {\n    background_color\n    border_color\n    text_color\n    mobile_background_color\n    mobile_border_color\n    mobile_text_color\n    action_title\n    action {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment HomeBanner_data on Home_banner {\n  banner_text\n  banner_image\n}\n\nfragment IconList_data on Icon_list {\n  list_name\n  elements {\n    ...Item_data\n  }\n}\n\nfragment IconTabs_data on Icon_tabs_section {\n  section_title\n  section_background_color\n  background_illustration\n  title_enlarged\n  icon_tabs {\n    tab_icon\n    tab_content\n    tab_link {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n    tab_title\n  }\n}\n\nfragment ImpactSection_data on Impact_section {\n  title\n  icons {\n    __typename\n    ...IconList_data\n  }\n  background_image\n}\n\nfragment ImpactStatistics_data on Impact_statistics {\n  title\n  icons {\n    __typename\n    ...IconList_data\n  }\n  background_color\n}\n\nfragment Item_data on Icon_listElements {\n  title\n  subtitle\n  icon\n}\n\nfragment NewsBanner_data on News_banner {\n  articles_list {\n    article_image\n    newspaper_icon\n    article_title\n    article_url {\n      __typename\n      ... on _ExternalLink {\n        url\n      }\n      ... on _Document {\n        _meta {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Organization_data on Organization {\n  organization_name\n  members {\n    name\n    position\n  }\n}\n\nfragment Organizations_data on Organizations {\n  section_name\n  organizations {\n    organization {\n      __typename\n      ...Organization_data\n    }\n  }\n}\n\nfragment Presentation_data on Presentation {\n  title\n  theme\n  slides {\n    text_alignment\n    content\n  }\n}\n\nfragment Story_data on Story_section {\n  section_title\n  title\n  date\n  article\n}\n\nfragment Tabs_data on Tabs {\n  background_color\n  tabs_name_color\n  tabs_name_selected_color\n  tabs_list {\n    name\n    content\n    content_color\n    content_background_color\n  }\n}\n\nfragment TextCard_data on Text_card {\n  background_color\n  text\n}\n\nfragment VerticalTabs_data on Vertical_tabs {\n  section_name\n  section_header\n  tabs_list {\n    name\n    content\n  }\n}\n"
   }
 };
 })();

@@ -26,9 +26,13 @@ export const IconTabsContainer = createFragmentContainer(
           tab_icon
           tab_content
           tab_link {
-            _linkType
             ... on _ExternalLink {
               url
+            }
+            ... on _Document {
+              _meta {
+                id
+              }
             }
           }
           tab_title

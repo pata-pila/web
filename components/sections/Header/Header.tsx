@@ -31,15 +31,22 @@ export const HeaderContainer = createFragmentContainer(
           social_icon
           social_name
           social_link {
-            _linkType
             ... on _ExternalLink {
               url
+            }
+            ... on _Document {
+              _meta {
+                id
+              }
             }
           }
         }
         header_links {
           link_title
           link_document {
+            ... on _ExternalLink {
+              url
+            }
             ... on _Document {
               _meta {
                 id
@@ -56,6 +63,9 @@ export const HeaderContainer = createFragmentContainer(
           mobile_text_color
           action_title
           action {
+            ... on _ExternalLink {
+              url
+            }
             ... on _Document {
               _meta {
                 id

@@ -61,7 +61,7 @@ export const IconTabsMobile: FC<Props> = (props) => {
                 <Content
                   className={styles.tabContent}
                   content={tab.tab_content}
-                  link={tab.tab_link && tab.tab_link.url}
+                  link={tab.tab_link}
                 />
               </div>
             </div>
