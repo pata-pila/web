@@ -82,6 +82,7 @@
 @media (min-width: $desktop-min) {
   .footerWrapper {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .logoWrapper {
