@@ -14,11 +14,13 @@ export const Header: FC<Props> = (props) => {
   const { path } = props;
   return (
     <div className={styles.mobileContainer}>
-      <img
-        className={styles.icon}
-        src={(props.pata_pila_icon as any).url}
-        alt="Pata Pila"
-      />
+      <a href="/">
+        <img
+          className={styles.icon}
+          src={(props.pata_pila_icon as any).url}
+          alt="Pata Pila"
+        />
+      </a>
       <button className={styles.menuButton} onClick={() => openMenu(true)}>
         <img
           className={styles.menuIcon}
