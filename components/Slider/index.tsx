@@ -4,11 +4,18 @@ import classnames from "classnames";
 
 import css from "./Slider.scss";
 
-const Slider: FC<any> = (props) => {
+interface Props {
+  children: React.ReactNode[];
+  className?: string;
+}
+
+const Slider: FC<Props> = (props) => {
   // State
   const [currentSlide, setCurrentSlide] = useState(0);
   const [nextSlide, setNextSlide] = useState(0);
-  const [slideRefs, setSlideRefs] = React.useState([]);
+  const [slideRefs, setSlideRefs] = React.useState<
+    Array<React.RefObject<InView>>
+  >([]);
 
   // Event handlers
   const onNavTo = (slideIndex) => () => {
@@ -28,7 +35,10 @@ const Slider: FC<any> = (props) => {
   }, [props.children]);
   useEffect(() => {
     if (slideRefs[nextSlide]) {
-      slideRefs[nextSlide].current.node.scrollIntoView();
+      slideRefs[nextSlide].current.node.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
     }
   }, [nextSlide]);
 
@@ -36,6 +46,7 @@ const Slider: FC<any> = (props) => {
     <section className={classnames(css.slider, props.className)}>
       <ul className={css.slides}>
         {props.children.map((child, thisSlide) => (
+          // @ts-ignore
           <InView
             key={thisSlide}
             ref={slideRefs[thisSlide]}
