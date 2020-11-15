@@ -6,14 +6,9 @@ import { FragmentRefs } from "relay-runtime";
 export type Organizations_data = {
     readonly section_name: string | null;
     readonly organizations: ReadonlyArray<{
-        readonly organization: ({
-            readonly __typename: "Organization";
+        readonly organization: {
             readonly " $fragmentRefs": FragmentRefs<"Organization_data">;
-        } | {
-            /*This will never be '%other', but we need some
-            value in case none of the concrete values match.*/
-            readonly __typename: "%other";
-        }) | null;
+        } | null;
     }> | null;
     readonly " $refType": "Organizations_data";
 };
@@ -55,22 +50,9 @@ const node: ReaderFragment = {
           "plural": false,
           "selections": [
             {
-              "alias": null,
               "args": null,
-              "kind": "ScalarField",
-              "name": "__typename",
-              "storageKey": null
-            },
-            {
-              "kind": "InlineFragment",
-              "selections": [
-                {
-                  "args": null,
-                  "kind": "FragmentSpread",
-                  "name": "Organization_data"
-                }
-              ],
-              "type": "Organization"
+              "kind": "FragmentSpread",
+              "name": "Organization_data"
             }
           ],
           "storageKey": null
@@ -81,5 +63,5 @@ const node: ReaderFragment = {
   ],
   "type": "Organizations"
 };
-(node as any).hash = '6cd4291b0b10f1bb585258e185fac13d';
+(node as any).hash = 'f12acf0a061a9d87b048aad57c149139';
 export default node;

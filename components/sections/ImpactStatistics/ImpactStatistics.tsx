@@ -37,10 +37,7 @@ export const ImpactStatisticsContainer = createFragmentContainer(
       fragment ImpactStatistics_data on Impact_statistics {
         title
         icons {
-          __typename
-          ... on Icon_list {
-            ...IconList_data
-          }
+          ...IconList_data
         }
         background_color
       }
