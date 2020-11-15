@@ -1,7 +1,8 @@
 // React/Relay
 import React, { FC } from "react";
 import { createFragmentContainer, graphql } from "react-relay";
-import singleFragmentComponent from "../../../lib/singleFragmentComponent";
+import singleFragmentComponent from "lib/singleFragmentComponent";
+import { PrismicImage } from "lib/prismicTypes";
 
 // Component
 import { Props } from "./ImpactSection.types";
@@ -14,7 +15,7 @@ export const ImpactSection: FC<Props> = (props) => {
     <section
       className={`${styles.container} section-container`}
       style={{
-        backgroundImage: `url(${(background_image as any).url})`,
+        backgroundImage: `url(${(background_image as PrismicImage).url})`,
       }}
     >
       <div className="section-content mobile-column">
@@ -34,10 +35,7 @@ export const ImpactSectionContainer = createFragmentContainer(
       fragment ImpactSection_data on Impact_section {
         title
         icons {
-          __typename
-          ... on Icon_list {
-            ...IconList_data
-          }
+          ...IconList_data
         }
         background_image
       }

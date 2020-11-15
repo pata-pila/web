@@ -60,10 +60,9 @@ export class TabsDesktop extends PureComponent<Props, { selectedTab: number }> {
           {tabs_list.map((tab, index) => (
             <div
               key={`tab-content-${index}`}
-              className={styles.tabContent}
-              style={{
-                display: this.isSelectedTab(index) ? "block" : "none",
-              }}
+              className={classnames(styles.tabContent, {
+                [styles.selectedTabContent]: this.isSelectedTab(index),
+              })}
             >
               <Text elements={tab.content} />
             </div>
