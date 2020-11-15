@@ -25,6 +25,11 @@
   padding-bottom: 5px;
 }
 
+.selected-tab-name {
+  border-bottom: 3px solid #df8832;
+  color: #df8832;
+}
+
 .tabs-content {
   padding: 0 15vw;
   text-align: center;
@@ -34,13 +39,16 @@
   justify-content: center;
 }
 
-.tabs-content p {
+.tab-content {
+  display: none;
+}
+
+.selected-tab-content {
+  display: block;
+}
+
+.tab-content p {
   font-family: $poppins-semibold;
   font-size: 18px;
   color: #ffffff;
-}
-
-.selected-tab-name {
-  border-bottom: 3px solid #df8832;
-  color: #df8832;
 }

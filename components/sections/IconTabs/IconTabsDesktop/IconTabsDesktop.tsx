@@ -49,11 +49,18 @@ export const IconTabsDesktop: FC<Props> = (props) => {
             </button>
           ))}
         </div>
-        <Content
-          className={styles.tabContent}
-          content={icon_tabs[selectedTab].tab_content}
-          link={icon_tabs[selectedTab].tab_link}
-        />
+        <div className={styles.tabsContent}>
+          {icon_tabs.map((tab, index) => (
+            <Content
+              key={index}
+              className={classnames(styles.tabContent, {
+                [styles.selected]: index === selectedTab,
+              })}
+              content={tab.tab_content}
+              link={tab.tab_link}
+            />
+          ))}
+        </div>
       </div>
       {background_illustration && (
         <img
