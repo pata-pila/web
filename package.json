@@ -9,7 +9,7 @@
     "relay": "relay-compiler --src ./ --artifactDirectory ./__types__ --exclude '**/dist/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' '**/schema/**' --schema ./schema/schema.graphql --language typescript",
     "schema": "node graphql-proxy.js & graphql get-schema dev",
     "serve": "cross-env NODE_ENV=production firebase serve",
-    "deploy": "ncp public dist && firebase deploy"
+    "deploy": "ncp public dist && firebase deploy --debug"
   },
   "engines": {
     "node": "12"

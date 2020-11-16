@@ -15,11 +15,15 @@ export const Content = ({
 }) => {
   return (
     <div className={className}>
-      <Text elements={content} />
+      <div className={styles.textWrapper}>
+        <Text elements={content} />
+      </div>
       {link && (
-        <DocumentLink className={styles.readMoreButton} graphqlLink={link}>
-          Leer mas
-        </DocumentLink>
+        <div className={styles.readMoreButtonWrapper}>
+          <DocumentLink className={styles.readMoreButton} graphqlLink={link}>
+            Leer mas
+          </DocumentLink>
+        </div>
       )}
     </div>
   );
