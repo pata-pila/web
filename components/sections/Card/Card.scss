@@ -12,26 +12,24 @@
 }
 
 .card-image {
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     text-align: center;
     padding-right: 0;
   }
 
   &.avatar {
     img {
-
       border: 2px solid #643633;
       width: 200px;
       height: 200px;
     }
   }
-  
+
   img {
     border-radius: 50%;
-    
     width: 150px;
     height: 150px;
-    
+
     @media (max-width: 768px) {
       width: 180px;
       height: 180px;
@@ -50,11 +48,11 @@
   justify-content: center;
   display: flex;
   min-height: 400px;
-  
+
   &.white {
     background-color: white;
   }
-  
+
   &.opaque {
     background-color: $mercury;
   }
@@ -65,7 +63,7 @@
   white-space: nowrap;
   display: flex;
   justify-content: left;
-  
+
   @media (max-width: 768px) {
     align-self: flex-start;
   }

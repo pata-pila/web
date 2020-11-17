@@ -100,14 +100,14 @@ a > strong {
   }
 
   p {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   a > strong,
   strong > a {
     margin: 0 auto;
     display: block;
-    width: 120px;
+    max-width: 160px;
   }
 }
 
