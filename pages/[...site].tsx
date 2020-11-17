@@ -4,7 +4,6 @@ import { graphql } from "react-relay";
 import withData from "../lib/withData";
 import { RoutesContextProvider } from "lib/RoutesContext";
 import Error from "next/error";
-import facebookPixelScript from "../lib/fbPixelScript";
 
 import * as sections from "components/sections";
 
@@ -120,17 +119,6 @@ class Site extends Component<Props> {
             href="https://fonts.googleapis.com/css?family=Adamina|Nixie+One|Raleway&display=swap"
             rel="stylesheet"
           />
-          {/* <!-- Start Facebook Pixel Code --> */}
-          <script dangerouslySetInnerHTML={{ __html: facebookPixelScript }} />
-          <noscript>
-            <img
-              height="1"
-              width="1"
-              style={{ display: "none" }}
-              src="https://www.facebook.com/tr?id=230062738360481&ev=PageView&noscript=1"
-            />
-          </noscript>
-        {/* <!-- End Facebook Pixel Code --> */}
         </Head>
         <main>
           {props.allLandings.edges[0].node.sections
