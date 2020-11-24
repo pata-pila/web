@@ -1,6 +1,13 @@
 import React from "react";
 import { useRouteByDocumentId } from "lib/RoutesContext";
 
+const mainDomain = "patapila.org";
+
+function isLinkPointingToMainDomain(link) {
+  const url = new URL(link);
+  return url.hostname.endsWith(mainDomain);
+}
+
 /* Schema needed for GraphqlLink:
 link {
   ... on _ExternalLink {
@@ -36,8 +43,10 @@ export default function DocumentLink({ graphqlLink, ...elementProps }: Props) {
   let href: string = graphqlLink.url ?? "";
   let target: string | undefined;
 
-  if (href) {
+  if (href && !isLinkPointingToMainDomain(href)) {
     target = "_blank";
+  } else if (href && isLinkPointingToMainDomain(href)) {
+    target = undefined;
   } else if (documentId) {
     href = routeByDocumentId.get(documentId) ?? "";
     target = undefined;
