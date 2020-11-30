@@ -115,6 +115,19 @@ class Site extends Component<Props> {
       <RoutesContextProvider value={this.getRoutesContextProviderValue()}>
         <Head>
           <title>Pata Pila</title>
+          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+          <script
+            async={true}
+            src="https://www.googletagmanager.com/gtag/js?id=UA-148907387-1"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-148907387-1');`
+            }}
+          />
           <link
             href="https://fonts.googleapis.com/css?family=Adamina|Nixie+One|Raleway&display=swap"
             rel="stylesheet"
