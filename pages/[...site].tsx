@@ -119,7 +119,7 @@ class Site extends Component<Props> {
           <script
             async={true}
             src="https://www.googletagmanager.com/gtag/js?id=UA-148907387-1"
-          ></script>
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `window.dataLayer = window.dataLayer || [];
