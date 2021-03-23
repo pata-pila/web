@@ -129,6 +129,10 @@ class Site extends Component<Props> {
             href="https://fonts.googleapis.com/css?family=Adamina|Nixie+One|Raleway&display=swap"
             rel="stylesheet"
           />
+          <meta
+            name="facebook-domain-verification"
+            content="mfqv28l2wnvjrmj4xey39oii9h9kyj"
+          />
         </Head>
         <main>
           <noscript
