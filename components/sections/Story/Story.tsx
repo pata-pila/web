@@ -20,9 +20,11 @@ export const Story: FC<Props> = (props) => (
       </span>
       <div className={styles.story}>
         <div className={styles.story}>
-          <div className={styles.date}>
-            {moment(props.date, "YYYY-MM-DD").format("MMMM YYYY")}
-          </div>
+          {props.date && (
+            <div className={styles.date}>
+              {moment(props.date, "YYYY-MM-DD").format("MMMM YYYY")}
+            </div>
+          )}
           <div className={styles.title}>{props.title[0].text}</div>
           <article className={styles.article}>
             <Text elements={props.article} />
