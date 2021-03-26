@@ -153,7 +153,11 @@ class Site extends Component<Props> {
   }
 }
 
+function stripQueryParametersFromPath(path: String) {
+  return path.split(/[?#]/)[0];
+}
+
 export default withData(Site, {
   query: Site.query,
-  setupVars: (ctx) => ({ where: { route: ctx.asPath } }),
+  setupVars: (ctx) => ({ where: { route: stripQueryParametersFromPath(ctx.asPath) } })
 });
