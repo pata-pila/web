@@ -160,4 +160,4 @@ function stripQueryParametersFromPath(path: String) {
 export default withData(Site, {
   query: Site.query,
   setupVars: (ctx) => ({ where: { route: stripQueryParametersFromPath(ctx.asPath) } })
-  });
+});
